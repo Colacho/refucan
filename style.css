@@ -1,0 +1,161 @@
+.containergeneral {
+    display: flex;
+    width: 100%;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.botones {
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px 25px;
+    height: 5em;
+}
+
+
+/* -----INICIO HEADER------ */
+
+    header {
+        display: flex;
+        padding: 10px;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #212529;
+        color: #adb5bd ;
+    }
+    .logo {
+        
+        border: 2px solid #ffc107;
+        border-radius: 50%;
+        max-width: 150px;
+        
+    }
+
+
+/* ------FIN HEADER------ */
+
+/* ------NAV BAR -----*/
+
+    nav {
+        display: flex;
+        justify-content: space-around;
+        padding: 10px; 
+        background-image: linear-gradient(#212529, #adb5bd, #212529 );
+        
+    }
+
+
+/* -----FIN NAVBAR -----*/
+
+/* ----- INICIO CENTRO -----*/
+main {
+    color: #adb5bd;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    background-image: url("images/fondo2.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    
+    
+}
+.logocentral {
+    
+    border: 2px solid #ffc107;
+    border-radius: 50%;
+    
+    
+}
+
+.central {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+    align-items: center;
+    overflow: auto;
+}
+
+/* ----- FIN CENTRO -----*/
+
+/* -----INICIO BUSCAR-----*/
+
+.mainBusqueda {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formBusqueda {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.inputBuscar {
+    border-radius: 5px;
+}
+
+
+/* -----FIN BUSCAR-----*/
+
+/* -----INICIO NOTICIA -----*/
+
+.tablanoticias {
+    width: 70%;  
+}
+
+/* -----FIN NOTICIA -----*/
+
+/* -----CARGAR DATOS-----*/
+
+#formCarga > fieldset > div {
+    padding: 2px;
+}
+
+/* -----FIN CARGAR DATOS-----*/
+
+/* -----FOOTER ---- */
+
+footer {
+    width: 100%;
+    background-color: #212529;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+/* ---- FOOTER ---- */
+
+/*----PAGINA MODIFICAR------*/
+.editarField {
+    display: flex;
+    align-content: space-between;
+    
+    
+}
+
+.editarCampos {
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f9fa;
+    color: #212529;
+    border: 1px solid #212529;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 5px;
+    
+}
+
+.mainModificar {
+    display: flex;
+    justify-content: center;
+    overflow: auto;
+}
+/*----FIN PAGINA MODIFICAR------*/
+
+
+
