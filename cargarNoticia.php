@@ -16,7 +16,7 @@
             <div class="central">
                 <form action="cargarnoticia.php" method="POST">
                     <fieldset>
-                        <legend>Nueva Noticia</legend>
+                        <legend>Nueva Noticiaa</legend>
                         <textarea cols="40" rows="5" name="texto"></textarea><br>
                         <div class="botones">
                             <button type="submit" name="carga" class="btn btn-dark btn-lg">Cargar</button>
