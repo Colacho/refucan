@@ -13,7 +13,7 @@ if($session != null){
 <header>
     <div>
         <a href="index.php">
-            <img class="logo" src="images/logo2.jpeg"/>
+            <img class="logo" src="images/logo.png"/>
         </a>
     </div>
     <div>
