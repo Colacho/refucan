@@ -7,6 +7,10 @@ header {
     color: white;
   }
 
+  .imghome{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 2);
+  }
+
   header::before {
     content: "";
     background-image: url('https://www.consumer.es/app/uploads/fly-images/102638/img_perros-depresion1-1-1200x550-cc.jpg');
@@ -174,6 +178,7 @@ nav {
   body {
     margin: 0;
     padding: 0;
+    background-color: #fdfdfd;
   }
 
   table {
@@ -190,4 +195,40 @@ nav {
   }
   td{
     border: 2px solid orange;
+  }
+
+  .central {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Op
+    margin: 0 auto;
+    width: 50%; /* Puedes ajustar el ancho según tus necesidades */
+  }
+
+  .formlogin {
+    width: 300px; /* Puedes ajustar el ancho según tus necesidades */
+  }
+
+  .logocentral{
+    margin-right: 35px;
+    width: 250px;
+  }
+
+  .formboton {
+    background-color: rgb(233, 151, 0);
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 2px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+  
+  .formboton:hover {
+    background-color: rgb(172, 94, 0);
+    color: rgb(221, 221, 221);
   }
