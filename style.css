@@ -100,11 +100,6 @@ nav {
 /* ---- FOOTER ---- */
 
 /*----PAGINA MODIFICAR------*/
-
-
-
-
-
   .icon:hover {
     color: #ff0000; /* Cambia el color al pasar el cursor por encima */
   }
@@ -231,4 +226,36 @@ nav {
   .formboton:hover {
     background-color: rgb(172, 94, 0);
     color: rgb(221, 221, 221);
+  }
+  
+  .containerdonaciones {
+    display: table;
+    width: 90%;
+    text-align: center;
+    background-image: url("https://imgmedia.wapa.pe/600x275/wapa/original/2021/12/29/61cc89f04209f1270a4d1d1e.webp");
+    background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center ;
+    margin-right: 30px;
+    margin-left: 30px;
+    margin: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-right: 35px;
+    color: #ffffff;
+    border: solid 2px rgb(24, 148, 34);
+    border-radius: 20px;
+
+  }
+  .imgdonacion{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 2);
+    border-radius: 400px;
+  }
+
+  .textdonacion {
+    color: #ffffff;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 1);
+    text-decoration: none;
   }
