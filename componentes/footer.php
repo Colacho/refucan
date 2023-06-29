@@ -2,11 +2,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4">
-<<<<<<< HEAD
           <img src="../images/logo.png" alt="Logo" class="logo">
-=======
-          <img src="images/logo.png" alt="Logo" class="logo">
->>>>>>> e57434955d4a75a9f23c4a6a26a9b3f4868a4765
         </div>
         <div class="col-md-4">
           <h4>¿Quienes somos?</h4>
