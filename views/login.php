@@ -8,7 +8,7 @@
         <header>
             <div>
                 <a href="home.php">
-                    <img class="logo" src="../images/logo2.jpeg"/>
+                    <img class="logo" src="../images/logo.png"/>
                 </a>
             </div>
             <div>
@@ -22,29 +22,38 @@
         ?>
             
         <main>
+        <br>
+            <br>
+            <br>
             <div class="central">
                 <div>
-                    <img class="logocentral imgcentral" src="../images/logo2.jpeg"/>
+                    <img class="logocentral" src="../images/logo.png",>
                 </div>
+                <br>
                 <div >
                     <div>
                         <form action="../src/validar.php" method="POST">
-                            <div class="form-group">
+                            <div class="formlogin">
                                 <label for="usuario">Usuario</label>
                                 <input type="text" class="form-control" name="usuario" id="usuario" placeholder="ingrese usuario">
                             </div>
-                            <div class="form-group">
+                            <br>
+                            <div class="formlogin">
                                 <label for="password">Password</label>
                                 <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                             </div>
-                            <div class="botones">
-                                <button type="submit" value="" name="ingresar" class="btn btn-dark btn-lg">Ingresar</button>
-                                <a class="btn btn-dark btn-lg" href="noticias.php">Noticias</a>
+                            <br>
+                            <div class="formbotones">
+                                <button type="submit" value="" name="ingresar" class="formboton">Ingresar</button>
+                                <button type="submit" value="" name="noticias" class="formboton">Noticias</button>
                             </div>
+                            <br>
                         </form>
                     </div>
                 </div>
             </div>
+            <br>
+            <br>
         </main>
         <?php
             include('../componentes/footer.php');

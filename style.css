@@ -7,6 +7,10 @@ header {
     color: white;
   }
 
+  .imghome{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 2);
+  }
+
   header::before {
     content: "";
     background-image: url('https://www.consumer.es/app/uploads/fly-images/102638/img_perros-depresion1-1-1200x550-cc.jpg');
@@ -96,11 +100,6 @@ nav {
 /* ---- FOOTER ---- */
 
 /*----PAGINA MODIFICAR------*/
-
-
-
-
-
   .icon:hover {
     color: #ff0000; /* Cambia el color al pasar el cursor por encima */
   }
@@ -174,6 +173,7 @@ nav {
   body {
     margin: 0;
     padding: 0;
+    background-color: #fdfdfd;
   }
 
   table {
@@ -190,4 +190,72 @@ nav {
   }
   td{
     border: 2px solid orange;
+  }
+
+  .central {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Op
+    margin: 0 auto;
+    width: 50%; /* Puedes ajustar el ancho según tus necesidades */
+  }
+
+  .formlogin {
+    width: 300px; /* Puedes ajustar el ancho según tus necesidades */
+  }
+
+  .logocentral{
+    margin-right: 35px;
+    width: 250px;
+  }
+
+  .formboton {
+    background-color: rgb(233, 151, 0);
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 2px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+  
+  .formboton:hover {
+    background-color: rgb(172, 94, 0);
+    color: rgb(221, 221, 221);
+  }
+  
+  .containerdonaciones {
+    display: table;
+    width: 90%;
+    text-align: center;
+    background-image: url("https://imgmedia.wapa.pe/600x275/wapa/original/2021/12/29/61cc89f04209f1270a4d1d1e.webp");
+    background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center ;
+    margin-right: 30px;
+    margin-left: 30px;
+    margin: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-right: 35px;
+    color: #ffffff;
+    border: solid 2px rgb(24, 148, 34);
+    border-radius: 20px;
+
+  }
+  .imgdonacion{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 2);
+    border-radius: 400px;
+  }
+
+  .textdonacion {
+    color: #ffffff;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 1);
+    text-decoration: none;
   }
