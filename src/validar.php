@@ -11,6 +11,8 @@ if($resultado->num_rows > 0){
     
     session_start();
     $_SESSION['usuario']=$filas['nombre'];
+    $_SESSION['rol'] = $filas['cargo_id'];
+    $_SESSION['persona_id'] = $filas['persona_id'];
     $rol = $filas['cargo_id'];
 
     $consulta2="SELECT nombre FROM cargos where nombre='$rol'";

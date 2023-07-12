@@ -46,7 +46,7 @@
         </main>
             
         <?php
-            include('..componentes/footer.php')
+            include('../componentes/footer.php')
             
         ?>
 

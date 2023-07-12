@@ -21,7 +21,7 @@
                     </div>
                     <div>
                     <label for="sexo">Sexo:</label>
-                        <select id="sexo" name="sexo" require>
+                        <select id="sexo" name="sexo">
                             <option value="macho">Macho</option>
                             <option value="hembra">Hembra</option>
                         </select>
