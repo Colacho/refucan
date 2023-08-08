@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html>
     <?php
+    $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
+    $cantidadUsuarios = "SELECT COUNT(usuario_id) AS cantidad FROM usuarios";
+    $resultadoCantidad = mysqli_query($con, $cantidadUsuarios);
+    $fila = mysqli_fetch_array($resultadoCantidad);
+
+    if($fila['cantidad'] > 0) {
+        echo '
+            <script>
+                window.location.replace("../views/login.php");
+            </script>
+        '; 
+    }
         include('../componentes/head.php')
     ?>
     <body>
-        <?php
-            include('../componentes/header.php');
-            include('../componentes/navBar.php');
-        ?>
+        
         <main>
-            <h1>Carga de Usuarios</h1>
+            <h1>Carga de primer usuario</h1>
             <form id="formulario" method="POST" class="my-form">
                 
                 <div class="form-group">
@@ -30,9 +39,6 @@
                 </div>
                 <div class="errorCampo" id="campoCorreo" >
                     Ingrese un email
-                </div>
-                <div class="errorCampo" id="CorreoCargado">
-                    El Email ya existe
                 </div>
 
                 <div class="form-group">
@@ -57,17 +63,11 @@
                 <div class="errorCampo" id="DNIcargado">
                     El DNI no está cargado
                 </div>
-                <div class="errorCampo" id="DNIrepetido">
-                    El DNI corresponde a otro usuario
-                </div>
 
                 <div class="form-group">
                     <label for="cargo">Cargo</label>
-                    <select id="cargo" name="cargo">
-                        <option value="0">Seleccione una opción</option>
+                    <select id="cargo" name="cargo" disabled>
                         <option value="1">Administrador</option>
-                        <option value="2">Veterinaria</option>
-                        <option value="3">Protectora</option>
                     </select>
                 </div>
                 <div class="errorCampo" id="campoCargo" >
@@ -83,7 +83,6 @@
     
     if (isset($_POST['cargarUsuario'])) {
         
-        $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
         $idPersona;
 
         function validar (&$num) {
@@ -101,20 +100,6 @@
                 ';
                 return false;
             }
-            
-            if(!empty($_POST["correo"])){
-                $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
-                $verifica = "SELECT correo from usuarios WHERE correo = '".$_POST["correo"]."' ;";
-                $resultadoVerifica = mysqli_query($con, $verifica) or die('Error de consulta');
-                if(mysqli_num_rows($resultadoVerifica) > 0) {
-                    echo '<script>
-                        this.document.getElementById("CorreoCargado").style.display = "block";
-                    </script>
-                    ';
-                    return false;  
-                }
-            }
-            
             if(empty($_POST["pass"])){
                 echo '<script>
                     this.document.getElementById("campoPass").style.display = "block";
@@ -134,36 +119,17 @@
                 $verifica = "SELECT persona_id from personas WHERE dni = '".$_POST["dni"]."' ;";
                 $resultadoVerifica = mysqli_query($con, $verifica) or die('Error de consulta');
                 if(mysqli_num_rows($resultadoVerifica) > 0) {
-                    $fila = mysqli_fetch_array($resultadoVerifica);
-                    $verifica2 = "SELECT id_persona from usuarios WHERE id_persona = '".$fila["persona_id"]."' ;";
-                    $resultadoVerifica2 = mysqli_query($con, $verifica2) or die('Error de consulta');
-                    if(mysqli_num_rows($resultadoVerifica2) == 0) {
-                        
-                        $num = $fila['persona_id'];
-
-                    } else {
-                        echo '<script>
-                        this.document.getElementById("DNIrepetido").style.display = "block";
-                        </script>
-                        ';
-                        return false;
-                    }
-
-            } else {
-                echo '<script>
-                    this.document.getElementById("DNIcargado").style.display = "block";
-                </script>
-                ';
-                return false;
+                $fila = mysqli_fetch_array($resultadoVerifica);
+                $num = $fila['persona_id'];
+                } else {
+                    echo '<script>
+                        this.document.getElementById("DNIcargado").style.display = "block";
+                    </script>
+                    ';
+                    return false;
+                }
             }
-            }
-            if($_POST["cargo"] == 0){
-                echo '<script>
-                    this.document.getElementById("campoCargo").style.display = "block";
-                </script>
-                ';
-                return false;
-            }
+            
 
             return true;
         }   
@@ -176,13 +142,13 @@
                         '".$_POST["nombre"]."',
                         '".$_POST["correo"]."',
                         '".$hash."', 
-                        '".$_POST["cargo"]."',
+                        '1',
                         '".$idPersona."'
                     );";
              $guardar = mysqli_query($con, $sql) or die('Error de consulta');   
              echo '
                  <script>
-                     window.location.replace("../views/cargar.php");
+                     window.location.replace("../views/login.php");
                  </script>
                  '; 
          }  

@@ -259,3 +259,10 @@ nav {
     text-shadow: 2px 2px 3px rgba(0, 0, 0, 1);
     text-decoration: none;
   }
+
+  .errorCampo {
+    display: none;
+    color: red;
+    border: 2px solid red;
+    border-radius: 5px;
+  }

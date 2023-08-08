@@ -6,7 +6,7 @@ function provincia() {
     fetch("https://apis.datos.gob.ar/georef/api/provincias")
     .then(res => res.ok ? res.json() : Promise.reject(res))
     .then(json => {
-        let option = `<option value = "provincia">Seleccione Provincia</option>`;
+        let option = `<option value = "provincia">Seleccione una provincia</option>`;
         json.provincias.forEach(element => option += `<option value="${element.nombre}">${element.nombre}</option>`);
         selectProvincia.innerHTML = option;
     })
@@ -20,7 +20,7 @@ function provincia() {
 d.addEventListener("DOMContentLoaded", provincia)
 
 function municipio(provSelec) {
-    fetch(`https://apis.datos.gob.ar/georef/api/municipios?provincia=${provSelec}&max=100`)
+    fetch(`https://apis.datos.gob.ar/georef/api/municipios?provincia=${provSelec}&max=1000`)
     .then(res => res.ok ? res.json() : Promise.reject(res))
     .then(json => {
         let option = `<option value = "municipio">Seleccione una localidad</option>`;

@@ -15,7 +15,7 @@
         <main>
             
             <div class="central">
-                <h1 class="titulo-carga">Seleccione que desea Cargar <?php echo $cargo ?></h1>
+                <h1 class="titulo-carga">Seleccione que desea Cargar</h1>
                 <div>
                     <a class="btn btn-dark btn-lg" role="button" href="cargarAnimal.php">
                         <img height="50px" src="../images/cargar.png">

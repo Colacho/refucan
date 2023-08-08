@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
 <?php
+    $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
+    $cantidadPersonas = "SELECT COUNT(persona_id) AS cantidad FROM personas";
+    $resultadoCantidad = mysqli_query($con, $cantidadPersonas);
+    $fila = mysqli_fetch_array($resultadoCantidad);
+
+    if($fila['cantidad'] > 0) {
+        echo '
+            <script>
+                window.location.replace("../views/primerUsuario.php");
+            </script>
+        '; 
+    }
+    
     include('../componentes/head.php')
 ?>
     <body>
-<?php
-    include('../componentes/header.php');
-    include('../componentes/navBar.php');
-?>
+
         <main>
         
-            <h1>Carga de Personas</h1>
+            <h1>Cargar primera persona en base de datos</h1>
             <form id="formulario" method="POST" class="my-form">
                 
                 <div class="form-group">
@@ -43,10 +53,7 @@
                 <div class="errorCampo" id="campoDni" >
                     Ingrese un documento
                 </div>
-                <div class="errorCampo" id="DNIcargado">
-                    El DNI ya está cargado
-                </div>
-
+                
                 <div class="form-group">
                     <label for="telefono">Telefono</label>
                     <input type="text" name="telefono" id="telefono" class="form-control"
@@ -75,10 +82,6 @@
                     </div> 
                 </div>
 
-                <div class="errorCampo" id="campoPostal">
-                    Ingrese un código postal
-                </div>
-
                 <div class="form-group">
                     <label for="calle">Calle</label>
                     <input type="text" name="calle" id="calle" class="form-control"
@@ -104,7 +107,6 @@
             <a href="../views/home.php"><button class="button">Volver</button></a>
         </main>
     </body>
-    <!-- Script localidades -->
     <script src="../src/localidades.js"></script>
     </html>
     
@@ -112,7 +114,7 @@
     
     if (isset($_POST['cargarPersona'])) {
         
-        $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
+       
         date_default_timezone_set('America/Argentina/Buenos_Aires');
         $fechaActual = date("Y-m-d");
 
@@ -139,18 +141,7 @@
                 ';
                 return false;
             }
-            if(!empty($_POST["dni"])){
-                $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
-                $verifica = "SELECT dni from personas WHERE dni = '".$_POST["dni"]."' ;";
-                $resultadoVerifica = mysqli_query($con, $verifica) or die('Error de consulta');
-                if(mysqli_num_rows($resultadoVerifica)>0) {
-                    echo '<script>
-                        this.document.getElementById("DNIcargado").style.display = "block";
-                    </script>
-                    ';
-                    return false;
-                }
-            }
+            
             if(empty($_POST["telefono"])){
                 echo '<script>
                     this.document.getElementById("campoTelefono").style.display = "block";
@@ -207,7 +198,7 @@
             $guardar = mysqli_query($con, $sql) or die('Error de consulta');   
             echo '
                 <script>
-                    window.location.replace("../views/cargar.php");
+                    window.location.replace("../views/primerUsuario.php");
                 </script>
                 '; 
         }  

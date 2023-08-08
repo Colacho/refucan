@@ -2,9 +2,9 @@
 
 include('../src/session.php');
 
-if(isset($_SESSION['usuario'])) { 
+if(isset($Snombre)) { 
     
-    $saludo = "Bienvenido $cargo $nombre";
+    $saludo = "Bienvenido $Scargo $Snombre";
 
  echo'
  
@@ -23,7 +23,13 @@ if(isset($_SESSION['usuario'])) {
 </header>
  ';
 }else {
-    header("location: login.php");
+
+    
+   echo '
+    <script>
+        window.location.replace("../views/login.php");
+    </script>
+   '; 
 }
 
 ?>
