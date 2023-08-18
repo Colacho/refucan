@@ -30,11 +30,9 @@
                     
                 }
                 /*---------------------------Primera consulta para contar cantidad de resultados-------------------------------------------------------------------------------*/  
-
-                $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
                                         
                 $consulta = "SELECT * FROM potectora WHERE activo = 1 AND nombre LIKE '%{$nombre}%'";
-                $resultado = mysqli_query($con, $consulta);
+                $resultado = mysqli_query($Sconexion, $consulta);
 
                 /*---------------------------Segunda consulta para la paginacion-------------------------------------------------------------------------------*/
                 $cantResultados = @mysqli_num_rows($resultado);
@@ -52,7 +50,7 @@
                 LIMIT ".$primerResultadoPagina.",".$registrosXpagina."
                 ";
 
-                $resultadoLimitado = mysqli_query($con, $consulta2);
+                $resultadoLimitado = mysqli_query($Sconexion, $consulta2);
 
                 /*---------------------------Fin consultas paginacion-------------------------------------------------------------------------------*/
             ?>

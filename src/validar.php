@@ -2,7 +2,7 @@
 $input_usuario=$_POST['usuario'];
 $input_contraseña=$_POST['password'];
 
-$conexion=mysqli_connect("localhost","root","","refucan");
+$conexion=mysqli_connect("localhost","refucan","colacho","refucan");
 
 $consultaCantidadUsuarios="SELECT * FROM usuarios";
 $resultadoCantidad=mysqli_query($conexion, $consultaCantidadUsuarios);

@@ -90,12 +90,11 @@
 <?php
 if (isset($_POST['cargarProtectora'])) {
         
-    $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
     date_default_timezone_set('America/Argentina/Buenos_Aires');
     $fechaActual = date("Y-m-d");
     $idPersona;
 
-   function validar (&$num) {
+   function validar ($conexion, &$num) {
        if(empty($_POST["nombre"])){
            echo '<script>
                this.document.getElementById("campoNombre").style.display = "block";
@@ -141,9 +140,9 @@ if (isset($_POST['cargarProtectora'])) {
             return false;
         }
         if(!empty($_POST["dni"])){
-            $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
+             
             $verifica = "SELECT persona_id from personas WHERE dni = '".$_POST["dni"]."' ;";
-            $resultadoVerifica = mysqli_query($con, $verifica) or die('Error de consulta');
+            $resultadoVerifica = mysqli_query($conexion, $verifica) or die('Error de consulta');
             if(mysqli_num_rows($resultadoVerifica) > 0) {
                 $fila = mysqli_fetch_array($resultadoVerifica);
                 $num = $fila['persona_id'];
@@ -158,7 +157,7 @@ if (isset($_POST['cargarProtectora'])) {
        return true;
    }
     
-   $pasa = validar($idPersona);
+   $pasa = validar($Sconexion, $idPersona);
    
    if($pasa) {
 
@@ -181,13 +180,13 @@ if (isset($_POST['cargarProtectora'])) {
                    '".$idPersona."', 
                    '$foto'
                );";
-        $guardar = mysqli_query($con, $sql) or die('Error de consulta');   
+        $guardar = mysqli_query($Sconexion, $sql) or die('Error de consulta');   
         echo '
             <script>
                 window.location.replace("../views/cargar.php");
             </script>
             '; 
     }  
-    mysqli_close($con);
+    mysqli_close($Sconexion);
 }
 ?>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <?php
-    $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
+    $conexion = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
     $cantidadUsuarios = "SELECT COUNT(usuario_id) AS cantidad FROM usuarios";
-    $resultadoCantidad = mysqli_query($con, $cantidadUsuarios);
+    $resultadoCantidad = mysqli_query($conexion, $cantidadUsuarios);
     $fila = mysqli_fetch_array($resultadoCantidad);
 
     if($fila['cantidad'] > 0) {
@@ -85,7 +85,7 @@
         
         $idPersona;
 
-        function validar (&$num) {
+        function validar ($con, &$num) {
             if(empty($_POST["nombre"])){
                 echo '<script>
                     this.document.getElementById("campoNombre").style.display = "block";
@@ -115,7 +115,7 @@
                 return false;
             }
             if(!empty($_POST["dni"])){
-                $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
+                
                 $verifica = "SELECT persona_id from personas WHERE dni = '".$_POST["dni"]."' ;";
                 $resultadoVerifica = mysqli_query($con, $verifica) or die('Error de consulta');
                 if(mysqli_num_rows($resultadoVerifica) > 0) {
@@ -133,7 +133,7 @@
 
             return true;
         }   
-        $pasa = validar($idPersona);
+        $pasa = validar($conexion, $idPersona);
         if($pasa) {
             $hash = password_hash($_POST['pass'], PASSWORD_DEFAULT, ['cost'=>10]);
 
@@ -145,13 +145,13 @@
                         '1',
                         '".$idPersona."'
                     );";
-             $guardar = mysqli_query($con, $sql) or die('Error de consulta');   
+             $guardar = mysqli_query($conexion, $sql) or die('Error de consulta');   
              echo '
                  <script>
                      window.location.replace("../views/login.php");
                  </script>
                  '; 
          }  
-         mysqli_close($con);
+         mysqli_close($conexion);
     }
 ?>

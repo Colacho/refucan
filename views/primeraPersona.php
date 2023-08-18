@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <?php
-    $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
+    $conexion = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
     $cantidadPersonas = "SELECT COUNT(persona_id) AS cantidad FROM personas";
-    $resultadoCantidad = mysqli_query($con, $cantidadPersonas);
+    $resultadoCantidad = mysqli_query($conexion, $cantidadPersonas);
     $fila = mysqli_fetch_array($resultadoCantidad);
 
     if($fila['cantidad'] > 0) {
@@ -195,13 +195,13 @@
                        '".$_POST["calle"]."',
                        '".$_POST["numero_dire"]."'
                    );";
-            $guardar = mysqli_query($con, $sql) or die('Error de consulta');   
+            $guardar = mysqli_query($conexion, $sql) or die('Error de consulta');   
             echo '
                 <script>
                     window.location.replace("../views/primerUsuario.php");
                 </script>
                 '; 
         }  
-        mysqli_close($con);
+        mysqli_close($conexion);
     }
 ?>

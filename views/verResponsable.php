@@ -14,10 +14,9 @@
             <?php
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                    
-                    $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
                     $consulta = "SELECT * FROM personas WHERE persona_id = '".$_POST['id_persona']."'";
 
-                    $resultado = mysqli_query($con, $consulta);     
+                    $resultado = mysqli_query($Sconexion, $consulta);     
                 }
                 $row = mysqli_fetch_assoc($resultado)
             ?>

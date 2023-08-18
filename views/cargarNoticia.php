@@ -76,7 +76,6 @@
         $pasa = validar();
         if($pasa) {
 
-            $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
             date_default_timezone_set('America/Argentina/Buenos_Aires');
             $fechaActual = date("Y-m-d");
             
@@ -93,8 +92,8 @@
             $sql = "INSERT INTO noticias (titulo, cuerpo, foto, usuarios_usuario_id)
             VALUES ('".$_POST["titulo"]."','".$_POST["cuerpo"]."', '$foto', '$Susuario_id');";
     
-            $resultado = mysqli_query($con, $sql) or die('Error de consulta');
-            mysqli_close($con);
+            $resultado = mysqli_query($Sconexion, $sql) or die('Error de consulta');
+            mysqli_close($Sconexion);
             echo '
             <script>
                 window.location.replace("../views/cargar.php");

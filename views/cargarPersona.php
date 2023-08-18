@@ -7,6 +7,7 @@
 <?php
     include('../componentes/header.php');
     include('../componentes/navBar.php');
+    
 ?>
         <main>
         
@@ -112,12 +113,11 @@
     
     if (isset($_POST['cargarPersona'])) {
         
-        $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
         date_default_timezone_set('America/Argentina/Buenos_Aires');
         $fechaActual = date("Y-m-d");
 
 
-       function validar () {
+       function validar ($conexion) {
            if(empty($_POST["nombre"])){
                echo '<script>
                    this.document.getElementById("campoNombre").style.display = "block";
@@ -140,9 +140,9 @@
                 return false;
             }
             if(!empty($_POST["dni"])){
-                $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
+                  
                 $verifica = "SELECT dni from personas WHERE dni = '".$_POST["dni"]."' ;";
-                $resultadoVerifica = mysqli_query($con, $verifica) or die('Error de consulta');
+                $resultadoVerifica = mysqli_query($conexion, $verifica) or die('Error de consulta');
                 if(mysqli_num_rows($resultadoVerifica)>0) {
                     echo '<script>
                         this.document.getElementById("DNIcargado").style.display = "block";
@@ -190,7 +190,7 @@
            return true;
        }
         
-       $pasa = validar();
+       $pasa = validar($Sconexion);
     
        if($pasa) {
            $sql = "INSERT INTO personas (nombre, apellido, dni, telefono, provincia, municipio, calle, numero_dire)
@@ -204,13 +204,13 @@
                        '".$_POST["calle"]."',
                        '".$_POST["numero_dire"]."'
                    );";
-            $guardar = mysqli_query($con, $sql) or die('Error de consulta');   
+            $guardar = mysqli_query($Sconexion, $sql) or die('Error de consulta');   
             echo '
                 <script>
                     window.location.replace("../views/cargar.php");
                 </script>
                 '; 
         }  
-        mysqli_close($con);
+        mysqli_close($Sconexion);
     }
 ?>

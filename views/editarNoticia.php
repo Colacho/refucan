@@ -14,10 +14,9 @@
             <?php
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                    
-                    $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
                     $consulta = "SELECT * FROM noticias WHERE noticia_id = '".$_POST['noticia_id']."'";
 
-                    $resultado = mysqli_query($con, $consulta);     
+                    $resultado = mysqli_query($Sconexion, $consulta);     
                 }
                 $row = mysqli_fetch_assoc($resultado)
             ?>
@@ -93,7 +92,7 @@
         WHERE noticia_id = '".$_POST['noticia_id']."';
         ";
         
-        $resultado = mysqli_query($con, $consulta) or die('Error de consulta');
+        $resultado = mysqli_query($Sconexion, $consulta) or die('Error de consulta');
 
         echo '
         <script>

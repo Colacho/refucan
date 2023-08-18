@@ -9,12 +9,12 @@
             include('../componentes/navBar.php');
 
 /*---------------------------Primera consulta para contar cantidad de resultados-------------------------------------------------------------------------------*/                       
-            $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
+            
             $consulta = "SELECT noticia_id, titulo, cuerpo, foto, noticias.created_at, nombre  FROM noticias
             JOIN usuarios ON noticias.usuarios_usuario_id = usuarios.usuario_id
             WHERE noticias.activo = 1
             ";
-            $resultado = mysqli_query($con, $consulta);
+            $resultado = mysqli_query($Sconexion, $consulta);
 /*---------------------------Segunda consulta para la paginacion-------------------------------------------------------------------------------*/
             $cantResultados = @mysqli_num_rows($resultado);
             $registrosXpagina = 2; /* Cantidad de registros por cada pagina */
@@ -31,7 +31,7 @@
             WHERE noticias.activo = 1 LIMIT ".$primerResultadoPagina.",".$registrosXpagina."
             ";
 
-            $resultadoLimitado = mysqli_query($con, $consulta2);
+            $resultadoLimitado = mysqli_query($Sconexion, $consulta2);
 /*---------------------------Fin consultas paginacion-------------------------------------------------------------------------------*/
         ?>
         <main>

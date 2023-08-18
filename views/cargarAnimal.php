@@ -62,9 +62,9 @@
                         <label for="protectora_id">Seleccione protectora:</label>
                         <select name="protectora_id" id="protectora_id">    
                             <?php
-                                $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
+                                $conexion = mysqli_connect("localhost","refucan","colacho","refucan") or die('Error de consulta');
                                 $consultaprotectora = "SELECT * FROM protectoras";
-                                $resultado = mysqli_query($con, $consultaprotectora);
+                                $resultado = mysqli_query($conexion, $consultaprotectora);
                                 while($row = mysqli_fetch_assoc($resultado)) { 
                                     echo '
                                     <option value="'.$row['protectora_id'].'"> '.$row['protectora_nombre'].' </option>
@@ -97,7 +97,7 @@
 <?php
     if (isset($_POST['formperro'])) {
         
-        $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
+        $conexion = mysqli_connect("localhost","refucan","colacho","refucan") or die('Error de consulta');
         date_default_timezone_set('America/Argentina/Buenos_Aires');
         $fechaActual = date("Y-m-d");
         
@@ -131,7 +131,7 @@
         0000-00-00    
         )";
 
-        $resultado = mysqli_query($con, $sql) or die('Error de consulta');
+        $resultado = mysqli_query($conexion, $sql) or die('Error de consulta');
         
         
         $sql2 = "INSERT INTO historia_clinica
@@ -147,9 +147,9 @@
         
         )";
 
-        $resultado = mysqli_query($con, $sql2) or die('Error de consulta');
+        $resultado = mysqli_query($conexion, $sql2) or die('Error de consulta');
 
-        mysqli_close($con);
+        mysqli_close($conexion);
         header("location:index.php");
     }
 ?>

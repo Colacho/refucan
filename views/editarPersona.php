@@ -14,10 +14,10 @@
             <?php
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                    
-                    $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
+                    
                     $consulta = "SELECT * FROM personas WHERE persona_id = '".$_POST['persona_id']."'";
 
-                    $resultado = mysqli_query($con, $consulta);     
+                    $resultado = mysqli_query($Sconexion, $consulta);     
                 }
                 $row = mysqli_fetch_assoc($resultado)
             ?>
@@ -117,7 +117,7 @@
         $pasa = validar($provinciaAnt, $municipioAnt);
 
         $consultaDni = "SELECT dni FROM personas WHERE dni = '".$_POST['dni']."'";
-        $resultadoDni = mysqli_query($con, $consultaDni) or die('Error de consulta DNI');
+        $resultadoDni = mysqli_query($Sconexion, $consultaDni) or die('Error de consulta DNI');
         $rowDni = mysqli_fetch_assoc($resultadoDni);
         if(mysqli_num_rows($resultadoDni) > 0) {
             if($rowDni['dni'] != $dniAnt) {
@@ -162,7 +162,7 @@
         }
 
         if($pasa) {
-var_dump($guardaDni);
+
             $consulta = "UPDATE personas SET 
             nombre = '$guardaNombre',
             apellido = '$guardaApellido',
@@ -176,7 +176,7 @@ var_dump($guardaDni);
             WHERE persona_id = '".$_POST['persona_id']."';
             ";
             
-            $resultado = mysqli_query($con, $consulta) or die('Error de consulta');
+            $resultado = mysqli_query($Sconexion, $consulta) or die('Error de consulta');
 
             echo '
             <script>

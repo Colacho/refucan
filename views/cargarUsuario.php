@@ -86,7 +86,7 @@
         $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
         $idPersona;
 
-        function validar (&$num) {
+        function validar ($conexion ,&$num) {
             if(empty($_POST["nombre"])){
                 echo '<script>
                     this.document.getElementById("campoNombre").style.display = "block";
@@ -103,9 +103,9 @@
             }
             
             if(!empty($_POST["correo"])){
-                $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
+                
                 $verifica = "SELECT correo from usuarios WHERE correo = '".$_POST["correo"]."' ;";
-                $resultadoVerifica = mysqli_query($con, $verifica) or die('Error de consulta');
+                $resultadoVerifica = mysqli_query($conexion, $verifica) or die('Error de consulta');
                 if(mysqli_num_rows($resultadoVerifica) > 0) {
                     echo '<script>
                         this.document.getElementById("CorreoCargado").style.display = "block";
@@ -130,13 +130,13 @@
                 return false;
             }
             if(!empty($_POST["dni"])){
-                $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
+                
                 $verifica = "SELECT persona_id from personas WHERE dni = '".$_POST["dni"]."' ;";
-                $resultadoVerifica = mysqli_query($con, $verifica) or die('Error de consulta');
+                $resultadoVerifica = mysqli_query($conexion, $verifica) or die('Error de consulta');
                 if(mysqli_num_rows($resultadoVerifica) > 0) {
                     $fila = mysqli_fetch_array($resultadoVerifica);
                     $verifica2 = "SELECT id_persona from usuarios WHERE id_persona = '".$fila["persona_id"]."' ;";
-                    $resultadoVerifica2 = mysqli_query($con, $verifica2) or die('Error de consulta');
+                    $resultadoVerifica2 = mysqli_query($conexion, $verifica2) or die('Error de consulta');
                     if(mysqli_num_rows($resultadoVerifica2) == 0) {
                         
                         $num = $fila['persona_id'];
@@ -167,7 +167,7 @@
 
             return true;
         }   
-        $pasa = validar($idPersona);
+        $pasa = validar($Sconexion, $idPersona);
         if($pasa) {
             $hash = password_hash($_POST['pass'], PASSWORD_DEFAULT, ['cost'=>10]);
 
@@ -179,13 +179,13 @@
                         '".$_POST["cargo"]."',
                         '".$idPersona."'
                     );";
-             $guardar = mysqli_query($con, $sql) or die('Error de consulta');   
+             $guardar = mysqli_query($Sconexion, $sql) or die('Error de consulta');   
              echo '
                  <script>
                      window.location.replace("../views/cargar.php");
                  </script>
                  '; 
          }  
-         mysqli_close($con);
+         mysqli_close($Sconexion);
     }
 ?>

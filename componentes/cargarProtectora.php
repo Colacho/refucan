@@ -41,7 +41,7 @@
 <!--------------------------------------- CONSULTA --------------------------------------->
 <?php
 if (isset($_POST['protectora'])) {
-    $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
+    $con = mysqli_connect("localhost","refucan","colacho","refucan") or die('Error de consulta');
     $sql = "INSERT INTO protectoras
     VALUES(
         null,
