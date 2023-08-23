@@ -83,10 +83,10 @@
     
     if (isset($_POST['cargarUsuario'])) {
         
-        $con = mysqli_connect('localhost', 'root', '', 'refucan') or die('Error al conectarse');
+        
         $idPersona;
 
-        function validar ($conexion ,&$num) {
+        function validar ($conexion, &$num) {
             if(empty($_POST["nombre"])){
                 echo '<script>
                     this.document.getElementById("campoNombre").style.display = "block";

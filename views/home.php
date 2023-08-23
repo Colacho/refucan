@@ -43,7 +43,7 @@
         <br>
         <br>
         <br>
-        <div class="containerdonaciones">
+        <!-- <div class="containerdonaciones">
         <a href="https://link.mercadopago.com.ar/refucan" target="_blank">
         <br>
         <div class="row">
@@ -61,7 +61,7 @@
             </div>
         </div>
 </a>
-</div>
+</div> -->
         <br>
         <br>
         <br>

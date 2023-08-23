@@ -84,6 +84,7 @@
             
         </main>
     </body>
+     <!-- Script localidades -->
     <script src="../src/localidades.js"></script>
 </html>
 

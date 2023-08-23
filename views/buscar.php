@@ -18,6 +18,7 @@
                     <a class="btn btn-dark btn-lg" role="button" href="buscarUsuario.php">Usuarios</a>    
                     <a class="btn btn-dark btn-lg" role="button" href="buscarPersona.php">Personas</a>    
                     <a class="btn btn-dark btn-lg" role="button" href="buscarVeterinaria.php">Veterinarias</a>    
+                    <a class="btn btn-dark btn-lg" role="button" href="buscarProfesional.php">Profesional</a>    
             </div>
 
         </main>

@@ -37,6 +37,7 @@
                 <div>
                     <a class="btn btn-dark btn-lg" role="button" href="cargarNoticia.php">Noticia</a> 
                     <a class="btn btn-dark btn-lg" role="button" href="cargarVeterinaria.php">Veterinaria</a> 
+                    <a class="btn btn-dark btn-lg" role="button" href="cargarProfesional.php">Profesional</a> 
                 </div>
                 
                 <div class="botones">
