@@ -11,7 +11,7 @@ if(isset($Snombre)) {
  <header>
  <div>
      <a href="index.php">
-         <img class="logo" src="../images/logo.png"/>
+         <img class="logo" src="../images/logo2.png"/>
      </a>
  </div>
  <div>
