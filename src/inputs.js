@@ -21,6 +21,7 @@ btn_agregar.addEventListener('click', function(e){
         const input = document.createElement('input');
         input.setAttribute('name', nuevo);
         input.setAttribute('class', 'form-control');
+        input.setAttribute('type', 'date');
     
         const btn = document.createElement('button');
         btn.setAttribute('id', 'quitar');

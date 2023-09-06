@@ -12,6 +12,7 @@
 
             <form id="formCarga" action="" method="POST" >
                 <div id="containerInputs" class="containerInputs">
+                    
                     <div class="form-group">
                         <label for="persona_id">DNI del titular</label>
                         <input type="text" name="persona_id" class="form-control"
@@ -24,6 +25,33 @@
                     <div class="errorCampo" id="DNIcargado">
                         El DNI no está cargado
                     </div>
+
+                    <div class="form-group">
+                        <label for="especie">Seleccione especie</label>
+                        <select id="especie" name="especie" class="form-select">
+                            <option value="<?php if (isset($_POST['especie'])) echo $_POST['especie']; else echo " ";?>">
+                            <?php if (isset($_POST['especie'])) echo $_POST['especie']; else echo "Seleccione una opción";?>
+                        </option>
+                            <option value="Canino">Canino</option>
+                            <option value="Felino">Felino</option>
+                            <option value="Equino">Equino</option>
+                            <option value="Bovino">Bovino</option>
+                        </select>
+                    </div>
+                    <div class="errorCampo" id="campoEspecie" >
+                        Seleccione una opción
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nombre">Nombre del animal</label>
+                        <input type="text" name="nombre" class="form-control"
+                        value="<?php if (isset($_POST['nombre'])) echo $_POST['nombre'];?>"
+                        >
+                    </div>
+                    <div class="errorCampo" id="campoNombre" >
+                        Complete el campo
+                    </div>
+
                     
                     <div class="form-group">
                         <label for="observaciones">observaciones</label>
@@ -47,6 +75,9 @@
         </main>
         <!-- Script para agregar inputs -->
         <script type="text/javascript" src="../src/inputs.js"></script>
+        <?php
+            include('../componentes/footer.php');
+        ?>
     </body>
 </html>
 
@@ -59,6 +90,22 @@
         
         $idPersona;
         function validar($conexion, &$num) {
+
+            if($_POST['especie'] == " ") {
+                echo '<script>
+                        this.document.getElementById("campoEspecie").style.display = "block";
+                    </script>
+                ';
+                return false;
+            }
+            if(empty($_POST['nombre'])) {
+                echo '<script>
+                        this.document.getElementById("campoNombre").style.display = "block";
+                    </script>
+                ';
+                return false;
+            }
+
             if(empty($_POST["persona_id"])){
                 echo '<script>
                         this.document.getElementById("campoDni").style.display = "block";
@@ -83,35 +130,41 @@
             return true;
         }
 
-        var_dump($_POST);
+        $pasa = validar($Sconexion, $idPersona);
+        $datos = array_slice($_POST, 3, -1 );
         
+        
+        $json = json_encode($datos);
+        
+        //var_dump($idPersona);
+
     //     // Crear Objeto JSON
-    //     $jsonObject = array(
-    //         "quintuple" => $_POST['quintuple'],
-    //         "observaciones" => $_POST['observaciones']
+        // $jsonObject = array(
+        //     "quintuple" => $_POST['quintuple'],
+        //     "observaciones" => $_POST['observaciones']
             
-    //     );
+        // );
 
     //     // Convertir el objeto JSON a cadena
     //     $jsonString = json_encode($jsonObject);
-
-    //     var_dump($jsonString);
-        
-        
-    //    $sql = "INSERT INTO animal (nombre, clinica) 
-    //    values(
-    //     '".$_POST["nombre"]."',
-    //      '$jsonString'
+      
+       $sql = "INSERT INTO animal (persona_id, nombre, especie, clinica, activo) 
+       values(
+        '$idPersona',
+        '".$_POST["nombre"]."',
+        '".$_POST["especie"]."',
+         '$json',
+         1
        
-    //    )";
+       )";
 
-    //    $guardar = mysqli_query($Sconexion, $sql) or die('Error de consulta');
+       $guardar = mysqli_query($Sconexion, $sql) or die('Error de consulta');
         
-    //    echo '
-    //         <script>
-    //             window.location.replace("../views/cargar.php");
-    //         </script>
-    //    '; 
-    //    mysqli_close($Sconexion);
+       echo '
+            <script>
+                window.location.replace("../views/cargar.php");
+            </script>
+       '; 
+       mysqli_close($Sconexion);
     }
 ?>
