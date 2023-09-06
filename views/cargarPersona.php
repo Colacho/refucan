@@ -6,103 +6,105 @@
     <body>
 <?php
     include('../componentes/header.php');
-    include('../componentes/navBar.php');
     
 ?>
         <main>
         
             <h1>Carga de Personas</h1>
             <form id="formulario" method="POST" class="my-form">
-                
-                <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" id="nombre" class="form-control"
-                    value="<?php if (isset($_POST['nombre'])) echo $_POST['nombre'];?>"
-                    
-                    >
-                </div>
-                <div class="errorCampo" id="campoNombre" >
-                    Ingrese Nombre
-                </div>
-                
-                <div class="form-group">
-                    <label for="apellido">Apellido</label>
-                    <input name="apellido" id="apellido" class="form-control"
-                    value="<?php if (isset($_POST['apellido'])) echo $_POST['apellido'];?>"
-                    >
-                </div>
-                <div class="errorCampo" id="campoApellido" >
-                    Ingrese apellido
-                </div>
-
-                <div class="form-group">
-                    <label for="dni">Documento</label>
-                    <input type="text" name="dni" id="dni" class="form-control"
-                    value="<?php if (isset($_POST['dni'])) echo $_POST['dni'];?>"
-                    >
-                </div>
-                <div class="errorCampo" id="campoDni" >
-                    Ingrese un documento
-                </div>
-                <div class="errorCampo" id="DNIcargado">
-                    El DNI ya está cargado
-                </div>
-
-                <div class="form-group">
-                    <label for="telefono">Telefono</label>
-                    <input type="text" name="telefono" id="telefono" class="form-control"
-                    value="<?php if (isset($_POST['telefono'])) echo $_POST['telefono'];?>"
-                    >
-                </div>
-                <div class="errorCampo" id="campoTelefono" >
-                        Ingrese un teléfono
-                </div>
-
-                <div class="form-group">
-                    <label for="provincia">Provincia</label>
-                    <select id="provincia" name="provincia">
-                        <option value="<?php if (isset($_POST['provincia'])) echo $_POST['provincia'];?>">Seleccione una provincia</option>
-                    </select>
-                    <div class="errorCampo" id="campoProvincia">
-                        Selecione una Provincia
+                <div class="containerInputs">
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" name="nombre" id="nombre" class="form-control"
+                        value="<?php if (isset($_POST['nombre'])) echo $_POST['nombre'];?>"
+                        
+                        >
+                    </div>
+                    <div class="errorCampo" id="campoNombre" >
+                        Ingrese Nombre
                     </div>
                     
-                    <label for="municipio">Municipio</label>
-                    <select id="municipio" name="municipio">
-                        <option value="<?php if (isset($_POST['municipio'])) echo $_POST['municipio'];?>">Seleccione una localidad</option>
-                    </select>
-                    <div class="errorCampo" id="campoMunicipio">
-                        Selecione una Localidad
+                    <div class="form-group">
+                        <label for="apellido">Apellido</label>
+                        <input name="apellido" id="apellido" class="form-control"
+                        value="<?php if (isset($_POST['apellido'])) echo $_POST['apellido'];?>"
+                        >
+                    </div>
+                    <div class="errorCampo" id="campoApellido" >
+                        Ingrese apellido
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="dni">Documento</label>
+                        <input type="text" name="dni" id="dni" class="form-control"
+                        value="<?php if (isset($_POST['dni'])) echo $_POST['dni'];?>"
+                        >
+                    </div>
+                    <div class="errorCampo" id="campoDni" >
+                        Ingrese un documento
+                    </div>
+                    <div class="errorCampo" id="DNIcargado">
+                        El DNI ya está cargado
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="telefono">Telefono</label>
+                        <input type="text" name="telefono" id="telefono" class="form-control"
+                        value="<?php if (isset($_POST['telefono'])) echo $_POST['telefono'];?>"
+                        >
+                    </div>
+                    <div class="errorCampo" id="campoTelefono" >
+                            Ingrese un teléfono
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="provincia">Provincia</label>
+                        <select id="provincia" name="provincia">
+                            <option value="<?php if (isset($_POST['provincia'])) echo $_POST['provincia'];?>">Seleccione una provincia</option>
+                        </select>
+                        <div class="errorCampo" id="campoProvincia">
+                            Selecione una Provincia
+                        </div>
+                        
+                        <label for="municipio">Municipio</label>
+                        <select id="municipio" name="municipio">
+                            <option value="<?php if (isset($_POST['municipio'])) echo $_POST['municipio'];?>">Seleccione una localidad</option>
+                        </select>
+                        <div class="errorCampo" id="campoMunicipio">
+                            Selecione una Localidad
+                        </div> 
+                    </div>
+    
+                    <div class="errorCampo" id="campoPostal">
+                        Ingrese un código postal
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="calle">Calle</label>
+                        <input type="text" name="calle" id="calle" class="form-control"
+                        value="<?php if (isset($_POST['calle'])) echo $_POST['calle'];?>"
+                        >
+                    </div>
+                    <div class="errorCampo" id="campoCalle">
+                        Ingrese una calle
                     </div> 
-                </div>
+    
+                    <div class="form-group">
+                        <label for="numero_dire">Número</label>
+                        <input type="text" name="numero_dire" id="numero_dire" class="form-control"
+                        value="<?php if (isset($_POST['numero_dire'])) echo $_POST['numero_dire'];?>"
+                        >
+                    </div>
+                    <div class="errorCampo" id="campoNumero_dire">
+                        Ingrese un número
+                    </div> 
+                    <div>
+                        <button type="submit" name="cargarPersona" class="formboton">Agregar Persona</button>
+                    </div>
 
-                <div class="errorCampo" id="campoPostal">
-                    Ingrese un código postal
                 </div>
-
-                <div class="form-group">
-                    <label for="calle">Calle</label>
-                    <input type="text" name="calle" id="calle" class="form-control"
-                    value="<?php if (isset($_POST['calle'])) echo $_POST['calle'];?>"
-                    >
-                </div>
-                <div class="errorCampo" id="campoCalle">
-                    Ingrese una calle
-                </div> 
-
-                <div class="form-group">
-                    <label for="numero_dire">Número</label>
-                    <input type="text" name="numero_dire" id="numero_dire" class="form-control"
-                    value="<?php if (isset($_POST['numero_dire'])) echo $_POST['numero_dire'];?>"
-                    >
-                </div>
-                <div class="errorCampo" id="campoNumero_dire">
-                    Ingrese un número
-                </div> 
-
-                <button type="submit" name="cargarPersona" class="formboton">Agregar Persona</button>
             </form>
-            <a href="../views/home.php"><button class="button">Volver</button></a>
+            <a class="btn btn-light border-dark btn-lg" role="button" href="cargar.php">Volver</a>
         </main>
     </body>
     <!-- Script localidades -->

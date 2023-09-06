@@ -10,7 +10,7 @@ if(isset($Snombre)) {
  
  <header>
  <div>
-     <a href="index.php">
+     <a href="home.php">
          <img class="logo" src="../images/logo2.png"/>
      </a>
  </div>

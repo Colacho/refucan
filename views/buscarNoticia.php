@@ -6,7 +6,7 @@
     <body>
         <?php
             include('../componentes/header.php');
-            include('../componentes/navBar.php');
+            
 
 /*---------------------------Primera consulta para contar cantidad de resultados-------------------------------------------------------------------------------*/                       
             
@@ -105,6 +105,7 @@
                 ?>
             </div>
 <!-- ---------------------------Fin botonera paginacion------------------------------------------------------------------------------- -->
+<a class="btn btn-light border-dark btn-lg" role="button" href="home.php">Volver</a>
         </main>
     </body>
 </html>

@@ -6,7 +6,6 @@
     <body>
         <?php
             include('../componentes/header.php');
-            include('../componentes/navBar.php');
             ?>
         <main>
             <h1>Editar Profesional</h1>
@@ -76,8 +75,7 @@
                 <button type="submit" name="datos_personales" class="formboton">Datos Personales</button>
 
             </form>
-
-            <a href="../views/buscarProfesional.php"><button class="button">Volver</button></a>
+            <a class="btn btn-light border-dark btn-lg" role="button" href="home.php">Volver</a>
         </main>
     </body>
 </html>

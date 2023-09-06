@@ -8,26 +8,21 @@
         <header>
             <div>
                 <a href="home.php">
-                    <img class="logo" src="../images/logo.png"/>
+                    <img class="logo" src="../images/logo2.png"/>
                 </a>
             </div>
             <div>
-                <h1>Bienvenidos a RefuCan</h1>
-                <h3>Red de refugios para animales</h3>
+                <h1>Registro de mascotas</h1>
+                
             </div>
-        </header>
-
-        <?php
-            include('../componentes/navBar.php');
-        ?>
-            
+        </header>   
         <main>
         <br>
             <br>
             <br>
             <div class="central">
                 <div>
-                    <img class="logocentral" src="../images/logo.png",>
+                    <img class="logocentral" src="../images/logo2.png",>
                 </div>
                 <br>
                 <div >

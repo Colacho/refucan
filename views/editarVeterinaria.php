@@ -6,7 +6,6 @@
     <body>
         <?php
             include('../componentes/header.php');
-            include('../componentes/navBar.php');
         ?>
         <main>
             <h1>Editar Veterinaria</h1>
@@ -72,9 +71,10 @@
                     <button type="submit" name="guardar" class="formboton">Guardar</button>
                 </div>
             </form>
-            <a href="../views/buscarVeterinaria.php"><button class="button">Volver</button></a>
+            <a class="btn btn-light border-dark btn-lg" role="button" href="home.php">Volver</a>
         </main>
     </body>
+     <!-- Script localidades -->
     <script src="../src/localidades.js"></script>
 </html>
 

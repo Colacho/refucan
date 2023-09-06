@@ -6,7 +6,7 @@
         </div>
         <div class="col-md-4">
           <h4>¿Quienes somos?</h4>
-          <p>Somos Refucan, una organizacion que busca tener un seguimiento de los perros desamparados para poder brindarles una mejor calidad de vida, un buen servicio de salud y lo mas importante, encontrarles una familia que les de el cariño que merecen.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
         </div>
         <div class="col-md-4">
           <h4>Contacto</h4>

@@ -10,40 +10,19 @@
         
         <?php
             include('../componentes/header.php');
-            include('../componentes/navBar.php');
             ?>
         <main>
-            
-            <div class="central">
-                <h1 class="titulo-carga">Seleccione que desea Cargar</h1>
-                <div>
-                    <a class="btn btn-dark btn-lg" role="button" href="cargarAnimal.php">
-                        <img height="50px" src="../images/cargar.png">
-                    </a> 
-                    <a class="btn btn-dark btn-lg" role="button" href="cargarProtectora.php">
-                        <img height="50px" src="../images/protectora.png">
-                    </a> 
-
-                </div>
-                <div>
-
-                    <a class="btn btn-dark btn-lg" role="button" href="cargarPersona.php">
-                        <img height="50px" src="../images/personas.png">
-                    </a> 
-                    <a class="btn btn-dark btn-lg" role="button" href="cargarUsuario.php">
-                        <img height="50px" src="../images/usuario.png">
-                    </a> 
-                </div>
-                <div>
-                    <a class="btn btn-dark btn-lg" role="button" href="cargarNoticia.php">Noticia</a> 
-                    <a class="btn btn-dark btn-lg" role="button" href="cargarVeterinaria.php">Veterinaria</a> 
-                    <a class="btn btn-dark btn-lg" role="button" href="cargarProfesional.php">Profesional</a> 
-                </div>
-                
-                <div class="botones">
-                    <a type="button" class="btn btn-dark btn-lg" href="home.php">Volver al inicio</a>
-                </div>
-            </div> 
+            <h1>Seleccione que desea cargar</h1>
+            <div class="botones">         
+                <a class="btn btn-dark btn-lg" role="button" href="cargarAnimal.php">Animales</a>
+                <a class="btn btn-dark btn-lg" role="button" href="cargarProtectora.php">Protectoras</a>
+                <a class="btn btn-dark btn-lg" role="button" href="cargarNoticia.php">Noticias</a>
+                <a class="btn btn-dark btn-lg" role="button" href="cargarUsuario.php">Usuarios</a>    
+                <a class="btn btn-dark btn-lg" role="button" href="cargarPersona.php">Personas</a>    
+                <a class="btn btn-dark btn-lg" role="button" href="cargarVeterinaria.php">Veterinarias</a>    
+                <a class="btn btn-dark btn-lg" role="button" href="cargarProfesional.php">Profesional</a>    
+                <a class="btn btn-light border-dark btn-lg" role="button" href="home.php">Volver</a>    
+            </div>
         </main>
             
         <?php

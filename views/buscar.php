@@ -6,7 +6,6 @@
     <body>
         <?php
             include('../componentes/header.php');
-            include('../componentes/navBar.php');
         ?>
         <main>
             <h1>Seleccione que desea buscar</h1>
@@ -19,8 +18,12 @@
                     <a class="btn btn-dark btn-lg" role="button" href="buscarPersona.php">Personas</a>    
                     <a class="btn btn-dark btn-lg" role="button" href="buscarVeterinaria.php">Veterinarias</a>    
                     <a class="btn btn-dark btn-lg" role="button" href="buscarProfesional.php">Profesional</a>    
+                    <a class="btn btn-light border-dark btn-lg" role="button" href="home.php">Volver</a>    
             </div>
 
         </main>
+        <?php
+            include('../componentes/footer.php');
+        ?>
     </body>
 </html>

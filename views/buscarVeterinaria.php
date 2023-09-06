@@ -6,7 +6,6 @@
     <body>
         <?php
             include('../componentes/header.php');
-            include('../componentes/navBar.php');
         ?>
         <main>
             <h1>Buscar Veterinaria</h1>
@@ -134,6 +133,7 @@
                 ?>
             </div>
 <!-- ---------------------------Fin botonera paginacion------------------------------------------------------------------------------- -->
+<a class="btn btn-light border-dark btn-lg" role="button" href="home.php">Volver</a>
         </main>
     </body>
 </html>

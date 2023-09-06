@@ -6,66 +6,67 @@
     <body>
         <?php
             include('../componentes/header.php');
-            include('../componentes/navBar.php');
         ?>
         <main>
             <h1>Carga de Profesionales</h1>
             <form id="formulario" method="POST" class="my-form">
-                
-                <div class="form-group">
-                    <label for="persona_id">Documento</label>
-                    <input type="text" name="persona_id" class="form-control"
-                    value="<?php if (isset($_POST['persona_id'])) echo $_POST['persona_id'];?>"
-                    >
+                <div class="containerInputs">
+                    <div class="form-group">
+                        <label for="persona_id">Documento</label>
+                        <input type="text" name="persona_id" class="form-control"
+                        value="<?php if (isset($_POST['persona_id'])) echo $_POST['persona_id'];?>"
+                        >
+                    </div>
+                    <div class="errorCampo" id="campoDni" >
+                        Ingrese un documento
+                    </div>
+                    <div class="errorCampo" id="DNIcargado">
+                        El DNI no está cargado
+                    </div>
+                    <div class="errorCampo" id="DNIrepetido">
+                        El DNI corresponde a otro usuario
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="matricula">Matricula</label>
+                        <input type="text" name="matricula" id="matricula" class="form-control"
+                        value="<?php if (isset($_POST['matricula'])) echo $_POST['matricula'];?>"
+                        >
+                    </div>
+                    <div class="errorCampo" id="campoMatricula" >
+                        Ingrese Matricula
+                    </div>
+                    <div class="errorCampo" id="matriculaCargada" >
+                        Esa matricula ya fue cargada
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="veterinaria_id">Veterinaria</label>
+                        <select name="veterinaria_id">
+                            <option value="0">Seleccione una opcion</option>
+                            <?php 
+                                $veterinarias = "SELECT veterinaria_id, nombre FROM veterinaria";
+                                $consultaVeterinaria = mysqli_query($Sconexion, $veterinarias);
+                                while($row = mysqli_fetch_assoc($consultaVeterinaria)) {
+    
+                                    echo '
+                                    <option value="'.$row['veterinaria_id'].'"> '.$row['nombre'].' </option>
+                                    ';
+                                }
+                            ?>
+    
+                        </select>
+                       
+                    </div>
+                    <div class="errorCampo" id="campoVeterinaria" >
+                        Ingrese una Veterinaria
+                    </div>
+                    <div>
+                        <button type="submit" name="cargarProfesional" class="formboton">Agregar Profesional</button>
+                    </div>
                 </div>
-                <div class="errorCampo" id="campoDni" >
-                    Ingrese un documento
-                </div>
-                <div class="errorCampo" id="DNIcargado">
-                    El DNI no está cargado
-                </div>
-                <div class="errorCampo" id="DNIrepetido">
-                    El DNI corresponde a otro usuario
-                </div>
-                
-                <div class="form-group">
-                    <label for="matricula">Matricula</label>
-                    <input type="text" name="matricula" id="matricula" class="form-control"
-                    value="<?php if (isset($_POST['matricula'])) echo $_POST['matricula'];?>"
-                    >
-                </div>
-                <div class="errorCampo" id="campoMatricula" >
-                    Ingrese Matricula
-                </div>
-                <div class="errorCampo" id="matriculaCargada" >
-                    Esa matricula ya fue cargada
-                </div>
-
-                <div class="form-group">
-                    <label for="veterinaria_id">Veterinaria</label>
-                    <select name="veterinaria_id">
-                        <option value="0">Seleccione una opcion</option>
-                        <?php 
-                            $veterinarias = "SELECT veterinaria_id, nombre FROM veterinaria";
-                            $consultaVeterinaria = mysqli_query($Sconexion, $veterinarias);
-                            while($row = mysqli_fetch_assoc($consultaVeterinaria)) {
-
-                                echo '
-                                <option value="'.$row['veterinaria_id'].'"> '.$row['nombre'].' </option>
-                                ';
-                            }
-                        ?>
-
-                    </select>
-                   
-                </div>
-                <div class="errorCampo" id="campoVeterinaria" >
-                    Ingrese una Veterinaria
-                </div>
-
-                <button type="submit" name="cargarProfesional" class="formboton">Agregar Profesional</button>
             </form>
-            <a href="../views/home.php"><button class="button">Volver</button></a>
+            <a class="btn btn-light border-dark btn-lg" role="button" href="cargar.php">Volver</a>
         </main>
     </body>
 </html>

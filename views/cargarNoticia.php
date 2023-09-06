@@ -8,47 +8,48 @@
     <body>
         <?php
             include('../componentes/header.php');
-            include('../componentes/navBar.php');
             
         ?>
         <main>
-        <br>
-        <br> 
-        <form action="" method="POST" enctype="multipart/form-data" class="my-form">
-            <h1>Crear noticia</h1>
-            <div class="form-group">
-                <label for="titulo">Título:</label>
-                <input type="text" name="titulo" id="titulo" class="form-control"
-                value="<?php if (isset($_POST['titulo'])) echo $_POST['titulo'];?>"
-                >
-            </div>
-            <div class="errorCampo" id="campoTitulo">
-                    Ingrese un titulo
-            </div>
+        
+            <form action="" method="POST" enctype="multipart/form-data" class="my-form">
+                <h1>Crear noticia</h1>
+                <div class="containerInputs">
+                    <div class="form-group">
+                        <label for="titulo">Título:</label>
+                        <input type="text" name="titulo" id="titulo" class="form-control"
+                        value="<?php if (isset($_POST['titulo'])) echo $_POST['titulo'];?>"
+                        >
+                    </div>
+                    <div class="errorCampo" id="campoTitulo">
+                        Ingrese un titulo
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="cuerpo">Cuerpo:</label>
+                        <textarea name="cuerpo" id="cuerpo" class="form-control"
+                        value="<?php if (isset($_POST['cuerpo'])) echo $_POST['cuerpo'];?>"
+                        ></textarea>
+                    </div>
+                    <div class="errorCampo" id="campoCuerpo">
+                        Ingrese la noticia
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="imagen">Imagen:</label>
+                        <input type="file" name="foto" id="imagen" class="form-control-file" accept="image/*">
+                    </div>
+    
+                    <button type="submit" name="cargarNoticia" class="formboton">Agregar Noticia</button>
 
-            <div class="form-group">
-                <label for="cuerpo">Cuerpo:</label>
-                <textarea name="cuerpo" id="cuerpo" class="form-control"
-                value="<?php if (isset($_POST['cuerpo'])) echo $_POST['cuerpo'];?>"
-                ></textarea>
-            </div>
-            <div class="errorCampo" id="campoCuerpo">
-                    Ingrese la noticia
-            </div>
-
-            <div class="form-group">
-                <label for="imagen">Imagen:</label>
-                <input type="file" name="foto" id="imagen" class="form-control-file" accept="image/*">
-            </div>
-
-            <button type="submit" name="cargarNoticia" class="formboton">Agregar Noticia</button>
-        </form>
-        <a href="../views/home.php"><button class="button">Volver</button></a>
-        <br>
-        <br>
-    <?php
-            include('../componentes/footer.php');
-        ?>
+                </div>
+            </form>
+            <a class="btn btn-light border-dark btn-lg" role="button" href="cargar.php">Volver</a>
+        
+            <?php
+                include('../componentes/footer.php');
+            ?>
+        </main>
     </body>
 </html>
 
