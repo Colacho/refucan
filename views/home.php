@@ -13,7 +13,7 @@
             
             <div >
                 <a href="../views/buscarNoticia.php">
-                    <img src="../images/periodico.png" class="imghome" alt="Imagen 1">
+                    <img src="../images/noticias.png" class="imghome" alt="Imagen 1">
                 </a>
                 <h2>¡Conoce las Novedades!</h2>
                 <h4>Ponete al dia con nuestras noticias de último momento.</h4>
@@ -21,7 +21,7 @@
 
             <div>
                 <a href="../views/buscar.php">
-                    <img src="../images/lupa.png" class="imghome" alt="Imagen 2" >
+                    <img src="../images/buscar.png" class="imghome" alt="Imagen 2" >
                 </a>
                 <h2>¡Busca aquí!</h2>
                 <h4>Buscar animales, protectoras, veterinarias, etc.</h4>
@@ -29,7 +29,7 @@
 
             <div>
                 <a href="../views/cargar.php">
-                    <img src="../images/subir.png" class="imghome" alt="Imagen 3" >
+                    <img src="../images/cargar.png" class="imghome" alt="Imagen 3" >
                 </a>
                 <h2>¡Cargue info aquí!</h2>
                 <h4>Cargar nueva información al sistema.</h4>
