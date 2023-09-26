@@ -39,12 +39,12 @@ btn_agregar.addEventListener('click', function(e){
     }
 
     
-    //console.log(input);
+    //console.log("anda");
 
 });
 
 function eliminar (e) {
     e.preventDefault();
-    console.log(e.target.parentElement.remove());
+    this.e.target.parentElement.remove();
 }
 
