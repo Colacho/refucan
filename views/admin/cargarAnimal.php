@@ -7,81 +7,104 @@
         <?php
             include('../../componentes/headerAdmin.php');
         ?>
+    
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <a href="../views/admin/home.php" class="navbar-brand mx-auto mx-lg-0">
+                    <img class="logo" src="../../images/logo.jpg"/>
+                    <span class="brand-text">Refucan</span>
+                </a>
+
+                <form action="../../src/logout.php" method="POST">
+                
+                    <button type="submit" name="logout" class="nav-link custom-btn btn d-lg-none">Log Out</button>
+                </form>
+                
+
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+
+                            <form action="../../src/logout.php" method="POST">
+                                <button type="submit" name="logout" class="nav-link custom-btn btn d-none d-lg-block">Log Out</button>
+                            </form>
+                            
+                        </li>
+                    </ul>
+                <div>
+                        
+            </div>
+        </nav>
         <main>
-            <h1>Carga de Animales</h1>
+        
+            <!-- formulario de contacto diseño mio -->
+            <section class="contact-animal section-padding" id="volver">
+                <div class="container">
+                    <div class="row">
 
-            <form id="formCarga" action="" method="POST" >
-                <div id="containerInputs" class="containerInputs">
-                    
-                    <div class="form-group">
-                        <label for="persona_id">DNI del titular</label>
-                        <input type="text" name="persona_id" class="form-control"
-                        value="<?php if (isset($_POST['persona_id'])) echo $_POST['persona_id'];?>"
-                        >
-                        <label>en protectora?</label>
-                        <select name="enProtectora">
-                            <option value="1">No</option>
-                            <option value="2">Si</option>
-                        </select>
-                    </div>
-                    <div class="errorCampo" id="campoDni" >
-                        Ingrese un documento
-                    </div>
-                    <div class="errorCampo" id="DNIcargado">
-                        El DNI no está cargado
-                    </div>
-                    <div class="errorCampo" id="campoProtectora" >
-                        El DNI no corresponde al responsable de la protectora
-                    </div>
+                        <div class="col-lg-8 col-12 mx-auto">                           
+                            <form class="custom-form contact-form bg-white shadow-lg" id="formCarga" action="" method="POST">
+                                <h2>Carga de Animales</h2>
 
-                    <div class="form-group">
-                        <label for="especie">Seleccione especie</label>
-                        <select id="especie" name="especie" class="form-select">
-                            <option value="<?php if (isset($_POST['especie'])) echo $_POST['especie']; else echo " ";?>">
-                            <?php if (isset($_POST['especie'])) echo $_POST['especie']; else echo "Seleccione una opción";?>
-                        </option>
-                            <option value="Canino">Canino</option>
-                            <option value="Felino">Felino</option>
-                            <option value="Equino">Equino</option>
-                            <option value="Bovino">Bovino</option>
-                        </select>
-                    </div>
-                    <div class="errorCampo" id="campoEspecie" >
-                        Seleccione una opción
-                    </div>
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-12">
+                                        <input type="text" name="persona_id" class="form-control" placeholder="DNI del titular"
+                                        value="<?php if (isset($_POST['persona_id'])) echo $_POST['persona_id'];?>"
+                                        >                              
+                                    </div>
 
-                    <div class="form-group">
-                        <label for="nombre">Nombre del animal</label>
-                        <input type="text" name="nombre" class="form-control"
-                        value="<?php if (isset($_POST['nombre'])) echo $_POST['nombre'];?>"
-                        >
-                    </div>
-                    <div class="errorCampo" id="campoNombre" >
-                        Complete el campo
-                    </div>
+                                    <div class="col-lg-4 col-md-4 col-12">                                    
+                                        <h7 class="text-center">es una protectora?</h7>
+                                        <br>
+                                        <select name="enProtectora">
+                                            <option value="1">No</option>
+                                            <option value="2">Si</option>
+                                        </select>    
+                                    </div>
 
-                    
-                    <div class="form-group">
-                        <label for="observaciones">observaciones</label>
-                        <input type="text" name="observaciones" id="observaciones" class="form-control"
-                        value="<?php if (isset($_POST['observaciones'])) echo $_POST['observaciones'];?>"
-                        >
+                                    <div class="col-lg-4 col-md-4 col-12">                                  
+                                        <input type="text" name="nombre" class="form-control" placeholder="Nombre del animal" value="<?php if (isset($_POST['nombre'])) echo $_POST['nombre'];?>"
+                                        >
+                                    </div>
+
+                                    <div class="form-group">
+                                    <select id="especie" name="especie" class="form-control">
+                                    <option value="<?php if (isset($_POST['especie'])) echo $_POST['especie']; else echo " ";?>">
+                                    <?php if (isset($_POST['especie'])) echo $_POST['especie']; else echo "Seleccione especie";?>
+                                        </option>
+                                            <option value="Canino">Canino</option>
+                                            <option value="Felino">Felino</option>
+                                            <option value="Equino">Equino</option>
+                                            <option value="Bovino">Bovino</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <textarea class="form-control" rows="5" id="message" name="message" placeholder="Mensaje"><?php if (isset($_POST['observaciones'])) echo $_POST['observaciones'];?></textarea>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <button type="submit" name="guardar" class="form-control">Agregar Animal</button>
+                                    </div>
+                                    <p></p>
+                                    <div class="col-12">
+                                        <a class="form-control text-center" href="home.php">Volver</a>
+                                    </div>
+                                </div>
+                            </form>                            
+                        </div>
+
                     </div>
                 </div>
-                <div class="containerInputs">
-                    <div>
-                        <input id="nuevo" value="" style="border-radius: 5px;">
-                        <button id="agregar" class="formboton" onclick="">Agregar</button>
-                    </div>
-
-                    <div>
-                        <button type="submit" name="guardar" class="formboton">Guardar</button>
-                    </div>
-
-                </div>
-            </form>
-            <a class="btn btn-light border-dark btn-lg" role="button" href="cargar.php">Volver</a>
+            </section>
         </main>
+
         <!-- Script para agregar inputs -->
         <script type="text/javascript" src="../../src/inputs.js"></script>
         <?php
@@ -187,3 +210,85 @@
        mysqli_close($Sconexion);
     }
 ?>
+
+
+
+
+
+
+
+<!-- <main>
+            <h1>Carga de Animales</h1>
+
+            <form id="formCarga" action="" method="POST" >
+                <div id="containerInputs" class="containerInputs">
+                    
+                    <div class="form-group">
+                        <label for="persona_id">DNI del titular</label>
+                        <input type="text" name="persona_id" class="form-control"
+                        value="<?php if (isset($_POST['persona_id'])) echo $_POST['persona_id'];?>"
+                        >
+                        <label>en protectora?</label>
+                        <select name="enProtectora">
+                            <option value="1">No</option>
+                            <option value="2">Si</option>
+                        </select>
+                    </div>
+                    <div class="errorCampo" id="campoDni" >
+                        Ingrese un documento
+                    </div>
+                    <div class="errorCampo" id="DNIcargado">
+                        El DNI no está cargado
+                    </div>
+                    <div class="errorCampo" id="campoProtectora" >
+                        El DNI no corresponde al responsable de la protectora
+                    </div>
+
+                    <div class="form-group">
+                        <label for="especie">Seleccione especie</label>
+                        <select id="especie" name="especie" class="form-select">
+                            <option value="<?php if (isset($_POST['especie'])) echo $_POST['especie']; else echo " ";?>">
+                            <?php if (isset($_POST['especie'])) echo $_POST['especie']; else echo "Seleccione una opción";?>
+                        </option>
+                            <option value="Canino">Canino</option>
+                            <option value="Felino">Felino</option>
+                            <option value="Equino">Equino</option>
+                            <option value="Bovino">Bovino</option>
+                        </select>
+                    </div>
+                    <div class="errorCampo" id="campoEspecie" >
+                        Seleccione una opción
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nombre">Nombre del animal</label>
+                        <input type="text" name="nombre" class="form-control"
+                        value="<?php if (isset($_POST['nombre'])) echo $_POST['nombre'];?>"
+                        >
+                    </div>
+                    <div class="errorCampo" id="campoNombre" >
+                        Complete el campo
+                    </div>
+
+                    
+                    <div class="form-group">
+                        <label for="observaciones">observaciones</label>
+                        <input type="text" name="observaciones" id="observaciones" class="form-control"
+                        value="<?php if (isset($_POST['observaciones'])) echo $_POST['observaciones'];?>"
+                        >
+                    </div>
+                </div>
+                <div class="containerInputs">
+                    <div>
+                        <input id="nuevo" value="" style="border-radius: 5px;">
+                        <button id="agregar" class="formboton" onclick="">Agregar</button>
+                    </div>
+
+                    <div>
+                        <button type="submit" name="guardar" class="formboton">Guardar</button>
+                    </div>
+
+                </div>
+            </form>
+            <a class="btn btn-light border-dark btn-lg" role="button" href="cargar.php">Volver</a>
+        </main>  -->

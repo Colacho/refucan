@@ -7,81 +7,97 @@
         <?php
             include('../../componentes/headerAdmin.php');
         ?>
-        <main>
-            <h1>Carga de Usuarios</h1>
-            <form id="formulario" method="POST" class="my-form">
-                <div class="containerInputs">
-                    <div class="form-group">
-                        <label for="nombre">Nombre de usuario</label>
-                        <input type="text" name="nombre" id="nombre" class="form-control"
-                        value="<?php if (isset($_POST['nombre'])) echo $_POST['nombre'];?>"
-                        >
-                    </div>
-                    <div class="errorCampo" id="campoNombre" >
-                        Ingrese Nombre
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="correo">Email</label>
-                        <input name="correo" id="correo" class="form-control"
-                        value="<?php if (isset($_POST['correo'])) echo $_POST['correo'];?>"
-                        >
-                    </div>
-                    <div class="errorCampo" id="campoCorreo" >
-                        Ingrese un email
-                    </div>
-                    <div class="errorCampo" id="CorreoCargado">
-                        El Email ya existe
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="pass">Contraseña</label>
-                        <input type="text" name="pass" id="pass" class="form-control"
-                        value="<?php if (isset($_POST['pass'])) echo $_POST['pass'];?>"
-                        >
-                    </div>
-                    <div class="errorCampo" id="campoPass" >
-                        Ingrese una contraseña
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="dni">Documento</label>
-                        <input type="text" name="dni" id="dni" class="form-control"
-                        value="<?php if (isset($_POST['dni'])) echo $_POST['dni'];?>"
-                        >
-                    </div>
-                    <div class="errorCampo" id="campoDni" >
-                        Ingrese un documento
-                    </div>
-                    <div class="errorCampo" id="DNIcargado">
-                        El DNI no está cargado
-                    </div>
-                    <div class="errorCampo" id="DNIrepetido">
-                        El DNI corresponde a otro usuario
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="cargo">Cargo</label>
-                        <select id="cargo" name="cargo">
-                            <option value="0">Seleccione una opción</option>
-                            <option value="1">Administrador</option>
-                            <option value="2">Veterinaria</option>
-                            <option value="3">Protectora</option>
-                        </select>
-                    </div>
-                    <div class="errorCampo" id="campoCargo" >
-                            Seleccione un cargo
-                    </div>
-                    <div class="errorCampo" id="campoInstitucion" >
-                            El dni no corresponde al responsable de la institucion
-                    </div>
-                    <div>
-                        <button type="submit" name="cargarUsuario" class="formboton">Agregar Usuario</button>
-                    </div>
 
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <a href="../views/admin/home.php" class="navbar-brand mx-auto mx-lg-0">
+                    <img class="logo" src="../../images/logo.jpg"/>
+                    <span class="brand-text">Refucan</span>
+                </a>
+
+
+
+                <form action="../../src/logout.php" method="POST">
+                
+                    <button type="submit" name="logout" class="nav-link custom-btn btn d-lg-none">Log Out</button>
+                </form>
+                
+
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+
+                            <form action="../../src/logout.php" method="POST">
+                                <button type="submit" name="logout" class="nav-link custom-btn btn d-none d-lg-block">Log Out</button>
+                            </form>
+                            
+                        </li>
+                    </ul>
+                <div>
+                        
+            </div>
+        </nav>
+        <main>
+        
+            <!-- formulario de contacto diseño mio -->
+            <section class="contact-usuario section-padding" id="volver">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-8 col-12 mx-auto">                           
+                            <form class="custom-form contact-form bg-white shadow-lg" id="formulario" method="POST" class="my-form">
+                                <h2>Carga de Usuarios</h2>
+
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-12">                                    
+                                        <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre de Usuario" value="<?php if (isset($_POST['nombre'])) echo $_POST['nombre'];?>"
+                                        >
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-4 col-12">                                    
+                                        <input name="correo" id="correo" class="form-control" placeholder="Correo" value="<?php if (isset($_POST['correo'])) echo $_POST['correo'];?>"
+                                        >
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-4 col-12">         
+                                        <input type="text" name="pass" id="pass" class="form-control" placeholder="Contraseña" value="<?php if (isset($_POST['pass'])) echo $_POST['pass'];?>"
+                                        >
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-4 col-12">                                    
+                                        <input type="text" name="dni" id="dni" class="form-control" placeholder="DNI" value="<?php if (isset($_POST['dni'])) echo $_POST['dni'];?>"
+                                        >
+                                    </div>
+                        
+                                    <div class="form-group">
+                                        <select id="cargo" name="cargo" class="form-control">
+                                            <option value="" disabled selected>Seleccione un Cargo</option>
+                                            <option value="1">Administrador</option>
+                                            <option value="2">Veterinaria</option>
+                                            <option value="3">Protectora</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <button type="submit" name="cargarUsuario" class="form-control">Agregar Usuario</button>
+                                    </div>
+                                    <p></p>
+                                    <div class="col-12">
+                                        <a class="form-control text-center" href="home.php">Volver</a>
+                                    </div>
+                                </div>
+                            </form>                            
+                        </div>
+
+                    </div>
                 </div>
-            </form>
-            <a class="btn btn-light border-dark btn-lg" role="button" href="cargar.php">Volver</a>
+            </section>
         </main>
     </body>
         <?php
@@ -230,3 +246,87 @@
          mysqli_close($Sconexion);
     }
 ?>
+
+
+
+
+
+
+
+
+<!-- <main>
+            <h1>Carga de Usuarios</h1>
+            <form id="formulario" method="POST" class="my-form">
+                <div class="containerInputs">
+                    <div class="form-group">
+                        <label for="nombre">Nombre de usuario</label>
+                        <input type="text" name="nombre" id="nombre" class="form-control"
+                        value="<?php if (isset($_POST['nombre'])) echo $_POST['nombre'];?>"
+                        >
+                    </div>
+                    <div class="errorCampo" id="campoNombre" >
+                        Ingrese Nombre
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="correo">Email</label>
+                        <input name="correo" id="correo" class="form-control"
+                        value="<?php if (isset($_POST['correo'])) echo $_POST['correo'];?>"
+                        >
+                    </div>
+                    <div class="errorCampo" id="campoCorreo" >
+                        Ingrese un email
+                    </div>
+                    <div class="errorCampo" id="CorreoCargado">
+                        El Email ya existe
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="pass">Contraseña</label>
+                        <input type="text" name="pass" id="pass" class="form-control"
+                        value="<?php if (isset($_POST['pass'])) echo $_POST['pass'];?>"
+                        >
+                    </div>
+                    <div class="errorCampo" id="campoPass" >
+                        Ingrese una contraseña
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="dni">Documento</label>
+                        <input type="text" name="dni" id="dni" class="form-control"
+                        value="<?php if (isset($_POST['dni'])) echo $_POST['dni'];?>"
+                        >
+                    </div>
+                    <div class="errorCampo" id="campoDni" >
+                        Ingrese un documento
+                    </div>
+                    <div class="errorCampo" id="DNIcargado">
+                        El DNI no está cargado
+                    </div>
+                    <div class="errorCampo" id="DNIrepetido">
+                        El DNI corresponde a otro usuario
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="cargo">Cargo</label>
+                        <select id="cargo" name="cargo">
+                            <option value="0">Seleccione una opción</option>
+                            <option value="1">Administrador</option>
+                            <option value="2">Veterinaria</option>
+                            <option value="3">Protectora</option>
+                        </select>
+                    </div>
+                    <div class="errorCampo" id="campoCargo" >
+                            Seleccione un cargo
+                    </div>
+                    <div class="errorCampo" id="campoInstitucion" >
+                            El dni no corresponde al responsable de la institucion
+                    </div>
+                    <div>
+                        <button type="submit" name="cargarUsuario" class="formboton">Agregar Usuario</button>
+                    </div>
+
+                </div>
+            </form>
+            <a class="btn btn-light border-dark btn-lg" role="button" href="cargar.php">Volver</a>
+        </main> -->

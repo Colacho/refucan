@@ -1,37 +1,20 @@
 <?php
-
 include('../../src/session.php');
 
-if($Scargo_id == 3) { 
-    
-    $saludo = "Bienvenido $Scargo $Snombre";
+$saludo = "";
 
- echo'
- 
- <header>
- <div>
-     <a href="home.php">
-         <img class="logo" src="../../images/logo.png"/>
-     </a>
- </div>
- <div>
-    <form action="../../src/logout.php" method="POST">
-        <medium>'.$saludo.'</medium>
-        <button type="submit" name="logout" class="btn btn-light btn-lg">Log Out</button>
-    </form>
+if ($Scargo_id == 3) { 
+    $saludo = " $Scargo $Snombre";
+    echo '
+    <div>
+        <a href="home.php"></a>
     </div>
-</header>
- ';
-}else {
-
-    
-   echo '
+    ';
+} else {
+    echo '
     <script>
         window.location.replace("../../index_.php");
     </script>
-   '; 
+    '; 
 }
-
 ?>
-
-        
