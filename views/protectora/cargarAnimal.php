@@ -5,7 +5,7 @@
     ?>
     <body>
         <?php
-            include('../../componentes/headerVeterinaria.php');
+            include('../../componentes/headerProtectora.php');
         ?>
         <main>
             <h1>Carga de Animales</h1>

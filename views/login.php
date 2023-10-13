@@ -8,11 +8,11 @@
         <header>
             <div>
                 <a href="home.php">
-                    <img class="logo" src="../images/logo.png"/>
+                    <img class="logo" src="../images/logo.jpg"/>
                 </a>
             </div>
             <div>
-                <h1>Registro de mascotas</h1>
+                <h1>REFUCAN</h1>
                 
             </div>
         </header>   
@@ -22,7 +22,7 @@
             <br>
             <div class="central">
                 <div>
-                    <img class="logocentral" src="../images/logo.png",>
+                    <img class="logocentral" src="../images/logo.jpg",>
                 </div>
                 <br>
                 <div >
@@ -50,8 +50,5 @@
             <br>
             <br>
         </main>
-        <?php
-            include('../componentes/footer.php');
-        ?>
     </body>
 </html>

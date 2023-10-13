@@ -5,7 +5,7 @@
     ?>
     <body>
         <?php
-            include('../../componentes/headerProtectora.php');
+            include('../../componentes/headerUsuario.php');
         ?>
         <main>
             <h1>Seleccione que desea buscar</h1>

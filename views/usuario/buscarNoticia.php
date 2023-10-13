@@ -5,7 +5,7 @@
     ?>
     <body>
         <?php
-            include('../../componentes/headerAdmin.php');
+            include('../../componentes/headerUsuario.php');
             
 
 /*---------------------------Primera consulta para contar cantidad de resultados-------------------------------------------------------------------------------*/                       
