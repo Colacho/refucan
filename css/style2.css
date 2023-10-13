@@ -843,6 +843,14 @@ strong {
   background-attachment: fixed;
 }
 
+.contact-profesional {
+  background-image: url('../images/contactoprofesional.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
 .contact-form {
   position: relative;
   overflow: hidden;
