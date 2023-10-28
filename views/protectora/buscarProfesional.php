@@ -95,7 +95,6 @@
                         <th scope="col">Calle</th>
                         <th scope="col">Numero</th>
                         <th scope="col">Telefono</th>
-                        <th scope="col">Seleccion</th>
                     </tr>
                 </thead>
                 <?php   

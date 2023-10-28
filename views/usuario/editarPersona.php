@@ -5,24 +5,21 @@
     ?>
     <body>
         <?php
-            include('../../componentes/headerAdmin.php');
+            include('../../componentes/headerUsuario.php');
         ?>
         <main>
             <h1>Editar Persona</h1>
-            <!-- Trae los datos a partir del id -->
             <?php
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                   
-                    
-                    $consulta = "SELECT * FROM personas WHERE persona_id = '".$_POST['persona_id']."'";
+                
+                $consulta = "SELECT * FROM personas WHERE persona_id = $Spersona_id";
 
-                    $resultado = mysqli_query($Sconexion, $consulta);     
-                }
+                $resultado = mysqli_query($Sconexion, $consulta);     
+                   
                 $row = mysqli_fetch_assoc($resultado)
             ?>
             <form method="POST">
                 <div>
-                    <input style="display: none;" name="persona_id"  value="<?Php echo $row['persona_id'] ?>" readonly>
+                    
                     <div>
                         <label>Nombre:</label><br>
                         <input value="<?php echo $row['nombre']?>" name="nombre"> 
@@ -30,18 +27,12 @@
                     <div class="errorCampo" id="campoNombre" >
                         Ingrese Nombre
                     </div>
-                    <div class="errorCampo" id="errordetipo" >
-                       Tipo de dato incorrecto
-                    </div>
                     <div>
                         <label>Apellido:</label><br>
                         <input value="<?php echo $row['apellido']?>" name="apellido"> 
                     </div>
                     <div class="errorCampo" id="campoApellido" >
                         Ingrese apellido
-                    </div>
-                    <div class="errorCampo" id="errordetipo" >
-                       Tipo de dato incorrecto
                     </div>
                     <div>
                         <label>DNI:</label><br>
@@ -52,9 +43,6 @@
                         <div class="errorCampo" id="campoDni">
                             Ingrese un DNI
                         </div>
-                        <div class="errorCampo" id="errordetipo" >
-                            Tipo de dato incorrecto
-                        </div>
                     </div>
                     <div>
                         <label>Telefono:</label><br>
@@ -62,9 +50,6 @@
                     </div>
                     <div class="errorCampo" id="campoTelefono" >
                             Ingrese un teléfono
-                    </div>
-                    <div class="errorCampo" id="errordetipo" >
-                       Tipo de dato incorrecto
                     </div>
                     <div>
                         <label for="provincia">Provincia</label>
@@ -85,9 +70,6 @@
                     <div class="errorCampo" id="campoCalle">
                         Ingrese una calle
                     </div> 
-                    <div class="errorCampo" id="errordetipo" >
-                       Tipo de dato incorrecto
-                    </div>
                     <div>
                         <label>Número:</label><br>
                         <input value="<?php echo $row['numero_dire']?>" name="numero_dire"> 
@@ -95,17 +77,7 @@
                     <div class="errorCampo" id="campoNumero_dire">
                         Ingrese un número
                     </div> 
-                    <div class="errorCampo" id="errordetipo" >
-                       Tipo de dato incorrecto
-                    </div>
-                    <div>
-						<label for="activo">Activo:</label>
-						<select id="activo" name="activo">
-							<option value="<?php echo $row['activo']?>"><?php echo $row['activo'] == 1 ? "Si" : "No"?></option>
-							<option value="<?php echo $row['activo'] == 1 ? 0 : 1?>"><?php echo $row['activo'] == 1 ? "No" : "Si"?></option>	
-						</select> 
-						</label>
-					</div>
+                    
                     <button type="submit" name="guardar" class="formboton">Guardar</button>
                 </div>
             </form>
@@ -138,19 +110,12 @@
                 ';
                 return false;
             }
-             if (gettype($_POST["nombre"]) != "string" ){
-                echo '<script>
-                        this.document.getElementById("errordetipo").style.display = "block";
-                    </script>
-                    ';
-                return false;
-            }
             if(empty($_POST["apellido"])){
-                echo '<script>
-                    this.document.getElementById("campoApellido").style.display = "block";
-                </script>
-                ';
-                return false;
+             echo '<script>
+                 this.document.getElementById("campoApellido").style.display = "block";
+             </script>
+             ';
+             return false;
              }
              if(empty($_POST["dni"])){
                  echo '<script>
@@ -228,8 +193,7 @@
             municipio = '$municipioAnt',
             calle = '".$_POST['calle']."',
             numero_dire = '".$_POST['numero_dire']."',
-            activo = '".$_POST['activo']."'
-            WHERE persona_id = '".$_POST['persona_id']."';
+            WHERE persona_id = '$Spersona_id';
             ";
             
             $resultado = mysqli_query($Sconexion, $consulta) or die('Error de consulta');

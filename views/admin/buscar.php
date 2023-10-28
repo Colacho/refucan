@@ -6,6 +6,7 @@
     <body>
         <?php
             include('../../componentes/headerAdmin.php');
+            
         ?>
         <main>
             <h1>Seleccione que desea buscar</h1>

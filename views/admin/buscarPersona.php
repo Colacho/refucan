@@ -45,7 +45,7 @@
 
                 /*---------------------------Segunda consulta para la paginacion-------------------------------------------------------------------------------*/
                 $cantResultados = @mysqli_num_rows($resultado);
-                $registrosXpagina = 2; /* Cantidad de registros por cada pagina */
+                $registrosXpagina = 5; /* Cantidad de registros por cada pagina */
                 if (!isset ($_GET['page']) ) {  
                 $page = 1;  
                 } else {  
@@ -77,6 +77,7 @@
                     <th scope="col">Municipio</th>
                     <th scope="col">Calle</th>
                     <th scope="col">Numero</th>
+                    <th scope="col">Ver/Editar</th>
                     </tr>
                 </thead>
                 <?php   

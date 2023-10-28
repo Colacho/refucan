@@ -67,7 +67,6 @@
                     <th scope="col">Calle</th>
                     <th scope="col">Numero</th>
                     <th scope="col">Telefono</th>
-                    <th scope="col">Editar</th>
                     </tr>
                 </thead>
                 <?php   
@@ -96,22 +95,7 @@
                         <td>
                             <?php echo $row['telefono']?>
                         </td>
-                        
-                       <!-- Si la veterinaria que inicio sesion coincide permite editar datos  -->
-                       <?php
-                       if($row['veteId'] == $Sinstitucion_id) {
-                        echo '
-                            <td>
-                                <form method="POST" action="editarVeterinaria.php">
-                                    <input style="display: none;" name="veterinaria_id"  value="'.$row['veteId'].'" readonly>
-                                    <button type="submit" name="editar">Editar</button>
-                                </form>
-                            </td>
-                        
-                        ';
-                       }
-                        ?>
-
+                    
                     </tr>
                 </tbody>
                 <?php                

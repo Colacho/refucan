@@ -5,7 +5,7 @@
     ?>
     <body>
         <?php
-            include('../../componentes/headerUsuario.php');
+            include('../../componentes/headerProtectora.php');
         ?>
         <main >
             <h1>Editar Persona</h1>
@@ -50,6 +50,7 @@
                                 <div class="form-group">
                                     <label>'.$key.'</label>
                                     <input id="'.$key.'" class="form-control" type="date" value="'.$value.'" name="'.$key.'" />
+                                    
                                 </div>
                             ';
                         }

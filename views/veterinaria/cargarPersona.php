@@ -16,8 +16,7 @@
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
                         <input type="text" name="nombre" id="nombre" class="form-control"
-                        value="<?php if (isset($_POST['nombre'])) echo $_POST['nombre'];?>"
-                        
+                        value="<?php if (isset($_POST['nombre'])) echo $_POST['nombre'];?>"          
                         >
                     </div>
                     <div class="errorCampo" id="campoNombre" >
@@ -110,8 +109,8 @@
     <!-- Script localidades -->
     <script src="../../src/localidades.js"></script>
     <?php
-            include('../../componentes/footer.php');
-        ?>
+        include('../../componentes/footer.php');
+    ?>
     </html>
     
     <?php

@@ -35,7 +35,7 @@
 
                 /*---------------------------Segunda consulta para la paginacion-------------------------------------------------------------------------------*/
                 $cantResultados = @mysqli_num_rows($resultado);
-                $registrosXpagina = 2; /* Cantidad de registros por cada pagina */
+                $registrosXpagina = 5; /* Cantidad de registros por cada pagina */
                 if (!isset ($_GET['page']) ) {  
                 $page = 1;  
                 } else {  
@@ -62,7 +62,7 @@
                     <th scope="col">Municipio</th>
                     <th scope="col">Calle</th>
                     <th scope="col">Numero</th>
-                    <th scope="col">Responsable</th>
+                    <th scope="col">Telefono</th>
                     <th scope="col">Editar</th>
                     </tr>
                 </thead>
@@ -90,13 +90,8 @@
                         <td>
                             <?php echo $row['numero_dire']?>
                         </td>
-                        
                         <td>
-                            <form method="POST" action="verResponsable.php">
-                                <input style="display: none;" name="id_persona"  value="<?Php echo $row['id_persona'] ?>" readonly>
-                                <button type="submit" name="ver">Ver</button>
-                            </form>
-
+                            <?php echo $row['telefono']?>
                         </td>
                         <td>
                             <form method="POST" action="editarProtectora.php">
@@ -135,7 +130,7 @@
                 ?>
             </div>
 <!-- ---------------------------Fin botonera paginacion------------------------------------------------------------------------------- -->
-<a class="btn btn-light border-dark btn-lg" role="button" href="buscarProtectora.php">Volver</a>
+<a class="btn btn-light border-dark btn-lg" role="button" href="buscar.php">Volver</a>
         </main>
         <?php
             include('../../componentes/footer.php');

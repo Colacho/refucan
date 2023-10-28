@@ -77,6 +77,7 @@
                     <th scope="col">Municipio</th>
                     <th scope="col">Calle</th>
                     <th scope="col">Numero</th>
+                    <th scope="col">Ver/Editar</th>
                     </tr>
                 </thead>
                 <?php   
@@ -108,7 +109,12 @@
                         <td>
                             <?php echo $row['numero_dire']?>
                         </td>
-                        
+                        <td>
+                            <form method="POST" action="editarPersona.php">
+                                <input style="display: none;" name="persona_id"  value="<?Php echo $row['persona_id'] ?>" readonly>
+                                <button type="submit" name="editar">Editar</button>
+                            </form>
+                        </td>
                     </tr>
                 </tbody>
                 <?php                

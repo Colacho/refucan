@@ -37,7 +37,10 @@
                     </div>
                     <div class="errorCampo" id="campoMatricula">
                             Ingrese una matricula
-                        </div>
+                    </div>
+                    <div class="errorCampo" id="errordetipo" >
+                        Tipo de dato incorrecto
+                    </div>
                     <div class="form-group">
                     <label for="veterinaria_id">Veterinaria</label>
                     <select  name="veterinaria_id">

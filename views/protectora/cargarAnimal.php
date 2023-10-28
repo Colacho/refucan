@@ -10,22 +10,9 @@
         <main>
             <h1>Carga de Animales</h1>
 
-            <form id="formCarga" action="" method="POST" >
-                <div id="containerInputs" class="containerInputs">
+            <form id="formCarga" action="" method="POST" enctype="multipart/form-data">
+               
                     
-                    <div class="form-group">
-                        <label for="persona_id">DNI del titular</label>
-                        <input type="text" name="persona_id" class="form-control"
-                        value="<?php if (isset($_POST['persona_id'])) echo $_POST['persona_id'];?>"
-                        >
-                    </div>
-                    <div class="errorCampo" id="campoDni" >
-                        Ingrese un documento
-                    </div>
-                    <div class="errorCampo" id="DNIcargado">
-                        El DNI no está cargado
-                    </div>
-
                     <div class="form-group">
                         <label for="especie">Seleccione especie</label>
                         <select id="especie" name="especie" class="form-select">
@@ -59,22 +46,16 @@
                         value="<?php if (isset($_POST['observaciones'])) echo $_POST['observaciones'];?>"
                         >
                     </div>
-                </div>
-                <div class="containerInputs">
-                    <div>
-                        <input id="nuevo" value="" style="border-radius: 5px;">
-                        <button id="agregar" class="formboton" onclick="">Agregar</button>
+                
+                    
+                    <div class="col-lg-4 col-md-4 col-12">  
+                        <input type="file" name="foto" id="imagen" class="form-control-file custom-file-input" accept="image/*">
                     </div>
-                    <div>
-                        <button type="submit" name="guardar" class="formboton">Guardar</button>
-                    </div>
-
-                </div>
+                    
             </form>
             <a class="btn btn-light border-dark btn-lg" role="button" href="cargar.php">Volver</a>
         </main>
-        <!-- Script para agregar inputs -->
-        <script type="text/javascript" src="../src/inputs.js"></script>
+
         <?php
             include('../../componentes/footer.php');
         ?>
@@ -88,8 +69,7 @@
 <?php
     if (isset($_POST['guardar'])) {
         
-        $idPersona;
-        function validar($conexion, &$num) {
+        function validar() {
 
             if($_POST['especie'] == " ") {
                 echo '<script>
@@ -106,55 +86,29 @@
                 return false;
             }
 
-            if(empty($_POST["persona_id"])){
-                echo '<script>
-                        this.document.getElementById("campoDni").style.display = "block";
-                    </script>
-                ';
-                return false;
-            } else {
-                $verifica = "SELECT persona_id from personas WHERE dni = '".$_POST["persona_id"]."' ;";
-                $resultadoVerifica = mysqli_query($conexion, $verifica) or die('Error de consulta');
-                if(mysqli_num_rows($resultadoVerifica) > 0) {
-                    $fila = mysqli_fetch_array($resultadoVerifica);
-                    $num = $fila['persona_id'];
-                    
-                } else {
-                    echo '<script>
-                        this.document.getElementById("DNIcargado").style.display = "block";
-                        </script>
-                    ';
-                    return false;
-                }   
-            }
             return true;
         }
 
-        $pasa = validar($Sconexion, $idPersona);
-        $datos = array_slice($_POST, 3, -1 );
+        $pasa = validar();
         
-        
-        $json = json_encode($datos);
-        
-        //var_dump($idPersona);
+        if($_FILES['foto']['name'] == "") {
+            $foto = "animalDefault.png";
+        } else {
+            $foto = $Snombre.$Susuario_id.$_FILES['foto']['name'];
+            $tmpNombre = $_FILES['foto']['tmp_name'];
+            $destino = "../../fotos/animales/".$foto;
+            move_uploaded_file($tmpNombre, $destino);
+        }
 
-    //     // Crear Objeto JSON
-        // $jsonObject = array(
-        //     "quintuple" => $_POST['quintuple'],
-        //     "observaciones" => $_POST['observaciones']
-            
-        // );
 
-    //     // Convertir el objeto JSON a cadena
-    //     $jsonString = json_encode($jsonObject);
-      
-       $sql = "INSERT INTO animal (persona_id, nombre, especie, clinica, activo) 
+       $sql = "INSERT INTO animal (persona_id, nombre, especie, institucion, activo, foto) 
        values(
-        '$idPersona',
+        '$Spersona_id',
         '".$_POST["nombre"]."',
         '".$_POST["especie"]."',
-         '$json',
-         1
+        '$Sinstitucion_id',
+         1,
+         '$foto'
        
        )";
 
@@ -162,7 +116,7 @@
         
        echo '
             <script>
-                window.location.replace("../views/cargar.php");
+                window.location.replace("cargar.php");
             </script>
        '; 
        mysqli_close($Sconexion);

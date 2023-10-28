@@ -40,6 +40,11 @@
                             Si modifica la provincia debe seleccionar un municipio
                         </div> 
                     </div>
+                    <div>
+                        <label for="telefono">Telefono</label>
+                        <input name="telefono" value="<?php echo $row['telefono']?>">
+                    </div>
+
 
                     <div>
                         <label>Calle:</label><br>
@@ -195,6 +200,7 @@
             municipio = '$municipioAnt',
             calle = '".$_POST['calle']."',
             numero_dire = '".$_POST['numero_dire']."',
+            telefono = '".$_POST['telefono']."',
             activo = '".$_POST['activo']."',
             id_persona = '$idPersona',
             foto = '$foto'

@@ -14,9 +14,6 @@
                     <legend>Seleccione Criterio de busqueda</legend>
                     <div>
                         <input type="text" name="nombreAnimal" placeholder="Nombre Animal" />
-                        <input type="text" name="nombrePersona" placeholder="Nombre Persona" />
-                        <input type="text" name="apellido" placeholder="Apellido" />
-                        <input type="text" name="dni" placeholder="DNI" />
                     </div>
                     <div class="botones">
                         <button class="btn btn-dark btn-lg" type="submit" name="buscar">Buscar</button>
@@ -30,25 +27,18 @@
     
     /*-----------Definirmos variables para que no muestre error de Notice: Undefined index:----------------------------------*/
         $nombreAnimal = "";
-        $nombrePersona = "";
-        $apellido = "";
-        $dni = "";
+      
+        
         if(isset($_POST['buscar'])) {
             $nombreAnimal = $_POST['nombreAnimal'];
-            $nombrePersona = $_POST['nombrePersona'];
-            $apellido = $_POST['apellido'];
-            $dni = $_POST['dni'];
+            
         }
                   
-        $consulta = "SELECT personas.nombre AS nombrePersona, apellido, dni, telefono, animal_id, animal.nombre AS nombre, especie 
+        $consulta = "SELECT animal_id, nombre, especie, foto
         FROM animal 
-        JOIN personas ON animal.persona_id = personas.persona_id
-        WHERE animal.activo = 1 
+        WHERE animal.activo = 1
+        AND institucion = $Sinstitución_id
         AND animal.nombre LIKE '%{$nombreAnimal}%'
-        AND personas.nombre LIKE '%{$nombrePersona}%'
-        AND apellido LIKE '%{$apellido}%'
-        AND dni LIKE '%{$dni}%'
-        
         ";
         $resultado = mysqli_query($Sconexion, $consulta);
         
@@ -63,15 +53,12 @@
         $primerResultadoPagina = ($page-1) * $registrosXpagina;
         $cantidadPaginas = ceil($cantResultados/$registrosXpagina);
 
-        $consulta2 = "SELECT personas.nombre AS nombrePersona, apellido, dni, telefono, animal_id, animal.nombre AS nombre, especie 
+        $consulta2 = "SELECT animal_id, nombre, especie, foto
         FROM animal 
-        JOIN personas ON animal.persona_id = personas.persona_id
-        WHERE animal.activo = 1 
+        WHERE animal.activo = 1
+        AND institucion = $Sinstitución_id 
         AND animal.nombre LIKE '%{$nombreAnimal}%'
-        AND personas.nombre LIKE '%{$nombrePersona}%'
-        AND apellido LIKE '%{$apellido}%'
-        AND dni LIKE '%{$dni}%'
-
+        
         LIMIT ".$primerResultadoPagina.",".$registrosXpagina."
         ";
 
@@ -83,11 +70,9 @@
     <table class="table">
         <thead>
             <tr>
-            <th scope="col">Nombre Persona</th>
-            <th scope="col">Apellido</th>
-            <th scope="col">DNI</th>
-            <th scope="col">Telefono</th>
-            <th scope="col">Nombre Animal</th>
+            <th scope="col">Foto</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Especie</th>
             <th scope="col">Ver/Editar</th>
             
             </tr>
@@ -98,14 +83,14 @@
     ?>
         <tbody>
             <tr>
-                <td>
-                    <?php echo $row['nombrePersona']?>
+            <td>
+                    <img src="<?php echo '../../fotos/animales/'.$row['foto'].'' ?>" style="width: 100px">
                 </td>
                 <td>
-                    <?php echo $row['apellido']?>
+                    <?php echo $row['nombre']?>
                 </td>
                 <td>
-                    <?php echo $row['dni']?>
+                    <?php echo $row['especie']?>
                 </td>
                 <td>
                     <?php echo $row['telefono']?>

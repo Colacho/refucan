@@ -54,7 +54,7 @@
 
                 /*---------------------------Segunda consulta para la paginacion-------------------------------------------------------------------------------*/
                 $cantResultados = @mysqli_num_rows($resultado);
-                $registrosXpagina = 2; /* Cantidad de registros por cada pagina */
+                $registrosXpagina = 5; /* Cantidad de registros por cada pagina */
                 if (!isset ($_GET['page']) ) {  
                 $page = 1;  
                 } else {  
@@ -64,7 +64,7 @@
                 $cantidadPaginas = ceil($cantResultados/$registrosXpagina);
 
                 $consulta2 = "SELECT personas.nombre AS nombre_persona, apellido, matricula,
-                profesional.profesional_id AS id, 
+                profesional.profesional_id AS id, profesional.veterinaria_id AS veteId, 
                 veterinaria.nombre AS nombre_vete, veterinaria.provincia AS provincia, 
                 veterinaria.municipio AS municipio, veterinaria.calle AS calle,
                 veterinaria.numero_dire AS numero, veterinaria.telefono AS telefono
@@ -96,6 +96,7 @@
                         <th scope="col">Numero</th>
                         <th scope="col">Telefono</th>
                         <th scope="col">Seleccion</th>
+                        <th scope="col">Editar</th>
                     </tr>
                 </thead>
                 <?php   
@@ -133,10 +134,10 @@
                         </td>
                         <td>
                             <form method="POST" action="editarProfesional.php">
-                                <input style="display: none;" name="id"  value="<?Php echo $row['id'] ?>" readonly>
+                                <input style="display: none;" name="id"  value="<?php echo $row['id'] ?>" readonly>
                                 <button type="submit" name="editar">Editar</button>
                             </form>
-                        </td>
+                        </td>                       
                     </tr>
                 </tbody>
                 <?php                

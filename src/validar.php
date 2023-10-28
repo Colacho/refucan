@@ -36,8 +36,9 @@ if($resultadoCantidad->num_rows == 0){
             $_SESSION['rol'] = $fila['cargo_id'];
             $_SESSION['id_persona'] = $fila['id_persona'];
             $_SESSION['institucion_id'] = $fila['institucion'];
+            $_SESSION['institucion'] = " ";
 
-            // IDENTIFICA LA INSTITUCION A LA QUE PERTENECE SI ES VETERINARIO O PARTE DE UNA PROTECTORA
+            // IDENTIFICA LA INSTITUCION A LA QUE PERTENECE SI ES VETERINARIO O UNA PROTECTORA
             if($_SESSION['rol'] == 2) {
                 $consultaVeterinaria = "SELECT nombre FROM veterinaria
                 WHERE veterinaria_id = '{$_SESSION['institucion_id']}'

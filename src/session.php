@@ -6,7 +6,7 @@
         $Scargo = $_SESSION['cargo'];   
         $Susuario_id = $_SESSION['usuario_id'];
         $Spersona_id = $_SESSION['id_persona'];
-        //$Sinstitucion = $_SESSION['institucion'];
+        $Sinstitucion = $_SESSION['institucion'];
         $Sinstitucion_id = $_SESSION['institucion_id'];
         
         $Sconexion = mysqli_connect("localhost","root","","refucan") or die('Error de consulta');    

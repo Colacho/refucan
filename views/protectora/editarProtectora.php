@@ -9,18 +9,16 @@
         ?>
         <main>
             <h1>Editar Protectora</h1>
-            <!-- Trae los datos a partir del id -->
             <?php
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                   
-                    $consulta = "SELECT * FROM protectora WHERE protectora_id = '".$_POST['protectora_id']."'";
-                    $resultado = mysqli_query($Sconexion, $consulta);     
-                }
+                
+                $consulta = "SELECT * FROM protectora WHERE protectora_id = $Sinstitucion_id";
+                $resultado = mysqli_query($Sconexion, $consulta);     
+                
                 $row = mysqli_fetch_assoc($resultado)
             ?>
             <form method="POST" enctype="multipart/form-data">
                 <div>
-                    <input style="display: none;" name="protectora_id"  value="<?Php echo $row['protectora_id'] ?>" readonly>
+                    
                     <div>
                         <label>Nombre:</label><br>
                         <input value="<?php echo $row['nombre']?>" name="nombre"> 
@@ -76,14 +74,7 @@
                             El DNI no está cargado
                         </div>
                     </div>
-                    <div>
-						<label for="activo">Activo:</label>
-						<select id="activo" name="activo">
-							<option value="<?php echo $row['activo']?>"><?php echo $row['activo'] == 1 ? "Si" : "No"?></option>
-							<option value="<?php echo $row['activo'] == 1 ? 0 : 1?>"><?php echo $row['activo'] == 1 ? "No" : "Si"?></option>	
-						</select> 
-						</label>
-					</div>
+                    
                     <button type="submit" name="guardar" class="formboton">Guardar</button>
                 </div>
             </form>
@@ -195,10 +186,9 @@
             municipio = '$municipioAnt',
             calle = '".$_POST['calle']."',
             numero_dire = '".$_POST['numero_dire']."',
-            activo = '".$_POST['activo']."',
             id_persona = '$idPersona',
             foto = '$foto'
-            WHERE protectora_id = '".$_POST['protectora_id']."';
+            WHERE protectora_id = '$Sinstitucion_id';
             ";
             
             $resultado = mysqli_query($Sconexion, $consulta) or die('Error de consulta Guarda');

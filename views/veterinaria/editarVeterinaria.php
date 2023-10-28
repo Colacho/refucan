@@ -9,13 +9,11 @@
         ?>
         <main>
             <h1>Editar Veterinaria</h1>
-            <!-- Trae los datos a partir del id -->
             <?php
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                   
-                    $consulta = "SELECT * FROM veterinaria WHERE veterinaria_id = '".$_POST['veterinaria_id']."'";
+     
+                    $consulta = "SELECT * FROM veterinaria WHERE veterinaria_id = $Sinstitucion_id";
                     $resultado = mysqli_query($Sconexion, $consulta);     
-                }
+                
                 $row = mysqli_fetch_assoc($resultado)
             ?>
             <form method="POST" enctype="multipart/form-data">
@@ -60,14 +58,6 @@
                         <input type="file" name="foto" value="<?Php echo $row['foto'] ?>" class="form-control-file" accept="image/*">
                     </div>
                     
-                    <div>
-						<label for="activo">Activo:</label>
-						<select id="activo" name="activo">
-							<option value="<?php echo $row['activo']?>"><?php echo $row['activo'] == 1 ? "Si" : "No"?></option>
-							<option value="<?php echo $row['activo'] == 1 ? 0 : 1?>"><?php echo $row['activo'] == 1 ? "No" : "Si"?></option>	
-						</select> 
-						</label>
-					</div>
                     <button type="submit" name="guardar" class="formboton">Guardar</button>
                 </div>
             </form>
@@ -82,17 +72,46 @@
 </html>
 
 <?php
-    $nombreAnt = $row['nombre'];
+    //  Requerido para comprara en la funcion
+    //$guardaNombre = $row['nombre'];
     $provinciaAnt = $row['provincia'];
     $municipioAnt = $row['municipio'];
-    $calleAnt = $row['calle'];
-    $numeroAnt = $row['numero_dire'];
-    $telefonoAnt = $row['telefono'];
     $fotoVeterinaria = $row['foto'];
     
     if(isset($_POST['guardar'])){
         
         function validar(&$prov, &$mun) {
+
+            if(empty($_POST["nombre"])){
+                echo '<script>
+                    this.document.getElementById("campoNombre").style.display = "block";
+                </script>
+                ';
+                return false;
+            } 
+            
+            if(empty($_POST["calle"])){
+                echo '<script>
+                    this.document.getElementById("campoCalle").style.display = "block";
+                </script>
+                ';
+                return false;
+            }
+            if(empty($_POST["numero_dire"])){
+                echo '<script>
+                    this.document.getElementById("campoNumero_dire").style.display = "block";
+                </script>
+                ';
+                return false;
+            }
+            if(empty($_POST["telefono"])){
+                echo '<script>
+                    this.document.getElementById("campoTelefono").style.display = "block";
+                </script>
+                '; 
+                return false;
+            }
+
             if(($_POST["provincia"] == "provincia")){
                 
                 return true;
@@ -108,50 +127,11 @@
                     $mun = $_POST['municipio'];
                     return true;
                     
-                } 
-                
+                }              
             }
         }
         $pasa = validar($provinciaAnt, $municipioAnt);
-
-        
-        $consultaNombre = "SELECT veterinaria_id, nombre FROM veterinaria WHERE nombre = '".$_POST['nombre']."'";
-        $resultadoNombre = mysqli_query($Sconexion, $consultaNombre) or die('Error de consulta Nombre');
-        $rowNombre = mysqli_fetch_assoc($resultadoNombre);
-        if(mysqli_num_rows($resultadoNombre) == 0) {
-            $guardaNombre = $_POST['nombre'];
-            } 
-            else if($rowNombre['veterinaria_id'] == $_POST['veterinaria_id']){
-                $guardaNombre = $_POST['nombre'];
-            } 
-            else {
-            $pasa = false;
-            echo '<script>
-                this.document.getElementById("nombreCargado").style.display = "block";
-            </script>
-            '; 
-        }  
-// Verifica si esta vacio el campo guarda los datos anteriores
-        if(empty($_POST['nombre'])) {
-            $guardaNombre = $nombreAnt;
-        } 
-        
-        if(empty($_POST['calle'])) {
-            $guardaCalle = $calleAnt;
-        } else {
-            $guardaCalle = $_POST['calle'];
-        }
-        if(empty($_POST['numero_dire'])) {
-            $guardaNumero = $numeroAnt;
-        } else {
-            $guardaNumero = $_POST['numero_dire'];
-        }
-        if(empty($_POST['telefono'])) {
-            $guardaTelefono = $telefonoAnt;
-        } else {
-            $guardaTelefono = $_POST['telefono'];
-        }
-         
+  
         if(empty($_FILES['foto']['name'])) {
             $foto = $fotoVeterinaria;
         } else {
@@ -165,22 +145,21 @@
         if($pasa) {
             
             $consulta = "UPDATE veterinaria SET 
-            nombre = '$guardaNombre',
+            nombre = '".$_POST['npmbre']."',
             provincia = '$provinciaAnt',
             municipio = '$municipioAnt',
-            calle = '$guardaCalle',
-            numero_dire = '$guardaNumero',
-            telefono = '$guardaTelefono',
-            activo = '".$_POST['activo']."',
+            calle = '".$_POST['calle']."',
+            numero_dire = '".$_POST['numero_dire']."',
+            telefono = '".$_POST['telefono']."',
             foto = '$foto'
-            WHERE veterinaria_id = '".$_POST['veterinaria_id']."';
+            WHERE veterinaria_id = '$Sinstitucion_id';
             ";
             
             $resultado = mysqli_query($Sconexion, $consulta) or die('Error de consulta Guarda');
 
             echo '
             <script>
-                window.location.replace("../views/buscar.php");
+                window.location.replace("home.php");
             </script>
             '; 
         }

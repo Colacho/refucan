@@ -62,8 +62,7 @@
                     <th scope="col">Municipio</th>
                     <th scope="col">Calle</th>
                     <th scope="col">Numero</th>
-                    <th scope="col">Responsable</th>
-                    <th scope="col">Editar</th>
+                    <th scope="col">Telefono</th>
                     </tr>
                 </thead>
                 <?php   
@@ -90,13 +89,8 @@
                         <td>
                             <?php echo $row['numero_dire']?>
                         </td>
-                        
                         <td>
-                            <form method="POST" action="verResponsable.php">
-                                <input style="display: none;" name="id_persona"  value="<?Php echo $row['id_persona'] ?>" readonly>
-                                <button type="submit" name="ver">Ver</button>
-                            </form>
-
+                            <?php echo $row['telefono']?>
                         </td>
                         
                     </tr>

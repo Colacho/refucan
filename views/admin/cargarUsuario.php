@@ -81,6 +81,7 @@
                                             <option value="1">Administrador</option>
                                             <option value="2">Veterinaria</option>
                                             <option value="3">Protectora</option>
+                                            <option value="4">Usuario</option>
                                         </select>
                                     </div>
 
@@ -224,6 +225,7 @@
         }   
         $pasa = validar($Sconexion, $idPersona, $institucion_id);
         var_dump($institucion_id);
+        var_dump($idPersona);
         if($pasa) {
             $hash = password_hash($_POST['pass'], PASSWORD_DEFAULT, ['cost'=>10]);
 

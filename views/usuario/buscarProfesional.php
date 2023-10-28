@@ -95,7 +95,6 @@
                         <th scope="col">Calle</th>
                         <th scope="col">Numero</th>
                         <th scope="col">Telefono</th>
-                        <th scope="col">Seleccion</th>
                     </tr>
                 </thead>
                 <?php   
@@ -131,19 +130,6 @@
                         <td>
                             <?php echo $row['telefono']?>
                         </td>
-                        <?php
-                           if($row['veteId'] == $Sinstitucion_id ) {
-                             echo '
-                                <td>
-                                    <form method="POST" action="editarProfesional.php">
-                                        <input style="display: none;" name="id"  value="'.$row['veteId'].'" readonly>
-                                        <button type="submit" name="editar">Editar</button>
-                                    </form>
-                                </td>
-                             ';
-
-                           }
-                        ?>
                     </tr>
                 </tbody>
                 <?php                

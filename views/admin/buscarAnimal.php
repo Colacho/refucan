@@ -17,6 +17,7 @@
                         <input type="text" name="nombrePersona" placeholder="Nombre Persona" />
                         <input type="text" name="apellido" placeholder="Apellido" />
                         <input type="text" name="dni" placeholder="DNI" />
+                        <input type="text" name="protectora" placeholder="Protectora" />
                     </div>
                     <div class="botones">
                         <button class="btn btn-dark btn-lg" type="submit" name="buscar">Buscar</button>
@@ -33,21 +34,26 @@
         $nombrePersona = "";
         $apellido = "";
         $dni = "";
+        $protectora = "";
         if(isset($_POST['buscar'])) {
             $nombreAnimal = $_POST['nombreAnimal'];
             $nombrePersona = $_POST['nombrePersona'];
             $apellido = $_POST['apellido'];
             $dni = $_POST['dni'];
+            $protectora = $_POST['protectora'];
         }
                   
-        $consulta = "SELECT personas.nombre AS nombrePersona, apellido, dni, telefono, animal_id, animal.nombre AS nombre, especie 
-        FROM animal 
-        JOIN personas ON animal.persona_id = personas.persona_id
+        $consulta = "SELECT personas.nombre AS nombrePersona, apellido, dni, personas.telefono AS telefono, animal_id, animal.nombre AS nombre, especie, 
+        institucion, protectora.nombre AS nombre_institucion, protectora.telefono AS tel_prot, animal.foto AS foto  
+        FROM personas 
+        JOIN animal ON personas.persona_id = animal.persona_id
+        JOIN protectora ON animal.institucion = protectora.protectora_id
         WHERE animal.activo = 1 
         AND animal.nombre LIKE '%{$nombreAnimal}%'
         AND personas.nombre LIKE '%{$nombrePersona}%'
         AND apellido LIKE '%{$apellido}%'
         AND dni LIKE '%{$dni}%'
+        AND protectora.nombre LIKE '%{$protectora}%'
         
         ";
         $resultado = mysqli_query($Sconexion, $consulta);
@@ -63,14 +69,17 @@
         $primerResultadoPagina = ($page-1) * $registrosXpagina;
         $cantidadPaginas = ceil($cantResultados/$registrosXpagina);
 
-        $consulta2 = "SELECT personas.nombre AS nombrePersona, apellido, dni, telefono, animal_id, animal.nombre AS nombre, especie 
-        FROM animal 
-        JOIN personas ON animal.persona_id = personas.persona_id
+        $consulta2 = "SELECT personas.nombre AS nombrePersona, apellido, dni, personas.telefono AS telefono, animal_id, animal.nombre AS nombre, especie, 
+        institucion, protectora.nombre AS nombre_institucion,  protectora.telefono AS tel_prot, animal.foto AS foto  
+        FROM personas 
+        JOIN animal ON personas.persona_id = animal.persona_id
+        JOIN protectora ON animal.institucion = protectora.protectora_id
         WHERE animal.activo = 1 
         AND animal.nombre LIKE '%{$nombreAnimal}%'
         AND personas.nombre LIKE '%{$nombrePersona}%'
         AND apellido LIKE '%{$apellido}%'
         AND dni LIKE '%{$dni}%'
+        AND protectora.nombre LIKE '%{$protectora}%'
 
         LIMIT ".$primerResultadoPagina.",".$registrosXpagina."
         ";
@@ -83,11 +92,13 @@
     <table class="table">
         <thead>
             <tr>
+            <th scope="col">Foto</th>
+            <th scope="col">Nombre Animal</th>
             <th scope="col">Nombre Persona</th>
             <th scope="col">Apellido</th>
             <th scope="col">DNI</th>
+            <th scope="col">Protectora</th>
             <th scope="col">Telefono</th>
-            <th scope="col">Nombre Animal</th>
             <th scope="col">Ver/Editar</th>
             
             </tr>
@@ -99,19 +110,25 @@
         <tbody>
             <tr>
                 <td>
-                    <?php echo $row['nombrePersona']?>
-                </td>
-                <td>
-                    <?php echo $row['apellido']?>
-                </td>
-                <td>
-                    <?php echo $row['dni']?>
-                </td>
-                <td>
-                    <?php echo $row['telefono']?>
+                      <img src="<?php echo '../../fotos/animales/'.$row['foto'].'' ?>" style="width: 100px">
                 </td>
                 <td>
                     <?php echo $row['nombre']?>
+                </td>
+                <td>
+                    <?php echo $row['institucion'] == 0 ? $row['nombrePersona'] : '-'?>
+                </td>
+                <td>
+                <?php echo $row['institucion'] == 0 ? $row['apellido'] : '-'?>
+                </td>
+                <td>
+                <?php echo $row['institucion'] == 0 ? $row['dni'] : '-'?>
+                </td>
+                <td>
+                <?php echo $row['institucion'] == 0 ? '-' : $row['nombre_institucion']?>
+                </td>
+                <td>
+                <?php echo $row['institucion'] == 0 ? $row['telefono'] : $row['tel_prot']?>
                 </td>
                 
                 <td>

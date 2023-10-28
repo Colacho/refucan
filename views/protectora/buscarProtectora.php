@@ -63,7 +63,6 @@
                     <th scope="col">Calle</th>
                     <th scope="col">Numero</th>
                     <th scope="col">Responsable</th>
-                    <th scope="col">Editar</th>
                     </tr>
                 </thead>
                 <?php   
@@ -90,21 +89,7 @@
                         <td>
                             <?php echo $row['numero_dire']?>
                         </td>
-                        
-                        <?php
-                       if($row['protectora_id'] == $Sinstitucion_id) {
-                        echo '
-                            <td>
-                                <form method="POST" action="editarVeterinaria.php">
-                                    <input style="display: none;" name="veterinaria_id"  value="'.$row['protectora_id'].'" readonly>
-                                    <button type="submit" name="editar">Editar</button>
-                                </form>
-                            </td>
-                        
-                        ';
-                       }
-                        ?>
-                        
+                    
                     </tr>
                 </tbody>
                 <?php                

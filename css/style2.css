@@ -1135,3 +1135,14 @@ strong {
     justify-content: center;
   }
 }
+
+/* Incluido por Colacho para los campos de validacion */
+
+.errorCampo {
+  display: none;
+  color: red;
+  border: 2px solid red;
+  border-radius: 5px;
+}
+
+/* Incluido por Colacho para los campos de validacion */

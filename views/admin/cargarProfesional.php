@@ -58,45 +58,34 @@
                                         value="<?php if (isset($_POST['persona_id'])) echo $_POST['persona_id'];?>"
                                         >         
                                     </div>
-                                    
+                                    <div class="errorCampo" id="errordetipo" >
+                                        Tipo de dato incorrecto
+                                    </div>
                                     <div class="col-lg-4 col-md-4 col-12">
-                                        <input type="text" name="matricula" id="matricula" class="form-control"
+                                        <input type="text" name="matricula" id="matricula" class="form-control" placeholder="Matricula"
                                         value="<?php if (isset($_POST['matricula'])) echo $_POST['matricula'];?>"
                                         >
                                     </div>
-                        
-                                    <div class="form-group">
-                                        <select id="provincia" name="provincia" class="form-control">
-                                            <option value="<?php if (isset($_POST['provincia'])) echo $_POST['provincia'];?>" disabled selected>Seleccione una provincia</option>
-                                            <option value="provincia1">Provincia 1</option>
-                                            <option value="provincia2">Provincia 2</option>
-                                            <option value="provincia3">Provincia 3</option>
-                                        </select>
+                                    <div class="errorCampo" id="errordetipo" >
+                                        Tipo de dato incorrecto
+                                    </div>        
+                                    <div class="col-lg-4 col-md-4 col-12">
+                                        <label for="veterinaria_id">Veterinaria</label>
+                                        <select name="veterinaria_id" >
+                                            <option value="0" class="col-lg-4 col-md-4 col-12">Seleccione una opcion</option>
+                                            <?php 
+                                            $veterinarias = "SELECT veterinaria_id, nombre FROM veterinaria";
+                                            $consultaVeterinaria = mysqli_query($Sconexion, $veterinarias);
+                                            while($row = mysqli_fetch_assoc($consultaVeterinaria)) {
+                                            echo '
+                                            <option value="'.$row['veterinaria_id'].'" class="col-lg-4 col-md-4 col-12"> '.$row['nombre'].' </option>
+                                            ';
+                                            }
+                                            ?>
+                                        </select>                      
                                     </div>
 
-                                    <div class="form-group">
-                                        <select id="municipio" name="municipio" class="form-control">
-                                            <option value="<?php if (isset($_POST['municipio'])) echo $_POST['municipio'];?>" disabled selected>Seleccione un municipio</option>
-                                            <option value="provincia1">Provincia 1</option>
-                                            <option value="provincia2">Provincia 2</option>
-                                            <option value="provincia3">Provincia 3</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-4 col-12">                                  
-                                        <input type="text" name="calle" id="calle" class="form-control" placeholder="Calle" value="<?php if (isset($_POST['calle'])) echo $_POST['calle'];?>"
-                                        >
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-4 col-12">                                    
-                                        <input type="text" name="numero_dire" id="numero_dire" class="form-control" placeholder="Numero" value="<?php if (isset($_POST['numero_dire'])) echo $_POST['numero_dire'];?>"
-                                        >
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-12">  
-                                        <input type="file" name="foto" id="imagen" class="form-control-file custom-file-input" accept="image/*">
-                                    </div>
-
-                                    <div class="col-12">
+                               <div class="col-12">
                                         <button type="submit" name="cargarPersona" class="form-control">Agregar Protectora</button>
                                     </div>
                                     <p></p>
@@ -112,69 +101,6 @@
             </section>
         </main>
 
-
-
-      <!--  <main>
-            <h1>Carga de Profesionales</h1>
-            <form id="formulario" method="POST" class="my-form">
-                <div class="containerInputs">
-                    <div class="form-group">
-                        <label for="persona_id">Documento</label>
-                        <input type="text" name="persona_id" class="form-control"
-                        value="<?php if (isset($_POST['persona_id'])) echo $_POST['persona_id'];?>"
-                        >
-                    </div>
-                    <div class="errorCampo" id="campoDni" >
-                        Ingrese un documento
-                    </div>
-                    <div class="errorCampo" id="DNIcargado">
-                        El DNI no está cargado
-                    </div>
-                    <div class="errorCampo" id="DNIrepetido">
-                        El DNI corresponde a otro usuario
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="matricula">Matricula</label>
-                        <input type="text" name="matricula" id="matricula" class="form-control"
-                        value="<?php if (isset($_POST['matricula'])) echo $_POST['matricula'];?>"
-                        >
-                    </div>
-                    <div class="errorCampo" id="campoMatricula" >
-                        Ingrese Matricula
-                    </div>
-                    <div class="errorCampo" id="matriculaCargada" >
-                        Esa matricula ya fue cargada
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="veterinaria_id">Veterinaria</label>
-                        <select name="veterinaria_id">
-                            <option value="0">Seleccione una opcion</option>
-                            <?php 
-                                $veterinarias = "SELECT veterinaria_id, nombre FROM veterinaria";
-                                $consultaVeterinaria = mysqli_query($Sconexion, $veterinarias);
-                                while($row = mysqli_fetch_assoc($consultaVeterinaria)) {
-    
-                                    echo '
-                                    <option value="'.$row['veterinaria_id'].'"> '.$row['nombre'].' </option>
-                                    ';
-                                }
-                            ?>
-    
-                        </select>
-                       
-                    </div>
-                    <div class="errorCampo" id="campoVeterinaria" >
-                        Ingrese una Veterinaria
-                    </div>
-                    <div>
-                        <button type="submit" name="cargarProfesional" class="formboton">Agregar Profesional</button>
-                    </div>
-                </div>
-            </form>
-            <a class="btn btn-light border-dark btn-lg" role="button" href="cargar.php">Volver</a>
-        </main> -->
     </body>
         <?php
             include('../../componentes/footer.php');

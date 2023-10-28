@@ -136,7 +136,7 @@
                              echo '
                                 <td>
                                     <form method="POST" action="editarProfesional.php">
-                                        <input style="display: none;" name="id"  value="'.$row['veteId'].'" readonly>
+                                        <input style="display: none;" name="id"  value="'.$row['id'].'" readonly>
                                         <button type="submit" name="editar">Editar</button>
                                     </form>
                                 </td>
