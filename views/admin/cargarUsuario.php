@@ -58,21 +58,46 @@
                                     <div class="col-lg-4 col-md-4 col-12">                                    
                                         <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre de Usuario" value="<?php if (isset($_POST['nombre'])) echo $_POST['nombre'];?>"
                                         >
+
+                                        <div class="errorCampo" id="campoNombre" >
+                                            Ingrese Usuario
+                                        </div>
                                     </div>
 
                                     <div class="col-lg-4 col-md-4 col-12">                                    
                                         <input name="correo" id="correo" class="form-control" placeholder="Correo" value="<?php if (isset($_POST['correo'])) echo $_POST['correo'];?>"
                                         >
+
+                                         <div class="errorCampo" id="campoNombre" >
+                                            Ingrese Email
+                                        </div>
+                                        <div class="errorCampo" id="CorreoCargado">
+                                            El Email ya existe
+                                        </div>
                                     </div>
 
                                     <div class="col-lg-4 col-md-4 col-12">         
                                         <input type="text" name="pass" id="pass" class="form-control" placeholder="Contraseña" value="<?php if (isset($_POST['pass'])) echo $_POST['pass'];?>"
                                         >
+
+                                        <div class="errorCampo" id="campoPass" >
+                                            Ingrese una contraseña
+                                        </div>
                                     </div>
 
                                     <div class="col-lg-4 col-md-4 col-12">                                    
                                         <input type="text" name="dni" id="dni" class="form-control" placeholder="DNI" value="<?php if (isset($_POST['dni'])) echo $_POST['dni'];?>"
                                         >
+
+                                        <div class="errorCampo" id="campoDni" >
+                                            Ingrese un documento
+                                        </div>
+                                        <div class="errorCampo" id="DNIcargado">
+                                            El DNI no está cargado
+                                        </div>
+                                        <div class="errorCampo" id="DNIrepetido">
+                                            El DNI corresponde a otro usuario
+                                        </div>
                                     </div>
                         
                                     <div class="form-group">
@@ -83,6 +108,13 @@
                                             <option value="3">Protectora</option>
                                             <option value="4">Usuario</option>
                                         </select>
+
+                                        <div class="errorCampo" id="campoCargo" >
+                                                Seleccione un cargo
+                                        </div>
+                                        <div class="errorCampo" id="campoInstitucion" >
+                                                El dni no corresponde al responsable de la institucion
+                                        </div>
                                     </div>
 
                                     <div class="col-12">
@@ -90,7 +122,7 @@
                                     </div>
                                     <p></p>
                                     <div class="col-12">
-                                        <a class="form-control text-center" href="home.php">Volver</a>
+                                        <a class="form-control text-center" href="cargar.php">Volver</a>
                                     </div>
                                 </div>
                             </form>                            

@@ -58,11 +58,25 @@
                                     <div class="col-lg-4 col-md-4 col-12">                                    
                                         <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre de Veterinaria" value="<?php if (isset($_POST['nombre'])) echo $_POST['nombre'];?>"
                                         >
+
+                                        <div class="errorCampo" id="campoNombre" >
+                                            Ingrese Nombre
+                                        </div>
+                                        <div class="errorCampo" id="nombreExiste" >
+                                            El nombre ya esta cargado
+                                        </div>
                                     </div>
 
                                     <div class="col-lg-4 col-md-4 col-12">         
                                         <input type="text" name="dni" id="dni" class="form-control" placeholder="DNI Responsable" value="<?php if (isset($_POST['dni'])) echo $_POST['dni'];?>"
                                         >
+
+                                        <div class="errorCampo" id="campoDni" >
+                                            Ingrese un documento
+                                        </div>
+                                        <div class="errorCampo" id="DNIcargado">
+                                            El DNI no está cargado
+                                        </div>
                                     </div>
                         
                                     <div class="form-group">
@@ -72,6 +86,10 @@
                                             <option value="provincia2">Provincia 2</option>
                                             <option value="provincia3">Provincia 3</option>
                                         </select>
+
+                                        <div class="errorCampo" id="campoProvincia">
+                                            Selecione una Provincia
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
@@ -81,21 +99,37 @@
                                             <option value="provincia2">Provincia 2</option>
                                             <option value="provincia3">Provincia 3</option>
                                         </select>
+
+                                        <div class="errorCampo" id="campoMunicipio">
+                                            Selecione una Localidad
+                                        </div> 
                                     </div>
 
                                     <div class="col-lg-4 col-md-4 col-12">                                  
                                         <input type="text" name="calle" id="calle" class="form-control" placeholder="Calle" value="<?php if (isset($_POST['calle'])) echo $_POST['calle'];?>"
                                         >
+
+                                        <div class="errorCampo" id="campoCalle">
+                                            Ingrese una calle
+                                        </div>
                                     </div>
 
                                     <div class="col-lg-4 col-md-4 col-12">                                    
                                         <input type="text" name="numero_dire" id="numero_dire" class="form-control" placeholder="Numero" value="<?php if (isset($_POST['numero_dire'])) echo $_POST['numero_dire'];?>"
                                         >
+
+                                        <div class="errorCampo" id="campoNumero_dire">
+                                            Ingrese un número
+                                        </div>
                                     </div>
 
                                     <div class="col-lg-4 col-md-4 col-12">
                                         <input type="text" name="telefono" id="telefono" class="form-control" placeholder="Telefono" value="<?php if (isset($_POST['telefono'])) echo $_POST['telefono'];?>"
                                         >
+
+                                        <div class="errorCampo" id="campoTelefono">
+                                            Ingrese un telefono
+                                        </div>
                                     </div>
 
                                     <div class="col-lg-4 col-md-4 col-12">  
@@ -109,12 +143,11 @@
                                     </div>
                                     <p></p>
                                     <div class="col-12">
-                                        <a class="form-control text-center" href="home.php">Volver</a>
+                                        <a class="form-control text-center" href="cargar.php">Volver</a>
                                     </div>
                                 </div>
                             </form>                            
                         </div>
-
                     </div>
                 </div>
             </section>

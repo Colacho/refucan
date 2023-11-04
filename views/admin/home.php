@@ -12,10 +12,10 @@
         include('../../componentes/navBarAdmin.php');
     ?>
 
-    <body>
+    <body id="volver">
         <main>
             <!-- HOME  -->
-            <section class="hero" id="section_1">
+            <section class="hero">
                 <div class="container">
                     <div class="row">
 
@@ -84,114 +84,7 @@
                 </div>
             </section>
 
-            <!-- Cargar -->
-            <section class="speakers section-padding" id="section_2">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-6 col-12 d-flex flex-column justify-content-center align-items-center">
-                            <div class="speakers-text-info">
-                                <h2 >Que desea cargar?</h2>
-
-                            </div>
-                        </div>
-
-
-                        <div class="col-lg-12 col-12">
-                            <div class="row">
-                                <div class="col-lg-3 col-md-6 col-12">
-                                    <div class="speakers-thumb speakers-thumb-small">
-                                        <img src="../../images/animal.jpg" class="img-fluid speakers-image" alt="">
-
-                                        <div class="speakers-info">
-                                            <a href="cargarAnimal.php" title="carque el animal deseado">
-                                            <h5 class="speakers-title mb-0">Animal</h5>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-3 col-md-6 col-12">
-                                    <div class="speakers-thumb speakers-thumb-small">
-                                        <img src="../../images/usuario.jpg" class="img-fluid speakers-image" alt="">
-
-                                        <div class="speakers-info">
-                                            <a href="cargarUsuario.php" title="cargue un nuevo usuario">
-                                            <h5 class="speakers-title mb-0">Usuario</h5>
-                                            </a>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-3 col-md-6 col-12">
-                                    <div class="speakers-thumb speakers-thumb-small">
-                                        <img src="../../images/noticia.jpg" class="img-fluid speakers-image" alt="">
-
-                                        <div class="speakers-info">
-                                            <a href="cargarNoticia.php" title="ingrese nueva noticia">
-                                            <h5 class="speakers-title mb-0">Noticia</h5>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-3 col-md-6 col-12">
-                                    <div class="speakers-thumb speakers-thumb-small">
-                                        <img src="../../images/protectora.jpg" class="img-fluid speakers-image" alt="">
-
-                                        <div class="speakers-info">
-                                            <a href="cargarProtectora.php" title="ingrese una nueva protectora">
-                                            <h5 class="speakers-title mb-0">Protectora</h5>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-3 col-md-6 col-12">
-                                    <div class="speakers-thumb speakers-thumb-small">
-                                        <img src="../../images/persona.jpg" class="img-fluid speakers-image" alt="">
-
-                                        <div class="speakers-info">
-                                            <a href="cargarPersona.php" title="ingrese una nueva persona">
-                                            <h5 class="speakers-title mb-0">Persona</h5>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-3 col-md-6 col-12">
-                                    <div class="speakers-thumb speakers-thumb-small">
-                                        <img src="../../images/veterinaria.jpg" class="img-fluid speakers-image" alt="">
-
-                                        <div class="speakers-info">
-                                            <a href="cargarVeterinaria.php" title="ingrese una veterinaria">
-                                            <h5 class="speakers-title mb-0">Veterinaria</h5>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-3 col-md-6 col-12">
-                                    <div class="speakers-thumb speakers-thumb-small">
-                                        <img src="../../images/profesional.jpg" class="img-fluid speakers-image" alt="">
-
-                                        <div class="speakers-info">
-                                            <a href="cargarProfesional.php" title="cargar nuevo profesional">
-                                            <h5 class="speakers-title mb-0">Profesional</h5>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-
-            <section class="schedule section-padding" id="section_3">
+            <section class="schedule section-padding" id="section_1">
                 <div class="container">
                     <div class="row">
 
@@ -267,7 +160,7 @@
 
 
             <!-- Nosotros -->
-            <section class="call-to-action section-padding" id="section_4">
+            <section class="call-to-action section-padding" id="section_2">
                 <div class="container">
                     <div class="row align-items-center">
 
@@ -331,7 +224,7 @@
                 </div>
             </section>
 
-            <section class="contact section-padding" id="section_5">
+            <section class="contact section-padding-2" id="section_3">
                 <div class="container">
                     <div class="row">
 

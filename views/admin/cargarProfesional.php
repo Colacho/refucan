@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <?php
-        include('../../componentes/head.php')
+        include('../../componentes/head2.php')
     ?>
     <body>
         <?php
@@ -56,19 +56,33 @@
                                     <div class="col-lg-4 col-md-4 col-12">
                                         <input type="text" name="persona_id" class="form-control" placeholder="DNI Responsable"
                                         value="<?php if (isset($_POST['persona_id'])) echo $_POST['persona_id'];?>"
-                                        >         
+                                        >    
+
+                                        <div class="errorCampo" id="campoDni" >
+                                            Ingrese un documento
+                                        </div>
+                                        <div class="errorCampo" id="DNIcargado">
+                                            El DNI no está cargado
+                                        </div>
+                                        <div class="errorCampo" id="DNIrepetido">
+                                            El DNI corresponde a otro usuario
+                                        </div>     
                                     </div>
-                                    <div class="errorCampo" id="errordetipo" >
-                                        Tipo de dato incorrecto
-                                    </div>
+
+
                                     <div class="col-lg-4 col-md-4 col-12">
                                         <input type="text" name="matricula" id="matricula" class="form-control" placeholder="Matricula"
                                         value="<?php if (isset($_POST['matricula'])) echo $_POST['matricula'];?>"
                                         >
+
+                                        <div class="errorCampo" id="campoMatricula" >
+                                            Ingrese Matricula
+                                        </div>
+                                        <div class="errorCampo" id="matriculaCargada" >
+                                            Esa matricula ya fue cargada
+                                        </div>
                                     </div>
-                                    <div class="errorCampo" id="errordetipo" >
-                                        Tipo de dato incorrecto
-                                    </div>        
+                                           
                                     <div class="col-lg-4 col-md-4 col-12">
                                         <label for="veterinaria_id">Veterinaria</label>
                                         <select name="veterinaria_id" >
@@ -82,7 +96,11 @@
                                             ';
                                             }
                                             ?>
-                                        </select>                      
+                                        </select>     
+
+                                        <div class="errorCampo" id="campoVeterinaria" >
+                                            Ingrese una Veterinaria
+                                        </div>
                                     </div>
 
                                <div class="col-12">
@@ -90,7 +108,7 @@
                                     </div>
                                     <p></p>
                                     <div class="col-12">
-                                        <a class="form-control text-center" href="home.php">Volver</a>
+                                        <a class="form-control text-center" href="cargar.php">Volver</a>
                                     </div>
                                 </div>
                             </form>                            

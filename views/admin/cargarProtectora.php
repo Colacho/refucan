@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <?php
-        include('../../componentes/head.php')
+        include('../../componentes/head2.php')
     ?>
     <body>
         <?php
@@ -56,6 +56,10 @@
                                     <div class="col-lg-4 col-md-4 col-12">                                    
                                         <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre de protectora" value="<?php if (isset($_POST['nombre'])) echo $_POST['nombre'];?>"
                                         >
+
+                                        <div class="errorCampo" id="campoNombre" >
+                                            Ingrese Nombre
+                                        </div>
                                     </div>
 
                                     <div class="col-lg-4 col-md-4 col-12">         
@@ -70,15 +74,22 @@
                                             <option value="provincia2">Provincia 2</option>
                                             <option value="provincia3">Provincia 3</option>
                                         </select>
+
+                                        <div class="errorCampo" id="campoProvincia">
+                                            Selecione una Provincia
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
                                         <select id="municipio" name="municipio" class="form-control">
                                             <option value="<?php if (isset($_POST['municipio'])) echo $_POST['municipio'];?>" disabled selected>Seleccione un municipio</option>
-                                            <option value="provincia1">Provincia 1</option>
-                                            <option value="provincia2">Provincia 2</option>
-                                            <option value="provincia3">Provincia 3</option>
+                                            <option value="provincia1">Localidad 1</option>
+                                            <option value="provincia2">Localidad 2</option>
+                                            <option value="provincia3">Localidad 3</option>
                                         </select>
+                                        <div class="errorCampo" id="campoMunicipio">
+                                            Selecione una Localidad
+                                        </div> 
                                     </div>
 
                                     <div class="col-lg-4 col-md-4 col-12">                                  
@@ -89,7 +100,13 @@
                                     <div class="col-lg-4 col-md-4 col-12">                                    
                                         <input type="text" name="numero_dire" id="numero_dire" class="form-control" placeholder="Numero" value="<?php if (isset($_POST['numero_dire'])) echo $_POST['numero_dire'];?>"
                                         >
+
+                                        <div class="errorCampo" id="campoCalle">
+                                            Ingrese una calle
+                                        </div> 
                                     </div>
+
+
                                     <div class="col-lg-4 col-md-4 col-12">  
                                         <input type="file" name="foto" id="imagen" class="form-control-file custom-file-input" accept="image/*">
                                     </div>
@@ -99,7 +116,7 @@
                                     </div>
                                     <p></p>
                                     <div class="col-12">
-                                        <a class="form-control text-center" href="home.php">Volver</a>
+                                        <a class="form-control text-center" href="cargar.php">Volver</a>
                                     </div>
                                 </div>
                             </form>                            
