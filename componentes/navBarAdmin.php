@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-expand-lg">
             <div class="container">
 
@@ -8,9 +7,8 @@
 
                 <a href="../views/admin/home.php" class="navbar-brand mx-auto mx-lg-0">
                     <img class="logo" src="../../images/logo.jpg"/>
-                    <span class="brand-text">Refucan</span>
+                    <span>Refucan</span>
                 </a>
-
 
 
                 <form action="../../src/logout.php" method="POST">
@@ -24,11 +22,11 @@
                     <ul class="navbar-nav ms-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_1">Home</a>
+                            <a class="nav-link" href="home.php#volver">Home</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_2">Cargar</a>
+                            <a class="nav-link" href="cargar.php">Cargar</a>
                         </li>
 
                         <li class="nav-item">
@@ -36,15 +34,15 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_3">Novedades</a>
+                            <a class="nav-link click-scroll" href="home.php#section_1">Novedades</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_4">Nosotros</a>
+                            <a class="nav-link click-scroll" href="home.php#section_2">Nosotros</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_5">Contacto</a>
+                            <a class="nav-link click-scroll" href="home.php#section_3">Contacto</a>
                         </li>
 
 
