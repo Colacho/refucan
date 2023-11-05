@@ -12,16 +12,16 @@
         include('../../componentes/navBarAdmin.php');
     ?>
 
-            <body>
-
-
+    <body id="volver">
+        <main>
+            <section>
                 <div class="video-wrap">
                     <video autoplay="" loop="" muted="" class="custom-video" poster="">
-                        <source src="../../videos/fondo2.mp4" type="video/mp4">
+                        <source src="../../videos/fondo.mkv" type="video/mp4">
 
                     </video>
                 </div>
-                <main>
+
                     <div class="container">
                         <div class="row ">
                             <div class="col-lg-12 col-12">
@@ -115,8 +115,15 @@
 
                         </div>
                     </div>
-                </main>
-               
+            </section>
+        </main>
+            
+         <!-- JAVASCRIPT FILES -->
+        <script src="../../js/jquery.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/jquery.sticky.js"></script>
+        <script src="../../js/click-scroll.js"></script>
+        <script src="../../js/custom.js"></script>
 
         <?php
             include('../../componentes/footer.php');
