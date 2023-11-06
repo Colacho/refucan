@@ -153,7 +153,7 @@
                     </script>
                 ';
                 return false;
-            }
+            } 
             if(empty($_POST["correo"])){
                 echo '<script>
                     this.document.getElementById("campoCorreo").style.display = "block";
@@ -186,6 +186,12 @@
                 echo '<script>
                     this.document.getElementById("campoDni").style.display = "block";
                     </script>
+                ';
+                return false;
+            } else if(!is_numeric($_POST['dni'])){
+                echo '<script>
+                    this.document.getElementById("campoDNI").style.display = "block";
+                </script>
                 ';
                 return false;
             }
@@ -280,87 +286,3 @@
          mysqli_close($Sconexion);
     }
 ?>
-
-
-
-
-
-
-
-
-<!-- <main>
-            <h1>Carga de Usuarios</h1>
-            <form id="formulario" method="POST" class="my-form">
-                <div class="containerInputs">
-                    <div class="form-group">
-                        <label for="nombre">Nombre de usuario</label>
-                        <input type="text" name="nombre" id="nombre" class="form-control"
-                        value="<?php if (isset($_POST['nombre'])) echo $_POST['nombre'];?>"
-                        >
-                    </div>
-                    <div class="errorCampo" id="campoNombre" >
-                        Ingrese Nombre
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="correo">Email</label>
-                        <input name="correo" id="correo" class="form-control"
-                        value="<?php if (isset($_POST['correo'])) echo $_POST['correo'];?>"
-                        >
-                    </div>
-                    <div class="errorCampo" id="campoCorreo" >
-                        Ingrese un email
-                    </div>
-                    <div class="errorCampo" id="CorreoCargado">
-                        El Email ya existe
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="pass">Contraseña</label>
-                        <input type="text" name="pass" id="pass" class="form-control"
-                        value="<?php if (isset($_POST['pass'])) echo $_POST['pass'];?>"
-                        >
-                    </div>
-                    <div class="errorCampo" id="campoPass" >
-                        Ingrese una contraseña
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="dni">Documento</label>
-                        <input type="text" name="dni" id="dni" class="form-control"
-                        value="<?php if (isset($_POST['dni'])) echo $_POST['dni'];?>"
-                        >
-                    </div>
-                    <div class="errorCampo" id="campoDni" >
-                        Ingrese un documento
-                    </div>
-                    <div class="errorCampo" id="DNIcargado">
-                        El DNI no está cargado
-                    </div>
-                    <div class="errorCampo" id="DNIrepetido">
-                        El DNI corresponde a otro usuario
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="cargo">Cargo</label>
-                        <select id="cargo" name="cargo">
-                            <option value="0">Seleccione una opción</option>
-                            <option value="1">Administrador</option>
-                            <option value="2">Veterinaria</option>
-                            <option value="3">Protectora</option>
-                        </select>
-                    </div>
-                    <div class="errorCampo" id="campoCargo" >
-                            Seleccione un cargo
-                    </div>
-                    <div class="errorCampo" id="campoInstitucion" >
-                            El dni no corresponde al responsable de la institucion
-                    </div>
-                    <div>
-                        <button type="submit" name="cargarUsuario" class="formboton">Agregar Usuario</button>
-                    </div>
-
-                </div>
-            </form>
-            <a class="btn btn-light border-dark btn-lg" role="button" href="cargar.php">Volver</a>
-        </main> -->

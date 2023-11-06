@@ -124,6 +124,13 @@
                                     <div class="col-12">
                                         <textarea class="form-control" rows="5" id="message" name="message" placeholder="Observaciones"><?php if (isset($_POST['observaciones'])) echo $_POST['observaciones'];?></textarea>
                                     </div>
+                                    
+                                    <div id="containerInputs">
+                                        <div class="row">
+                                            <button id="agregar" type="button" class="col-4 btn btn-primary" onclick="">Agregar Historia Clínica</button>
+                                            <input id="nuevo" value="" style="border-radius: 5px;" class="col-4">
+                                        </div>
+                                    </div>
 
                                     <div class="col-12">
                                         <button type="submit" name="guardar" class="form-control">Agregar Animal</button>
@@ -196,6 +203,12 @@
                     </script>
                 ';
                 return false;
+            } else if(is_numeric($_POST['nombre'])) {
+                echo '<script>
+                this.document.getElementById("campoNombre").style.display = "block";
+                </script>
+                ';
+            return false;
             }
 
             if($_POST["enProtectora"] == 0) {
@@ -204,6 +217,12 @@
                     echo '<script>
                             this.document.getElementById("campoDni").style.display = "block";
                         </script>
+                    ';
+                    return false;
+                } else if(!is_numeric($_POST['persona_id'])){
+                    echo '<script>
+                        this.document.getElementById("campoDni").style.display = "block";
+                    </script>
                     ';
                     return false;
                 } else {
@@ -224,16 +243,13 @@
 
             } else {
                 $inst = $_POST["enProtectora"];
-                $verifica = "SELECT id_persona FROM protectora WHERE protectora_id = '$inst'";
-                $resultadoVerifica = mysqli_query($conexion, $verifica) or die('Error de consulta');
-                $fila = mysqli_fetch_array($resultadoVerifica);
-                $num = $fila['persona_id'];
+                
             }
             return true;
         }
 
         $pasa = validar($Sconexion, $idPersona, $institucion);
-        $datos = array_slice($_POST, 6, -1 );
+        $datos = array_slice($_POST, 5, -1 );
         
         if($pasa) {
             $json = json_encode($datos);

@@ -147,6 +147,12 @@
                     </script>
                 ';
                 return false;
+            } else if(is_numeric($_POST['nombre'])){
+                echo '<script>
+                    this.document.getElementById("campoNombre").style.display = "block";
+                </script>
+                ';
+                return false;
             }
 
             if($_POST["enProtectora"] == 0) {
@@ -155,6 +161,12 @@
                     echo '<script>
                             this.document.getElementById("campoDni").style.display = "block";
                         </script>
+                    ';
+                    return false;
+                } else if(!is_numeric($_POST['persona_id'])){
+                    echo '<script>
+                        this.document.getElementById("campoDni").style.display = "block";
+                    </script>
                     ';
                     return false;
                 } else {
@@ -175,16 +187,13 @@
 
             } else {
                 $inst = $_POST["enProtectora"];
-                $verifica = "SELECT id_persona FROM protectora WHERE protectora_id = '$inst'";
-                $resultadoVerifica = mysqli_query($conexion, $verifica) or die('Error de consulta');
-                $fila = mysqli_fetch_array($resultadoVerifica);
-                $num = $fila['persona_id'];
+                
             }
             return true;
         }
 
         $pasa = validar($Sconexion, $idPersona, $institucion);
-        $datos = array_slice($_POST, 6, -1 );
+        $datos = array_slice($_POST, 5, -1 );
         
         if($pasa) {
             $json = json_encode($datos);

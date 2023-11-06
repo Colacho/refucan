@@ -84,6 +84,12 @@
                     </script>
                 ';
                 return false;
+            } else if(is_numeric($_POST['nombre'])){
+                echo '<script>
+                    this.document.getElementById("campoNombre").style.display = "block";
+                </script>
+                ';
+                return false;
             }
 
             return true;

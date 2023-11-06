@@ -106,9 +106,21 @@
                 </script>
                 ';
                 return false;
+            } else if(is_numeric($_POST['nombre'])){
+                echo '<script>
+                    this.document.getElementById("campoNombre").style.display = "block";
+                </script>
+                ';
+                return false;
             }
 
             if(empty($_POST["calle"])){
+                echo '<script>
+                    this.document.getElementById("campoCalle").style.display = "block";
+                </script>
+                ';
+                return false;
+            } else if(is_numeric($_POST['calle'])){
                 echo '<script>
                     this.document.getElementById("campoCalle").style.display = "block";
                 </script>
@@ -121,11 +133,23 @@
                 </script>
                 ';
                 return false;
+            } else if(!is_numeric($_POST['numero_dire'])){
+                echo '<script>
+                    this.document.getElementById("campoNumero_dire").style.display = "block";
+                </script>
+                ';
+                return false;
             }
             if(empty($_POST["dni"])){
                 echo '<script>
                         this.document.getElementById("campoDni").style.display = "block";
                     </script>
+                ';
+                return false;
+            } else if(!is_numeric($_POST['dni'])){
+                echo '<script>
+                    this.document.getElementById("campoDni").style.display = "block";
+                </script>
                 ';
                 return false;
             }

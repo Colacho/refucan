@@ -34,7 +34,7 @@
                             </div>
                             <br>
                             <div class="formlogin">
-                                <label for="password">Password</label>
+                                <label for="password">Contraseña</label>
                                 <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                             </div>
                             <br>

@@ -135,105 +135,129 @@
 </html>
 
 <?php
-if (isset($_POST['cargarProtectora'])) {
-        
-    date_default_timezone_set('America/Argentina/Buenos_Aires');
-    $fechaActual = date("Y-m-d");
-    $idPersona;
+    if (isset($_POST['cargarProtectora'])) {
+            
+        date_default_timezone_set('America/Argentina/Buenos_Aires');
+        $fechaActual = date("Y-m-d");
+        $idPersona;
 
-   function validar ($conexion, &$num) {
-       if(empty($_POST["nombre"])){
-           echo '<script>
-               this.document.getElementById("campoNombre").style.display = "block";
-           </script>
-           ';
-           return false;
-       }
-       
-        if($_POST["provincia"] == "provincia"){
+    function validar ($conexion, &$num) {
+        if(empty($_POST["nombre"])){
             echo '<script>
-                this.document.getElementById("campoProvincia").style.display = "block";
+                this.document.getElementById("campoNombre").style.display = "block";
             </script>
             ';
             return false;
-        }
-        if($_POST["municipio"] == "municipio"){
+        } else if(is_numeric($_POST['nombre'])){
             echo '<script>
-                this.document.getElementById("campoMunicipio").style.display = "block";
+                this.document.getElementById("campoNombre").style.display = "block";
             </script>
             ';
             return false;
         }
         
-        if(empty($_POST["calle"])){
-            echo '<script>
-                this.document.getElementById("campoCalle").style.display = "block";
-            </script>
-            ';
-            return false;
-        }
-        if(empty($_POST["numero_dire"])){
-            echo '<script>
-                this.document.getElementById("campoNumero_dire").style.display = "block";
-            </script>
-            ';
-            return false;
-        }
-        if(empty($_POST["dni"])){
-            echo '<script>
-                    this.document.getElementById("campoDni").style.display = "block";
-                </script>
-            ';
-            return false;
-        }
-        if(!empty($_POST["dni"])){
-             
-            $verifica = "SELECT persona_id from personas WHERE dni = '".$_POST["dni"]."' ;";
-            $resultadoVerifica = mysqli_query($conexion, $verifica) or die('Error de consulta');
-            if(mysqli_num_rows($resultadoVerifica) > 0) {
-                $fila = mysqli_fetch_array($resultadoVerifica);
-                $num = $fila['persona_id'];
-            } else {
+            if($_POST["provincia"] == "provincia"){
                 echo '<script>
-                    this.document.getElementById("DNIcargado").style.display = "block";
+                    this.document.getElementById("campoProvincia").style.display = "block";
                 </script>
                 ';
                 return false;
             }
-        }
-       return true;
-   }
-    
-   $pasa = validar($Sconexion, $idPersona);
-   
-   if($pasa) {
-
-    if($_FILES['foto']['name'] == "") {
-        $foto = "protectoraDefault.png";
-    } else {
-        $foto = $Snombre.$Susuario_id.$_FILES['foto']['name'];
-        $tmpNombre = $_FILES['foto']['tmp_name'];
-        $destino = "../fotos/protectora/".$foto;
-        move_uploaded_file($tmpNombre, $destino);
+            if($_POST["municipio"] == "municipio"){
+                echo '<script>
+                    this.document.getElementById("campoMunicipio").style.display = "block";
+                </script>
+                ';
+                return false;
+            }
+            
+            if(empty($_POST["calle"])){
+                echo '<script>
+                    this.document.getElementById("campoCalle").style.display = "block";
+                </script>
+                ';
+                return false;
+            } else if(is_numeric($_POST['calle'])){
+                echo '<script>
+                    this.document.getElementById("campoCalle").style.display = "block";
+                </script>
+                ';
+                return false;
+            }
+            if(empty($_POST["numero_dire"])){
+                echo '<script>
+                    this.document.getElementById("campoNumero_dire").style.display = "block";
+                </script>
+                ';
+                return false;
+            } else if(!is_numeric($_POST['numero_dire'])){
+                echo '<script>
+                    this.document.getElementById("campoNumero_dire").style.display = "block";
+                </script>
+                ';
+                return false;
+            }
+            if(empty($_POST["dni"])){
+                echo '<script>
+                        this.document.getElementById("campoDni").style.display = "block";
+                    </script>
+                ';
+                return false;
+            } else if(!is_numeric($_POST['dni'])){
+                echo '<script>
+                    this.document.getElementById("campoDni").style.display = "block";
+                </script>
+                ';
+                return false;
+            }
+            if(!empty($_POST["dni"])){
+                
+                $verifica = "SELECT persona_id from personas WHERE dni = '".$_POST["dni"]."' ;";
+                $resultadoVerifica = mysqli_query($conexion, $verifica) or die('Error de consulta');
+                if(mysqli_num_rows($resultadoVerifica) > 0) {
+                    $fila = mysqli_fetch_array($resultadoVerifica);
+                    $num = $fila['persona_id'];
+                } else {
+                    echo '<script>
+                        this.document.getElementById("DNIcargado").style.display = "block";
+                    </script>
+                    ';
+                    return false;
+                }
+            }
+        return true;
     }
+        
+    $pasa = validar($Sconexion, $idPersona);
+    
+    if($pasa) {
 
-       $sql = "INSERT INTO protectora (nombre, provincia, municipio, calle, numero_dire, id_persona, foto)
-       VALUES (
-                   '".$_POST["nombre"]."',
-                   '".$_POST["provincia"]."',
-                   '".$_POST["municipio"]."',
-                   '".$_POST["calle"]."',
-                   '".$_POST["numero_dire"]."',
-                   '".$idPersona."', 
-                   '$foto'
-               );";
-        $guardar = mysqli_query($Sconexion, $sql) or die('Error de consulta');   
-        echo '
-            <script>
-                window.location.replace("home.php");
-            </script>
-            '; 
-    }  
-    mysqli_close($Sconexion);
-}
+        if($_FILES['foto']['name'] == "") {
+            $foto = "protectoraDefault.png";
+        } else {
+            $foto = $Snombre.$Susuario_id.$_FILES['foto']['name'];
+            $tmpNombre = $_FILES['foto']['tmp_name'];
+            $destino = "../fotos/protectora/".$foto;
+            move_uploaded_file($tmpNombre, $destino);
+        }
+
+        $sql = "INSERT INTO protectora (nombre, provincia, municipio, calle, numero_dire, id_persona, foto)
+        VALUES (
+                    '".$_POST["nombre"]."',
+                    '".$_POST["provincia"]."',
+                    '".$_POST["municipio"]."',
+                    '".$_POST["calle"]."',
+                    '".$_POST["numero_dire"]."',
+                    '".$idPersona."', 
+                    '$foto'
+                );";
+            $guardar = mysqli_query($Sconexion, $sql) or die('Error de consulta');   
+            echo '
+                <script>
+                    window.location.replace("home.php");
+                </script>
+                '; 
+        }  
+        mysqli_close($Sconexion);
+    }
 ?>

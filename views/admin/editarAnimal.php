@@ -156,7 +156,7 @@
     if (isset($_POST['guardar'])) {
         
         $idPersona;
-        $institucion = 0;
+        $institucion;
         function validar($conexion, &$num, &$inst) {
 
             
@@ -164,6 +164,12 @@
                 echo '<script>
                         this.document.getElementById("campoNombre").style.display = "block";
                     </script>
+                ';
+                return false;
+            } else if(is_numeric($_POST['nombre'])){
+                echo '<script>
+                    this.document.getElementById("campoNombre").style.display = "block";
+                </script>
                 ';
                 return false;
             }
@@ -176,13 +182,19 @@
                         </script>
                     ';
                     return false;
+                } else if(!is_numeric($_POST['persona_id'])){
+                    echo '<script>
+                        this.document.getElementById("campoDni").style.display = "block";
+                    </script>
+                    ';
+                    return false;
                 } else {
                     $verifica = "SELECT persona_id from personas WHERE dni = '".$_POST["persona_id"]."' ;";
                     $resultadoVerifica = mysqli_query($conexion, $verifica) or die('Error de consulta');
                     if(mysqli_num_rows($resultadoVerifica) > 0) {
                         $fila = mysqli_fetch_array($resultadoVerifica);
                         $num = $fila['persona_id'];
-                        
+                        $inst = 0;
                     } else {
                         echo '<script>
                                 this.document.getElementById("campoDni").style.display = "block";
@@ -192,11 +204,8 @@
                     }   
                 }
             }else {
-                $inst = $_POST["enProtectora"];
-                $verifica = "SELECT id_persona FROM protectora WHERE protectora_id = '$inst'";
-                $resultadoVerifica = mysqli_query($conexion, $verifica) or die('Error de consulta');
-                $fila = mysqli_fetch_array($resultadoVerifica);
-                $num = $fila['id_persona'];
+                $inst = $_POST["enProtectora"]; 
+                $num = 0;
             }
             return true;
         }
@@ -236,7 +245,7 @@
     
             echo '
             <script>
-                window.location.replace("buscar.php");
+                window.location.replace("home.php");
             </script>
             '; 
 
