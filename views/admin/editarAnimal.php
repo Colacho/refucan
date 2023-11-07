@@ -1,129 +1,136 @@
 <!DOCTYPE html>
 <html>
 <?php
-        include('../../componentes/head.php')
+        include('../../componentes/head2.php')
     ?>
     <body>
         <?php
             include('../../componentes/headerAdmin.php');
+            include('../../componentes/navBarAdmin.php');
         ?>
         <main >
-            <h1>Editar Animal</h1>
-            <!-- Trae los datos a partir del id -->
-            <?php
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    $consulta = "SELECT * FROM animal WHERE animal_id = '".$_POST['animal_id']."'";
-                    $resultado = mysqli_query($Sconexion, $consulta);     
-                }
-                $row = mysqli_fetch_assoc($resultado);
-                $json = json_decode($row['clinica']);
-                
-            ?>
-            <form method="POST" enctype="multipart/form-data">
-                <div id="containerInputs" class="containerInputs">
-                    <input style="display: none;" name="animal_id"  value="<?Php echo $row['animal_id'] ?>" readonly>
-
-                    <div class="col-lg-4 col-md-4 col-12">                                    
-                        <h7 class="text-center">Esta en una protectora?</h7>
-                        <br>
-                        <select name="enProtectora" id="enProtectora">
-                            <option value="0">No</option>
+            <section class="contact-protectora section-padding" id="volver">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <!-- Trae los datos a partir del id -->
                             <?php
-                                $nombreProtectora = "SELECT nombre, protectora_id FROM protectora";
-                                $consultaNombreProtectora = mysqli_query($Sconexion, $nombreProtectora);
-                                while($rowProtectora = mysqli_fetch_assoc($consultaNombreProtectora)) {
-
-                                    $selected = $row['institucion'] == $rowProtectora['protectora_id'] ? "selected" : "";
-                                    echo "
-                                        <option value=".$rowProtectora["protectora_id"]." ".$selected.">".$rowProtectora["nombre"]."</option>
-                                    ";
+                                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                    $consulta = "SELECT * FROM animal WHERE animal_id = '".$_POST['animal_id']."'";
+                                    $resultado = mysqli_query($Sconexion, $consulta);     
                                 }
-                            ?>
-                        </select>    
-                    </div>
-
-
-                    <div id="duenio">
-                        <label>DNI</label><br> 
-                        <?php
+                                $row = mysqli_fetch_assoc($resultado);
+                                $json = json_decode($row['clinica']);
                             
-                            $consultaDni = "SELECT dni FROM personas WHERE persona_id = '".$row['persona_id']."'";
-                            $resultadoDni = mysqli_query($Sconexion, $consultaDni); 
-                            $rowDni = mysqli_fetch_assoc($resultadoDni)
-                        ?>
-                        <input value="<?php echo $rowDni['dni']?>" name="persona_id"> 
-                        <div class="errorCampo" id="campoDni" name="campoDni">
-                            El DNI no está cargado
+                            ?>
+                            <form method="POST"  class="custom-form contact-form bg-white shadow-lg" enctype="multipart/form-data">
+                                <h2>Editar Animal</h2>
+                                <div class="row">
+                                    <input style="display: none;" name="animal_id"  value="<?Php echo $row['animal_id'] ?>" readonly>
+
+                                    <div class="col-lg-4 col-md-4 col-12 form-group">                                    
+                                        <h7 class="text-center">Esta en una protectora?</h7>
+                                        <br>
+                                        <select name="enProtectora" id="enProtectora" class="form-select">
+                                            <option value="0">No</option>
+                                            <?php
+                                                $nombreProtectora = "SELECT nombre, protectora_id FROM protectora WHERE activo = 1";
+                                                $consultaNombreProtectora = mysqli_query($Sconexion, $nombreProtectora);
+                                                while($rowProtectora = mysqli_fetch_assoc($consultaNombreProtectora)) {
+
+                                                    $selected = $row['institucion'] == $rowProtectora['protectora_id'] ? "selected" : "";
+                                                    echo "
+                                                        <option value=".$rowProtectora["protectora_id"]." ".$selected.">".$rowProtectora["nombre"]."</option>
+                                                    ";
+                                                }
+                                            ?>
+                                        </select>    
+                                    </div>
+                                    <div id="duenio" class="form-group">
+                                        <label>DNI</label><br> 
+                                        <?php
+                                            
+                                            $consultaDni = "SELECT dni FROM personas WHERE persona_id = '".$row['persona_id']."'";
+                                            $resultadoDni = mysqli_query($Sconexion, $consultaDni); 
+                                            $rowDni = mysqli_fetch_assoc($resultadoDni)
+                                        ?>
+                                        <input value="<?php echo $rowDni['dni']?>" name="persona_id" class="form-control"> 
+                                        <div class="errorCampo" id="campoDni" name="campoDni">
+                                            El DNI no está cargado
+                                        </div>
+                                    </div>
+                                    <div class="errorCampo" id="errordetipo" >
+                                        Tipo de dato incorrecto
+                                    </div>
+                                    <div>
+                                        <label>Nombre:</label><br>
+                                        <input value="<?php echo $row['nombre']?>" name="nombre" class="form-control"> 
+                                    </div>
+                                    <div class="errorCampo" id="campoNombre" >
+                                        Complete el campo
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="especie">Seleccione especie</label>
+                                        <select id="especie" name="especie" class="form-select">
+                                            <?php
+                                                $especieConsulta = "SELECT nombre FROM especies";
+                                                $resultadoEspeie = mysqli_query($Sconexion, $especieConsulta);
+                                                while($rowEspecie = mysqli_fetch_assoc($resultadoEspeie)){
+                                                    if ($rowEspecie["nombre"] == $row['especie']) {
+                                                        echo "<option value=".$rowEspecie["nombre"]." selected>".$rowEspecie["nombre"]."</option>";
+                                                    }else {
+                                                        echo "<option value=".$rowEspecie["nombre"].">".$rowEspecie["nombre"]."</option>";
+                                                    }
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="activo">Activo:</label>
+                                        <select id="activo" name="activo" class="form-control">
+                                            <option value="<?php echo $row['activo']?>"><?php echo $row['activo'] == 1 ? "Si" : "No"?></option>
+                                            <option value="<?php echo $row['activo'] == 1 ? 0 : 1?>"><?php echo $row['activo'] == 1 ? "No" : "Si"?></option>	
+                                        </select> 
+                                        
+                                    </div>
+                                    <div>
+                                        <label for="">Observaciones:</label>
+                                        <input value="<?php echo $row['observaciones']?>" name="observaciones" class="form-control"> 
+                                        </label>
+                                    </div>
+
+                                    <div>
+                                        <img src="<?php echo '../../fotos/animales/'.$row['foto'].'' ?>" style="width: 100px">
+                                        <input type="file" name="foto" accept="image/*" class="form-control">
+                                    </div>
+
+                                    <?php
+                                        foreach($json as $key=>$value) {
+                                            echo '
+                                                <div class="form-group">
+                                                    <label>'.$key.'</label>
+                                                    <input id="'.$key.'" class="form-control" type="date" value="'.$value.'" name="'.$key.'" />
+                                                    <button type="button" id="quitarViejo" onclick="sacar()" class="btn btn-danger mb-1">Quitar</button>
+                                                </div>
+                                            ';
+                                        }
+                                    ?>                   
+                                        <div id="containerInputs" class="containerInputs">
+                                            <div>
+                                                <input id="nuevo" value="" style="border-radius: 5px;">
+                                                <button id="agregar" type="button" class="col-4 btn btn-primary" onclick="">Agregar Historia Clínica</button>
+                                            </div>
+
+                                        </div>
+                                        <button type="submit" name="guardar" class="form-control">Guardar</button>
+                                        <a class="btn btn-light border-dark btn-lg" role="button" href="buscarAnimal.php">Volver</a>
+                                    
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    <div class="errorCampo" id="errordetipo" >
-                        Tipo de dato incorrecto
-                    </div>
-                    <div>
-                        <label>Nombre:</label><br>
-                        <input value="<?php echo $row['nombre']?>" name="nombre"> 
-                    </div>
-                    <div class="errorCampo" id="campoNombre" >
-                        Complete el campo
-                    </div>
-                    <div class="form-group">
-                        <label for="especie">Seleccione especie</label>
-                        <select id="especie" name="especie" class="form-select">
-                            <?php
-                                $especieConsulta = "SELECT nombre FROM especies";
-                                $resultadoEspeie = mysqli_query($Sconexion, $especieConsulta);
-                                while($rowEspecie = mysqli_fetch_assoc($resultadoEspeie)){
-                                    if ($rowEspecie["nombre"] == $row['especie']) {
-                                        echo "<option value=".$rowEspecie["nombre"]." selected>".$rowEspecie["nombre"]."</option>";
-                                    }else {
-                                        echo "<option value=".$rowEspecie["nombre"].">".$rowEspecie["nombre"]."</option>";
-                                    }
-                                }
-                            ?>
-                        </select>
-                    </div>
-                    <div>
-						<label for="activo">Activo:</label>
-						<select id="activo" name="activo">
-							<option value="<?php echo $row['activo']?>"><?php echo $row['activo'] == 1 ? "Si" : "No"?></option>
-							<option value="<?php echo $row['activo'] == 1 ? 0 : 1?>"><?php echo $row['activo'] == 1 ? "No" : "Si"?></option>	
-						</select> 
-						
-					</div>
-                    <div>
-						<label for="">Observaciones:</label>
-						<input value="<?php echo $row['observaciones']?>" name="observaciones"> 
-						</label>
-					</div>
-
-                    <div>
-                        <img src="<?php echo '../../fotos/animales/'.$row['foto'].'' ?>" style="width: 100px">
-                        <input type="file" name="foto" accept="image/*">
-                    </div>
-
-                    <?php
-                        foreach($json as $key=>$value) {
-                            echo '
-                                <div class="form-group">
-                                    <label>'.$key.'</label>
-                                    <input id="'.$key.'" class="form-control" type="date" value="'.$value.'" name="'.$key.'" />
-                                    <button type="button" id="quitarViejo" onclick="sacar()" class="formboton">Quitar</button>
-                                </div>
-                            ';
-                        }
-                    ?>                   
                 </div>
-                <div class="containerInputs">
-                    <div>
-                        <input id="nuevo" value="" style="border-radius: 5px;">
-                        <button id="agregar" type="button" class="formboton" onclick="">Agregar</button>
-                    </div>
-
-                    <button type="submit" name="guardar" class="formboton">Guardar</button>
-                </div>
-                </div>
-            </form>
-            <a class="btn btn-light border-dark btn-lg" role="button" href="buscarAnimal.php">Volver</a>
+            </section>
         </main>
     </body>
 <!-- SCRIPT PARA AGREGAR HISTORIA CLINICA -->

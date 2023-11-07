@@ -80,7 +80,7 @@
                                     </div>
                         
                                     <div class="form-group">
-                                        <select id="provincia" name="provincia" class="form-control">
+                                        <select id="provincia" name="provincia" class="form-select">
                                             <option value="<?php if (isset($_POST['provincia'])) echo $_POST['provincia'];?>" disabled selected>Seleccione una provincia</option>
                                             <option value="provincia1">Provincia 1</option>
                                             <option value="provincia2">Provincia 2</option>
@@ -93,11 +93,9 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <select id="municipio" name="municipio" class="form-control">
+                                        <select id="municipio" name="municipio" class="form-select">
                                             <option value="<?php if (isset($_POST['municipio'])) echo $_POST['municipio'];?>" disabled selected>Seleccione un municipio</option>
-                                            <option value="provincia1">Provincia 1</option>
-                                            <option value="provincia2">Provincia 2</option>
-                                            <option value="provincia3">Provincia 3</option>
+                                            
                                         </select>
 
                                         <div class="errorCampo" id="campoMunicipio">
@@ -139,7 +137,7 @@
                                     <p></p>
 
                                     <div class="col-12">
-                                        <button type="submit" name="cargarPersona" class="form-control">Agregar Veterinaria</button>
+                                        <button type="submit" name="cargarVeterinaria" class="form-control">Agregar Veterinaria</button>
                                     </div>
                                     <p></p>
                                     <div class="col-12">
@@ -162,7 +160,7 @@
 </html>
 
 <?php
-if (isset($_POST['cargarProtectora'])) {
+if (isset($_POST['cargarVeterinaria'])) {
         
     $idPersona;
 

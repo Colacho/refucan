@@ -26,11 +26,11 @@
         
             const btn = document.createElement('button');
             btn.setAttribute('id', 'quitar');
-            btn.setAttribute('class', 'col-4 btn btn-primary');
+            btn.setAttribute('class', 'col-4 btn btn-danger');
             btn.setAttribute('style', 'margin: 5px')
             btn.addEventListener('click', eliminar)
             btn.innerHTML = 'Quitar';
-        
+            
         
             div.appendChild(label);
             div.appendChild(input);

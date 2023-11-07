@@ -54,7 +54,7 @@
 
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4 col-12">
-                                        <input type="text" name="persona_id" class="form-control" placeholder="DNI Responsable"
+                                        <input type="text" name="persona_id" class="form-control" placeholder="DNI"
                                         value="<?php if (isset($_POST['persona_id'])) echo $_POST['persona_id'];?>"
                                         >    
 
@@ -104,7 +104,7 @@
                                     </div>
 
                                <div class="col-12">
-                                        <button type="submit" name="cargarPersona" class="form-control">Agregar Protectora</button>
+                                        <button type="submit" name="cargarProfesional" class="form-control">Agregar Profesional</button>
                                     </div>
                                     <p></p>
                                     <div class="col-12">
@@ -219,7 +219,7 @@
              $guardar = mysqli_query($Sconexion, $sql) or die('Error de consulta guardado');   
              echo '
                  <script>
-                     window.location.replace("../views/cargar.php");
+                     window.location.replace("home.php");
                  </script>
                  '; 
          }  

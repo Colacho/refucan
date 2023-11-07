@@ -6,6 +6,7 @@
     <body>
         <?php
             include('../../componentes/headerAdmin.php');
+            
         ?>
 
         <nav class="navbar navbar-expand-lg">
@@ -286,106 +287,3 @@
        mysqli_close($Sconexion);
     }
 ?>
-
-
-
-
-
-
-
-
-
- <!--       <main>
-            <h1>Carga de Animales</h1>
-
-            <form id="formCarga" action="" method="POST" enctype="multipart/form-data">
-                <div id="containerInputs" class="containerInputs">
-                    
-                    <div class="col-lg-4 col-md-4 col-12">                                    
-                        <h7 class="text-center">Esta en una protectora?</h7>
-                        <br>
-                        <select name="enProtectora" id="enProtectora">
-                            <option value="0">No</option>
-                            <?php
-                                $nombreProtectora = "SELECT nombre, protectora_id FROM protectora";
-                                $consultaNombreProtectora = mysqli_query($Sconexion, $nombreProtectora);
-                                while($rowProtectora = mysqli_fetch_assoc($consultaNombreProtectora))
-                                echo "
-                                    <option value=".$rowProtectora["protectora_id"].">".$rowProtectora["nombre"]."</option>
-                                ";
-                            ?>
-                        </select>    
-                    </div>
-
-                    <div class="form-group" id="duenio">
-                        <label for="persona_id">DNI del titular</label>
-                        <input type="text" name="persona_id" class="form-control"
-                        value="<?php if (isset($_POST['persona_id'])) echo $_POST['persona_id'];?>"
-                        >
-                    </div>
-                    <div class="errorCampo" id="campoDni" >
-                        Ingrese un documento
-                    </div>
-                    <div class="errorCampo" id="DNIcargado">
-                        El DNI no está cargado
-                    </div>
-                    <div class="errorCampo" id="campoProtectora" >
-                        El DNI no corresponde al responsable de la protectora
-                    </div>
-                    <div class="errorCampo" id="errordetipo" >
-                       Tipo de dato incorrecto
-                    </div>
-
-                    <div class="form-group">
-                        <label for="especie">Seleccione especie</label>
-                        <select id="especie" name="especie" class="form-select">
-                            <option value="<?php if (isset($_POST['especie'])) echo $_POST['especie']; else echo " ";?>">
-                            <?php if (isset($_POST['especie'])) echo $_POST['especie']; else echo "Seleccione una opción";?>
-                        </option>
-                            <option value="Canino">Canino</option>
-                            <option value="Felino">Felino</option>
-                            <option value="Equino">Equino</option>
-                            <option value="Bovino">Bovino</option>
-                        </select>
-                    </div>
-                    <div class="errorCampo" id="campoEspecie" >
-                        Seleccione una opción
-                    </div>
-
-                    <div class="form-group">
-                        <label for="nombre">Nombre del animal</label>
-                        <input type="text" name="nombre" class="form-control"
-                        value="<?php if (isset($_POST['nombre'])) echo $_POST['nombre'];?>"
-                        >
-                    </div>
-                    <div class="errorCampo" id="campoNombre" >
-                        Complete el campo
-                    </div>
-
-                    
-                    <div class="form-group">
-                        <label for="observaciones">observaciones</label>
-                        <input type="text" name="observaciones" id="observaciones" class="form-control"
-                        value="<?php if (isset($_POST['observaciones'])) echo $_POST['observaciones'];?>"
-                        >
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-12">  
-                    <input type="file" name="foto" id="imagen" class="form-control-file custom-file-input" accept="image/*">
-                </div>
-
-                <div class="containerInputs">
-                    <div>
-                        <input id="nuevo" value="" style="border-radius: 5px;">
-                        <button id="agregar" type="button" class="formboton" onclick="">Agregar</button>
-                    </div>
-
-                    <div>
-                        <button type="submit" name="guardar" class="formboton">Guardar</button>
-                    </div>
-
-                </div>
-            </form>
-            <a class="btn btn-light border-dark btn-lg" role="button" href="cargar.php">Volver</a>
-        </main> -->

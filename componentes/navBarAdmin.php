@@ -41,6 +41,7 @@
                             <li><a class="dropdown-item" href="buscarPersona.php">Personas</a></li>
                             <li><a class="dropdown-item" href="buscarVeterinaria.php">Veterinarias</a></li>
                             <li><a class="dropdown-item" href="buscarProfesional.php">Profesional</a></li>
+                            <li><a class="dropdown-item" href="buscarEspecie.php">Especie</a></li>
                           </ul>
                         </li>
 

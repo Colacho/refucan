@@ -68,41 +68,39 @@
                                     </div>
                         
                                     <div class="form-group">
-                                        <select id="provincia" name="provincia" class="form-control">
-                                            <option value="<?php if (isset($_POST['provincia'])) echo $_POST['provincia'];?>" disabled selected>Seleccione una provincia</option>
-                                            <option value="provincia1">Provincia 1</option>
-                                            <option value="provincia2">Provincia 2</option>
-                                            <option value="provincia3">Provincia 3</option>
+                                        <select id="provincia" name="provincia" class="form-select">
+                                            <option value="<?php if (isset($_POST['provincia'])) echo $_POST['provincia'];?>">Seleccione una provincia</option>
                                         </select>
-
                                         <div class="errorCampo" id="campoProvincia">
                                             Selecione una Provincia
                                         </div>
                                     </div>
-
-                                    <div class="form-group">
-                                        <select id="municipio" name="municipio" class="form-control">
-                                            <option value="<?php if (isset($_POST['municipio'])) echo $_POST['municipio'];?>" disabled selected>Seleccione un municipio</option>
-                                            <option value="provincia1">Localidad 1</option>
-                                            <option value="provincia2">Localidad 2</option>
-                                            <option value="provincia3">Localidad 3</option>
+                                    <div class="form-group">    
+                                        <select id="municipio" name="municipio" class="form-select">
+                                            <option value="<?php if (isset($_POST['municipio'])) echo $_POST['municipio'];?>">Seleccione una localidad</option>
                                         </select>
                                         <div class="errorCampo" id="campoMunicipio">
                                             Selecione una Localidad
                                         </div> 
                                     </div>
+                                    
 
                                     <div class="col-lg-4 col-md-4 col-12">                                  
-                                        <input type="text" name="calle" id="calle" class="form-control" placeholder="Calle" value="<?php if (isset($_POST['calle'])) echo $_POST['calle'];?>"
-                                        >
+                                        <input type="text" name="calle" id="calle" class="form-control" placeholder="Calle" value="<?php if (isset($_POST['calle'])) echo $_POST['calle'];?>">
                                     </div>
 
                                     <div class="col-lg-4 col-md-4 col-12">                                    
-                                        <input type="text" name="numero_dire" id="numero_dire" class="form-control" placeholder="Numero" value="<?php if (isset($_POST['numero_dire'])) echo $_POST['numero_dire'];?>"
-                                        >
+                                        <input type="text" name="numero_dire" id="numero_dire" class="form-control" placeholder="Numero" value="<?php if (isset($_POST['numero_dire'])) echo $_POST['numero_dire'];?>">
 
                                         <div class="errorCampo" id="campoCalle">
                                             Ingrese una calle
+                                        </div> 
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-12">                                    
+                                        <input type="text" name="telefono" id="telefono" class="form-control" placeholder="Telefono" value="<?php if (isset($_POST['telefono'])) echo $_POST['telefono'];?>">
+
+                                        <div class="errorCampo" id="campoTelefono">
+                                            Ingrese un telefono
                                         </div> 
                                     </div>
 
@@ -112,7 +110,7 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <button type="submit" name="cargarPersona" class="form-control">Agregar Protectora</button>
+                                        <button type="submit" name="cargarProtectora" class="form-control">Agregar Protectora</button>
                                     </div>
                                     <p></p>
                                     <div class="col-12">
@@ -128,7 +126,7 @@
         </main>
     </body>
      <!-- Script localidades -->
-    <script src="../src/localidades.js"></script>
+    <script src="../../src/localidades.js"></script>
         <?php
             include('../../componentes/footer.php');
         ?>
@@ -197,6 +195,19 @@
                 ';
                 return false;
             }
+            if(empty($_POST["telefono"])){
+                echo '<script>
+                    this.document.getElementById("campoTelefono").style.display = "block";
+                </script>
+                ';
+                return false;
+            } else if(!is_numeric($_POST['telefono'])){
+                echo '<script>
+                    this.document.getElementById("campoTelefono").style.display = "block";
+                </script>
+                ';
+                return false;
+            }
             if(empty($_POST["dni"])){
                 echo '<script>
                         this.document.getElementById("campoDni").style.display = "block";
@@ -230,28 +241,32 @@
         
     $pasa = validar($Sconexion, $idPersona);
     
+    
+
+
     if($pasa) {
 
         if($_FILES['foto']['name'] == "") {
             $foto = "protectoraDefault.png";
         } else {
-            $foto = $Snombre.$Susuario_id.$_FILES['foto']['name'];
+            $foto = $_POST["nombre"].$Susuario_id.$_FILES['foto']['name'];
             $tmpNombre = $_FILES['foto']['tmp_name'];
-            $destino = "../fotos/protectora/".$foto;
+            $destino = "../../fotos/protectora/".$foto;
             move_uploaded_file($tmpNombre, $destino);
         }
 
-        $sql = "INSERT INTO protectora (nombre, provincia, municipio, calle, numero_dire, id_persona, foto)
+        $sql = "INSERT INTO protectora (nombre, provincia, municipio, calle, numero_dire, telefono, id_persona, foto)
         VALUES (
                     '".$_POST["nombre"]."',
                     '".$_POST["provincia"]."',
                     '".$_POST["municipio"]."',
                     '".$_POST["calle"]."',
                     '".$_POST["numero_dire"]."',
+                    '".$_POST["telefono"]."',
                     '".$idPersona."', 
                     '$foto'
                 );";
-            $guardar = mysqli_query($Sconexion, $sql) or die('Error de consulta');   
+            $guardar = mysqli_query($Sconexion, $sql) or die(mysqli_error($Sconexion));   
             echo '
                 <script>
                     window.location.replace("home.php");
@@ -259,5 +274,5 @@
                 '; 
         }  
         mysqli_close($Sconexion);
-    }
+     }
 ?>

@@ -1,90 +1,95 @@
 <!DOCTYPE html>
 <html>
 <?php
-        include('../../componentes/head.php')
+        include('../../componentes/head2.php')
     ?>
     <body>
         <?php
             include('../../componentes/headerAdmin.php');
+            include('../../componentes/navBarAdmin.php');
         ?>
         <main>
-            <h1>Editar Usuario</h1>
-            <!-- Trae los datos a partir del id -->
-            <?php
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                   
-                    $consulta = "SELECT usuarios.nombre AS nombre, correo, id_persona, usuarios.usuario_id AS usuario_id,
-                    usuarios.activo AS activo, usuarios.cargo_id AS cargo_id, cargos.nombre AS cargo
-                    FROM usuarios JOIN cargos ON usuarios.cargo_id = cargos.cargo_id
-                    WHERE usuario_id = '".$_POST['usuario_id']."'";
-                    $resultado = mysqli_query($Sconexion, $consulta);     
-                }
-                $row = mysqli_fetch_assoc($resultado);
-                
-            ?>
-            <form method="POST">
-                <div>
-                    <input style="display: none;" name="usuario_id"  value="<?Php echo $row['usuario_id'] ?>" readonly>
-                    <input style="display: none;" name="id_persona"  value="<?Php echo $row['id_persona'] ?>" readonly>
-                    <div>
-                        <label>Nombre:</label><br>
-                        <input value="<?php echo $row['nombre']?>" name="nombre"> 
-                    </div>
-                    <div class="errorCampo" id="campoNombre">
-                        Ingrese un nombre de usuario
-                    </div> 
-                    <div>
-                        <label>Correo:</label><br>
-                        <input value="<?php echo $row['correo']?>" name="correo"> 
-                        <input style="display: none;" value="<?php echo $row['correo']?>" name="correoAnt"> 
-                    </div>
-                    <div class="errorCampo" id="campoCorreo">
-                        Ingrese un correo valido
-                    </div> 
-                    <div>
-                        <label>Password:</label><br>
-                        <input value="" name="pass"> 
-                    </div>
-                    <div>
-                        <label>Verifica Password:</label><br>
-                        <input value="" name="pass2"> 
-                    </div>
-                    <div class="errorCampo" id="campoPass">
-                        No coincide la contraseña
-                    </div> 
-                    
+            <section class="contact-protectora section-padding" id="volver">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <!-- Trae los datos a partir del id -->
+                            <?php
+                                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                    
+                                    $consulta = "SELECT usuarios.nombre AS nombre, correo, id_persona, usuarios.usuario_id AS usuario_id,
+                                    usuarios.activo AS activo, usuarios.cargo_id AS cargo_id, cargos.nombre AS cargo
+                                    FROM usuarios JOIN cargos ON usuarios.cargo_id = cargos.cargo_id
+                                    WHERE usuario_id = '".$_POST['usuario_id']."'";
+                                    $resultado = mysqli_query($Sconexion, $consulta);     
+                                }
+                                $row = mysqli_fetch_assoc($resultado);
+                                ?>
+                            <form method="POST" class="custom-form contact-form bg-white shadow-lg">
+                                <h2>Editar Usuario</h2>
+                                <div class="row">
+                                    <input style="display: none;" name="usuario_id"  value="<?Php echo $row['usuario_id'] ?>" readonly>
+                                    <input style="display: none;" name="id_persona"  value="<?Php echo $row['id_persona'] ?>" readonly>
+                                    <div class="form-group">
+                                        <label>Nombre:</label><br>
+                                        <input value="<?php echo $row['nombre']?>" name="nombre" class="form-control"> 
+                                    </div>
+                                    <div class="errorCampo" id="campoNombre">
+                                        Ingrese un nombre de usuario
+                                    </div> 
+                                    <div class="form-group">
+                                        <label>Correo:</label><br>
+                                        <input value="<?php echo $row['correo']?>" name="correo" class="form-control"> 
+                                        <input style="display: none;" value="<?php echo $row['correo']?>" name="correoAnt"> 
+                                    </div>
+                                    <div class="errorCampo" id="campoCorreo">
+                                        Ingrese un correo valido
+                                    </div> 
+                                    <div>
+                                        <label>Password:</label><br>
+                                        <input value="" name="pass" class="form-control"> 
+                                    </div>
+                                    <div>
+                                        <label>Verifica Password:</label><br>
+                                        <input value="" name="pass2" class="form-control"> 
+                                    </div>
+                                    <div class="errorCampo" id="campoPass">
+                                        No coincide la contraseña
+                                    </div> 
 
-                    <div class="form-group">
-                    <label for="cargo">Cargo</label>
-                    <select  name="cargo">
-                        <option value="<?php echo $row['cargo_id']?>"><?php echo $row['cargo']?></option>
-                        <?php 
-                            $cargos = "SELECT cargo_id, nombre FROM cargos";
-                            $consultaCargos = mysqli_query($Sconexion, $cargos);
-                            while($row_cargo = mysqli_fetch_assoc($consultaCargos)) {
+                                    <div class="form-group">
+                                    <label for="cargo">Cargo</label>
+                                    <select  name="cargo" class="form-select">
+                                        <option value="<?php echo $row['cargo_id']?>"><?php echo $row['cargo']?></option>
+                                        <?php 
+                                            $cargos = "SELECT cargo_id, nombre FROM cargos";
+                                            $consultaCargos = mysqli_query($Sconexion, $cargos);
+                                            while($row_cargo = mysqli_fetch_assoc($consultaCargos)) {
 
-                                echo '
-                                <option value="'.$row_cargo['cargo_id'].'"> '.$row_cargo['nombre'].' </option>
-                                ';
-                            }
-                        ?>
+                                                echo '
+                                                <option value="'.$row_cargo['cargo_id'].'"> '.$row_cargo['nombre'].' </option>
+                                                ';
+                                            }
+                                        ?>
 
-                    </select>
+                                    </select>
+                                    </div>
+                                        <div>
+                                            <label for="activo">Activo:</label>
+                                            <select id="activo" name="activo" class="form-select">
+                                                <option value="<?php echo $row['activo']?>"><?php echo $row['activo'] == 1 ? "Si" : "No"?></option>
+                                                <option value="<?php echo $row['activo'] == 1 ? 0 : 1?>"><?php echo $row['activo'] == 1 ? "No" : "Si"?></option>	
+                                            </select> 
+                                            </label>
+                                        </div>
+                                    <button type="submit" name="guardar" class="form-control">Guardar</button>
+                                    <a class="btn btn-light border-dark btn-lg" role="button" href="home.php">Volver</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-
-
-                    <div>
-						<label for="activo">Activo:</label>
-						<select id="activo" name="activo">
-							<option value="<?php echo $row['activo']?>"><?php echo $row['activo'] == 1 ? "Si" : "No"?></option>
-							<option value="<?php echo $row['activo'] == 1 ? 0 : 1?>"><?php echo $row['activo'] == 1 ? "No" : "Si"?></option>	
-						</select> 
-						</label>
-					</div>
-                    <button type="submit" name="guardar" class="formboton">Guardar</button>
-                </div>
-            </form>
-            <a class="btn btn-light border-dark btn-lg" role="button" href="home.php">Volver</a>
+            </section>
         </main>
         <?php
             include('../../componentes/footer.php');

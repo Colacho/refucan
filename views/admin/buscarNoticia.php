@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
     <?php
-        include('../../componentes/head.php')
+        include('../../componentes/head2.php');
+        include('../../componentes/headerAdmin.php');
+        include('../../componentes/navBarAdmin.php');
     ?>
     <body>
         <?php
-            include('../../componentes/headerAdmin.php');
             
 
 /*---------------------------Primera consulta para contar cantidad de resultados-------------------------------------------------------------------------------*/                       
@@ -38,77 +39,84 @@
 /*---------------------------Fin consultas paginacion-------------------------------------------------------------------------------*/
         ?>
         <main>
-            <h1>Buscar Noticia</h1>
-            <table class="table">
-                <thead>
-                    <tr>
-                    <th scope="col">Foto</th>
-                    <th scope="col">Titulo</th>
-                    <th scope="col">Descripcion</th>
-                    <th scope="col">Usuario</th>
-                    <th scope="col">Fecha</th>
-                    </tr>
-                </thead>
-                <?php   
-                    while($row = mysqli_fetch_assoc($resultadoLimitado)) {          
-                ?>
-                <tbody>
-                    <tr>
-                        <input style="display: none;" name="noticia_id"  value="<?Php echo $row['noticia_id'] ?>">
-                        <td rowspan="">
-                            <img  src="<?php echo '../../fotos/noticias/'.$row['foto'].'' ?>">
-                        </td>
-                        <td>
-                            <?php echo $row['titulo']?>
-                        </td>
-                        <td>
-                            <?php echo $row['cuerpo']?>
-                        </td>
-                        <td>
-                            <?php echo $row['usuario']?>
-                        </td>
-                        <td>
-                            <?php echo $row['fecha']?>
-                        </td>
-                        <td>
-                            <form method="POST" action="editarNoticia.php">
-                                <input style="display: none;" name="noticia_id"  value="<?Php echo $row['noticia_id'] ?>" readonly>
-                                <button type="submit" name="editar">Editar</button>
-                            </form>
-                        </td>
-                    </tr>
-                    
-                </tbody>
-                <?php                
-                    }     
-                ?>
-            </table>
-<!-- ---------------------------Botonera Paginacion------------------------------------------------------------------------------- -->
-            <div>
-                <?php
-                    $pagLink= "";
-                    if($page>=2){   
-                        echo '<a class="btn btn-secondary btn-sm btn-dark" role="button" href="buscarNoticia.php?page='.($page-1).'">  Prev </a>';   
-                    }       
-                        
-                    for ($i=1; $i<=$cantidadPaginas; $i++) {   
-                        if ($i == $page) {   
-                        $pagLink .= '<a class="btn btn-secondary btn-sm btn-dark active" role="button" href="buscarNoticia.php?page='.$i.'"> '.$i.' </a>';   
-                    }               
-                    else  {   
-                    $pagLink .= '<a class="btn btn-secondary btn-sm btn-dark" role="button" href="buscarNoticia.php?page='.$i.'"> '.$i.' </a>';     
-                    }   
-                };     
-                    echo $pagLink;   
-        
-                if($page<$cantidadPaginas){   
-                    echo '<a class="btn btn-secondary btn-sm btn-dark" role="button" href="buscarNoticia.php?page='.($page+1).'">  Next </a>';   
-                }   
+        <div class="container mt-5 position-relative">
+            <div class="row">
+                <div class="col">
+                    <h2>Buscar Noticia</h2>
+                    <a class="btn btn-danger mb-2" href="home.php">Volver</a>
+                    <table class="table table-dark" id="table">
+                        <thead>
+                            <tr>
+                            <th scope="col">Foto</th>
+                            <th scope="col">Titulo</th>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Editar</th>
+                            </tr>
+                        </thead>
+                        <?php   
+                            while($row = mysqli_fetch_assoc($resultadoLimitado)) {          
+                        ?>
+                        <tbody>
+                            <tr>
+                                <input style="display: none;" name="noticia_id"  value="<?Php echo $row['noticia_id'] ?>">
+                                <td rowspan="">
+                                    <img  src="<?php echo '../../fotos/noticias/'.$row['foto'].'' ?>">
+                                </td>
+                                <td>
+                                    <?php echo $row['titulo']?>
+                                </td>
+                                <td>
+                                    <?php echo $row['cuerpo']?>
+                                </td>
+                                <td>
+                                    <?php echo $row['usuario']?>
+                                </td>
+                                <td>
+                                    <?php echo $row['fecha']?>
+                                </td>
+                                <td>
+                                    <form method="POST" action="editarNoticia.php">
+                                        <input style="display: none;" name="noticia_id"  value="<?Php echo $row['noticia_id'] ?>" readonly>
+                                        <button class="btn btn-warning" type="submit" name="editar">Editar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                        <?php                
+                            }     
+                        ?>
+                    </table>
+    <!-- ---------------------------Botonera Paginacion------------------------------------------------------------------------------- -->
+                    <div>
+                        <?php
+                            $pagLink= "";
+                            if($page>=2){   
+                                echo '<a class="btn btn-secondary btn-sm btn-dark" role="button" href="buscarNoticia.php?page='.($page-1).'">  Prev </a>';   
+                            }       
+                                
+                            for ($i=1; $i<=$cantidadPaginas; $i++) {   
+                                if ($i == $page) {   
+                                $pagLink .= '<a class="btn btn-secondary btn-sm btn-dark active" role="button" href="buscarNoticia.php?page='.$i.'"> '.$i.' </a>';   
+                            }               
+                            else  {   
+                            $pagLink .= '<a class="btn btn-secondary btn-sm btn-dark" role="button" href="buscarNoticia.php?page='.$i.'"> '.$i.' </a>';     
+                            }   
+                        };     
+                            echo $pagLink;   
+                
+                        if($page<$cantidadPaginas){   
+                            echo '<a class="btn btn-secondary btn-sm btn-dark" role="button" href="buscarNoticia.php?page='.($page+1).'">  Next </a>';   
+                        }   
 
-                ?>
-            </div>
+                        ?>
+                    </div>
 <!-- ---------------------------Fin botonera paginacion------------------------------------------------------------------------------- -->
-<a class="btn btn-light border-dark btn-lg" role="button" href="home.php">Volver</a>
+                    </div>
+                </div>
+            </div>
         </main>
     </body>
 </html>

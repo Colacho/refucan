@@ -46,6 +46,9 @@
                         <li class="nav-item">
                             <a class="nav-link click-scroll" href="#section_5">Contacto</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="editarProtectora.php">Editar</a>
+                        </li>
 
                         <li class="nav-item">
 

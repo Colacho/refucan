@@ -3,12 +3,13 @@
     
     <?php
 
-        include('../../componentes/head2.php')
+        include('../../componentes/head2.php');
     ?>
 
     <body>
         <?php
             include('../../componentes/headerAdmin.php');
+            include('../../componentes/navBarAdmin.php');
         ?>
 
         <nav class="navbar navbar-expand-lg">
@@ -149,7 +150,7 @@
             mysqli_close($Sconexion);
             echo '
             <script>
-                window.location.replace("../views/cargar.php");
+                window.location.replace("home.php");
             </script>
             '; 
         }

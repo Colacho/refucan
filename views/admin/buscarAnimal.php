@@ -7,9 +7,6 @@
 
     <?php
         include('../../componentes/headerAdmin.php');
-    ?>
-
-    <?php
         include('../../componentes/navBarAdmin.php');
     ?>
 
@@ -79,7 +76,7 @@
                   $cantidadPaginas = ceil($cantResultados/$registrosXpagina);
 
                   $consulta2 = "SELECT personas.nombre AS nombrePersona, apellido, dni, personas.telefono AS telefono, animal_id, animal.nombre AS nombre, especie, 
-                  institucion, protectora.nombre AS nombre_institucion,  protectora.telefono AS tel_prot, animal.foto AS foto  
+                  institucion, protectora.nombre AS nombre_institucion, protectora.telefono AS tel_prot, animal.foto AS foto  
                   FROM personas 
                   JOIN animal ON personas.persona_id = animal.persona_id
                   JOIN protectora ON animal.institucion = protectora.protectora_id

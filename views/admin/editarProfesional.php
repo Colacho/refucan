@@ -6,79 +6,91 @@
     <body>
         <?php
             include('../../componentes/headerAdmin.php');
+            include('../../componentes/navBarAdmin.php');
             ?>
         <main>
-            <h1>Editar Profesional</h1>
-            <!-- Trae los datos a partir del id -->
-            <?php
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    
-                    $consulta = "SELECT personas.persona_id AS persona_id, personas.nombre AS nombre_persona, apellido, 
-                    veterinaria.nombre AS nombre_vete, profesional_id, profesional.veterinaria_id AS veterinaria_id, 
-                    profesional.matricula AS matricula, profesional.activo AS activo
-                    FROM personas
-                    JOIN profesional ON personas.persona_id = profesional.persona_id
-                    JOIN veterinaria ON profesional.veterinaria_id = veterinaria.veterinaria_id 
-                    WHERE profesional.profesional_id = '".$_POST['id']."'
-                    ";
-                    
-                    $resultado = mysqli_query($Sconexion, $consulta);     
-                }
-                $row = mysqli_fetch_assoc($resultado)
-               
-            ?>
-            <form method="POST">
-                <div>
-                    <input style="display: none;" name="profesional_id"  value="<?Php echo $row['profesional_id'] ?>" readonly>
-                    <h3><?Php echo $row['nombre_persona']." ".$row['apellido'] ?></h3>
-                    <div>
-                        <label>Matricula:</label><br>
-                        <input value="<?php echo $row['matricula']?>" name="matricula">                      
+            <section class="contact-protectora section-padding" id="volver">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <!-- Trae los datos a partir del id -->
+                            <?php
+                                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                    
+                                    $consulta = "SELECT personas.persona_id AS persona_id, personas.nombre AS nombre_persona, apellido, 
+                                    veterinaria.nombre AS nombre_vete, profesional_id, profesional.veterinaria_id AS veterinaria_id, 
+                                    profesional.matricula AS matricula, profesional.activo AS activo
+                                    FROM personas
+                                    JOIN profesional ON personas.persona_id = profesional.persona_id
+                                    JOIN veterinaria ON profesional.veterinaria_id = veterinaria.veterinaria_id 
+                                    WHERE profesional.profesional_id = '".$_POST['id']."'
+                                    ";
+                                    
+                                    $resultado = mysqli_query($Sconexion, $consulta);     
+                                }
+                                $row = mysqli_fetch_assoc($resultado)
+                                
+                            ?>
+                            <div class="custom-form contact-form bg-white shadow-lg"> 
+                            <form method="POST">
+                                <h2>Editar Profesional</h2>
+                                <div class="row">
+                                    <input style="display: none;" name="profesional_id"  value="<?Php echo $row['profesional_id'] ?>" readonly>
+                                    <h3><?Php echo $row['nombre_persona']." ".$row['apellido'] ?></h3>
+                                    <div>
+                                        <label>Matricula:</label><br>
+                                        <input value="<?php echo $row['matricula']?>" name="matricula" class="form-control">                      
+                                    </div>
+                                    <div class="errorCampo" id="campoMatricula">
+                                            Ingrese una matricula
+                                    </div>
+                                    <div class="errorCampo" id="errordetipo" >
+                                        Tipo de dato incorrecto
+                                    </div>
+                                    <div class="form-group">
+                                    <label for="veterinaria_id">Veterinaria</label>
+                                    <select  name="veterinaria_id" class="form-select">
+                                        <option value="<?php echo $row['veterinaria_id']?>"><?php echo $row['nombre_vete']?></option>
+                                        <?php 
+                                            $veterinarias = "SELECT veterinaria_id, nombre FROM veterinaria";
+                                            $consultaVeterinaria = mysqli_query($Sconexion, $veterinarias);
+                                            while($row_vete = mysqli_fetch_assoc($consultaVeterinaria)) {
+
+                                                echo '
+                                                <option value="'.$row_vete['veterinaria_id'].'"> '.$row_vete['nombre'].' </option>
+                                                ';
+                                            }
+                                        ?>
+                                    </select>
+                                    </div>
+                                    <div class="errorCampo" id="campoVeterinaria" >
+                                        Ingrese una Veterinaria
+                                    </div>
+
+                                    <div>
+                                        <label for="activo">Activo:</label>
+                                        <select id="activo" name="activo" class="form-select">
+                                            <option value="<?php echo $row['activo']?>"><?php echo $row['activo'] == 1 ? "Si" : "No"?></option>
+                                            <option value="<?php echo $row['activo'] == 1 ? 0 : 1?>"><?php echo $row['activo'] == 1 ? "No" : "Si"?></option>	
+                                        </select> 
+                                        </label>
+                                    </div>
+                                    <button type="submit" name="guardar" class="form-control">Guardar</button>
+                                </div>
+                            </form>
+                            <div class="row">
+                                <form method="POST" action="editarPersona.php" >
+                                    <input style="display: none;" name="persona_id"  value="<?Php echo $row['persona_id'] ?>" readonly>
+                                    <button type="submit" name="datos_personales" class="form-control">Datos Personales</button>
+                                </form>
+                                <p></p>
+                                <a class="btn btn-light border-dark btn-lg" role="button" href="home.php">Volver</a>
+                            </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="errorCampo" id="campoMatricula">
-                            Ingrese una matricula
-                    </div>
-                    <div class="errorCampo" id="errordetipo" >
-                        Tipo de dato incorrecto
-                    </div>
-                    <div class="form-group">
-                    <label for="veterinaria_id">Veterinaria</label>
-                    <select  name="veterinaria_id">
-                        <option value="<?php echo $row['veterinaria_id']?>"><?php echo $row['nombre_vete']?></option>
-                        <?php 
-                            $veterinarias = "SELECT veterinaria_id, nombre FROM veterinaria";
-                            $consultaVeterinaria = mysqli_query($Sconexion, $veterinarias);
-                            while($row_vete = mysqli_fetch_assoc($consultaVeterinaria)) {
-
-                                echo '
-                                <option value="'.$row_vete['veterinaria_id'].'"> '.$row_vete['nombre'].' </option>
-                                ';
-                            }
-                        ?>
-
-                    </select>
                 </div>
-                <div class="errorCampo" id="campoVeterinaria" >
-                    Ingrese una Veterinaria
-                </div>
-
-                <div>
-                    <label for="activo">Activo:</label>
-                    <select id="activo" name="activo">
-                        <option value="<?php echo $row['activo']?>"><?php echo $row['activo'] == 1 ? "Si" : "No"?></option>
-                        <option value="<?php echo $row['activo'] == 1 ? 0 : 1?>"><?php echo $row['activo'] == 1 ? "No" : "Si"?></option>	
-                    </select> 
-                    </label>
-                </div>
-                    <button type="submit" name="guardar" class="formboton">Guardar</button>
-                </div>
-            </form>
-            <form method="POST" action="editarPersona.php">
-            <input style="display: none;" name="persona_id"  value="<?Php echo $row['persona_id'] ?>" readonly>
-                <button type="submit" name="datos_personales" class="formboton">Datos Personales</button>
-
-            </form>
-            <a class="btn btn-light border-dark btn-lg" role="button" href="buscar.php">Volver</a>
+            </section>
         </main>
     </body>
         <?php
