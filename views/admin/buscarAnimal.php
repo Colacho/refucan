@@ -94,6 +94,7 @@
             <tr>
             <th scope="col">Foto</th>
             <th scope="col">Nombre Animal</th>
+            <th scope="col">Especie</th>
             <th scope="col">Nombre Persona</th>
             <th scope="col">Apellido</th>
             <th scope="col">DNI</th>
@@ -114,6 +115,9 @@
                 </td>
                 <td>
                     <?php echo $row['nombre']?>
+                </td>
+                <td>
+                    <?php echo $row['especie']?>
                 </td>
                 <td>
                     <?php echo $row['institucion'] == 0 ? $row['nombrePersona'] : '-'?>

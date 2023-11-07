@@ -102,13 +102,15 @@
 
                                     <div class="form-group">
                                         <select id="especie" name="especie" class="form-control">
-                                            <option value="<?php if (isset($_POST['especie'])) echo $_POST['especie']; else echo " ";?>">
-                                        <?php if (isset($_POST['especie'])) echo $_POST['especie']; else echo "Seleccione una opción";?>
-                                            </option>
-                                            <option value="Canino">Canino</option>
-                                            <option value="Felino">Felino</option>
-                                            <option value="Equino">Equino</option>
-                                            <option value="Bovino">Bovino</option>    
+                                            <?php
+                                                    $especieConsulta = "SELECT nombre FROM especies";
+                                                    $resultadoEspeie = mysqli_query($Sconexion, $especieConsulta);
+                                                    while($rowEspecie = mysqli_fetch_assoc($resultadoEspeie)){
+                                                    echo "
+                                                        <option value=".$rowEspecie["nombre"].">".$rowEspecie["nombre"]."</option>
+                                                    ";
+                                                    }
+                                            ?>
                                         </select>
 
                                         <div class="errorCampo" id="campoEspecie" >
@@ -146,9 +148,6 @@
         <?php
             include('../../componentes/footer.php');
         ?>
-    </body>
-</html>
-
 
 <!-- Script para agregar inputs -->
         <script type="text/javascript" src="../../src/inputs.js"></script>

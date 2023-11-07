@@ -30,7 +30,7 @@
                 }
                 /*---------------------------Primera consulta para contar cantidad de resultados-------------------------------------------------------------------------------*/  
                                         
-                $consulta = "SELECT * FROM potectora WHERE activo = 1 AND nombre LIKE '%{$nombre}%'";
+                $consulta = "SELECT * FROM protectora WHERE activo = 1 AND nombre LIKE '%{$nombre}%'";
                 $resultado = mysqli_query($Sconexion, $consulta);
 
                 /*---------------------------Segunda consulta para la paginacion-------------------------------------------------------------------------------*/

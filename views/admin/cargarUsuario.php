@@ -209,13 +209,13 @@
                         return false;
                     }
 
-            } else {
-                echo '<script>
-                    this.document.getElementById("DNIcargado").style.display = "block";
-                </script>
-                ';
-                return false;
-            }
+                } else {
+                    echo '<script>
+                        this.document.getElementById("DNIcargado").style.display = "block";
+                    </script>
+                    ';
+                    return false;
+                }
             }
             if($_POST["cargo"] == 0){
                 echo '<script>

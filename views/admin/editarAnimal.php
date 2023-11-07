@@ -69,11 +69,17 @@
                     <div class="form-group">
                         <label for="especie">Seleccione especie</label>
                         <select id="especie" name="especie" class="form-select">
-                            <option value="<?php echo $row['especie']?>" selected><?php echo $row['especie']?></option>
-                            <option value="Canino">Canino</option>
-                            <option value="Felino">Felino</option>
-                            <option value="Equino">Equino</option>
-                            <option value="Bovino">Bovino</option>
+                            <?php
+                                $especieConsulta = "SELECT nombre FROM especies";
+                                $resultadoEspeie = mysqli_query($Sconexion, $especieConsulta);
+                                while($rowEspecie = mysqli_fetch_assoc($resultadoEspeie)){
+                                    if ($rowEspecie["nombre"] == $row['especie']) {
+                                        echo "<option value=".$rowEspecie["nombre"]." selected>".$rowEspecie["nombre"]."</option>";
+                                    }else {
+                                        echo "<option value=".$rowEspecie["nombre"].">".$rowEspecie["nombre"]."</option>";
+                                    }
+                                }
+                            ?>
                         </select>
                     </div>
                     <div>

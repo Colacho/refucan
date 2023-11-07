@@ -110,6 +110,18 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
+                                    <div class="col-lg-3 col-md-6 col-12">
+                                        <div class="speakers-thumb speakers-thumb-small">
+                                            <img src="../../images/animal.jpg" class="img-fluid speakers-image" alt="">
+
+                                            <div class="speakers-info">
+                                                <a href="cargarEspecie.php" title="ingrese una veterinaria">
+                                                <h5 class="speakers-title mb-0">Especie</h5>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 

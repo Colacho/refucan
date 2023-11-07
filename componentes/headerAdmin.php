@@ -13,7 +13,7 @@ if ($Scargo_id == 1) {
 } else {
     echo '
     <script>
-        window.location.replace("../../index_.php");
+        window.location.replace("../login.php");
     </script>
     '; 
 }
