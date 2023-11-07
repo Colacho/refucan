@@ -153,7 +153,7 @@
     $fotoAnimal = $row['foto'];
     if (isset($_POST['guardar'])) {
         
-        $idPersona;
+        $idPersona = 0;
         $institucion = 0;
         function validar($conexion, &$num, &$inst) {
 
@@ -164,6 +164,12 @@
                     </script>
                 ';
                 return false;
+            } else if(is_numeric($_POST['nombre'])){
+                echo '<script>
+                    this.document.getElementById("campoNombre").style.display = "block";
+                </script>
+                ';
+                return false;
             }
 
             if($_POST["enProtectora"] == 0) {
@@ -172,6 +178,12 @@
                     echo '<script>
                             this.document.getElementById("campoDni").style.display = "block";
                         </script>
+                    ';
+                    return false;
+                } else if(!is_numeric($_POST['persona_id'])){
+                    echo '<script>
+                        this.document.getElementById("campoDni").style.display = "block";
+                    </script>
                     ';
                     return false;
                 } else {
@@ -202,7 +214,7 @@
         
         $pasa = validar($Sconexion, $idPersona, $institucion);
         $datos = array_slice($_POST, 7, -1 );
-        //var_dump($datos);
+        
         $json = json_encode($datos);
         
         if($pasa) {

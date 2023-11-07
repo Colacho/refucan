@@ -138,6 +138,12 @@
                     </script>
                 ';
                 return false;
+            } else if(!is_numeric($_POST['persona_id'])){
+                echo '<script>
+                    this.document.getElementById("campoDni").style.display = "block";
+                </script>
+                ';
+                return false;
             } else {
                 $verifica = "SELECT persona_id from personas WHERE dni = '".$_POST["persona_id"]."' ;";
                 $resultadoVerifica = mysqli_query($conexion, $verifica) or die('Error de consulta');
@@ -169,6 +175,12 @@
             echo '<script>
                     this.document.getElementById("campoMatricula").style.display = "block";
                 </script>
+            ';
+            return false;
+         }else if(!is_numeric($_POST['matricula'])){
+            echo '<script>
+                this.document.getElementById("campoMatricula").style.display = "block";
+            </script>
             ';
             return false;
         } else {

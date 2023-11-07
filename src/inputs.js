@@ -13,7 +13,7 @@
             const container = document.getElementById('containerInputs');
         
             const div = document.createElement('div');
-            div.setAttribute('class', 'form-group');
+            div.setAttribute('class', 'row form-group');
         
             const label = document.createElement('label');
             label.setAttribute('for', nuevo);
@@ -21,12 +21,12 @@
         
             const input = document.createElement('input');
             input.setAttribute('name', nuevo);
-            input.setAttribute('class', 'form-control');
+            input.setAttribute('class', 'col-4');
             input.setAttribute('type', 'date');
         
             const btn = document.createElement('button');
             btn.setAttribute('id', 'quitar');
-            btn.setAttribute('class', 'formboton');
+            btn.setAttribute('class', 'col-4 btn btn-primary');
             btn.setAttribute('style', 'margin: 5px')
             btn.addEventListener('click', eliminar)
             btn.innerHTML = 'Quitar';

@@ -1,28 +1,38 @@
 <!DOCTYPE html>
 <html>
+    
     <?php
-        include('../../componentes/head.php')
+        include('../../componentes/head2.php');
     ?>
-    <body>
-        <?php
-            include('../../componentes/headerAdmin.php');
-        ?>
-        <main>
-            <h1>Buscar Profesionales</h1>
 
-            <form method="POST">
-                <fieldset class="formBusqueda">
-                    <legend>Seleccione Criterio de busqueda</legend>
-                    <div>
-                        <input type="text" name="apellido" placeholder="Apellido" />
-                        <input type="text" name="matricula" placeholder="Matricula" />
-                        <input type="text" name="veterinaria" placeholder="Veterinaria" />
-                    </div>
-                    <div class="botones">
-                        <button class="btn btn-dark btn-lg" type="submit" name="buscar">Buscar</button>
-                    </div>  
-                </fieldset>
-            </form>
+    <?php
+        include('../../componentes/headerAdmin.php');
+    ?>
+
+    <?php
+        include('../../componentes/navBarAdmin.php');
+    ?>
+
+    <body>
+        
+        <main>
+
+      <div class="container mt-5 position-relative">
+          <div class="row">
+            <div class="col">
+              <form method="POST">
+                      <fieldset class="formBusqueda">
+                          <legend>Seleccione Criterio de busqueda</legend>
+                          <div>
+                              <input type="text" name="apellido" placeholder="Apellido" />
+                              <input type="text" name="matricula" placeholder="Matricula" />
+                              <input type="text" name="veterinaria" placeholder="Veterinaria" />
+                              <button class="btn btn-success mb-2" type="submit" name="buscar">Buscar</button>
+                              <a class="btn btn-danger mb-2" href="home.php">Volver</a>
+                          </div>
+                      </fieldset>
+              </form>
+
             
             <?php
                 /*-----------Definirmos variables para que no muestre error de Notice: Undefined index:----------------------------------*/
@@ -83,7 +93,7 @@
                 /*---------------------------Fin consultas paginacion-------------------------------------------------------------------------------*/
             ?>
 
-            <table class="table">
+             <table class="table table-dark" id="table">
                 <thead>
                     <tr>
                         <th scope="col">Nombre</th>
@@ -95,7 +105,6 @@
                         <th scope="col">Calle</th>
                         <th scope="col">Numero</th>
                         <th scope="col">Telefono</th>
-                        <th scope="col">Seleccion</th>
                         <th scope="col">Editar</th>
                     </tr>
                 </thead>
@@ -135,7 +144,7 @@
                         <td>
                             <form method="POST" action="editarProfesional.php">
                                 <input style="display: none;" name="id"  value="<?php echo $row['id'] ?>" readonly>
-                                <button type="submit" name="editar">Editar</button>
+                                <button class="btn btn-warning" type="submit" name="editar">Editar</button>
                             </form>
                         </td>                       
                     </tr>
@@ -168,9 +177,17 @@
 
                 ?>
             </div>
+        </div>
+    </div>
 <!-- ---------------------------Fin botonera paginacion------------------------------------------------------------------------------- -->
-        <a class="btn btn-light border-dark btn-lg" role="button" href="buscar.php">Volver</a>
         </main>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="../../js/jquery.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/jquery.sticky.js"></script>
+        <script src="../../js/click-scroll.js"></script>
+        <script src="../../js/custom.js"></script>
 
         <?php
             include('../../componentes/footer.php');

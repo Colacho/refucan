@@ -128,15 +128,33 @@
                </script>
                ';
                return false;
-           }
+           } else if(is_numeric($_POST['nombre'])){
+            echo '<script>
+                this.document.getElementById("campoNombre").style.display = "block";
+            </script>
+            ';
+            return false;
+        }
            if(empty($_POST["apellido"])){
             echo '<script>
                 this.document.getElementById("campoApellido").style.display = "block";
             </script>
             ';
             return false;
+            } else if(is_numeric($_POST['apellido'])){
+                echo '<script>
+                    this.document.getElementById("campoApellido").style.display = "block";
+                </script>
+                ';
+                return false;
             }
             if(empty($_POST["dni"])){
+                echo '<script>
+                    this.document.getElementById("campoDni").style.display = "block";
+                </script>
+                ';
+                return false;
+            } else if(!is_numeric($_POST['dni'])){
                 echo '<script>
                     this.document.getElementById("campoDni").style.display = "block";
                 </script>
@@ -156,6 +174,12 @@
                 }
             }
             if(empty($_POST["telefono"])){
+                echo '<script>
+                    this.document.getElementById("campoTelefono").style.display = "block";
+                </script>
+                ';
+                return false;
+            } else if(!is_numeric($_POST['telefono'])){
                 echo '<script>
                     this.document.getElementById("campoTelefono").style.display = "block";
                 </script>
@@ -182,8 +206,20 @@
                 </script>
                 ';
                 return false;
+            } else if(is_numeric($_POST['calle'])){
+                echo '<script>
+                    this.document.getElementById("campoCalle").style.display = "block";
+                </script>
+                ';
+                return false;
             }
             if(empty($_POST["numero_dire"])){
+                echo '<script>
+                    this.document.getElementById("campoNumero_dire").style.display = "block";
+                </script>
+                ';
+                return false;
+            } else if(!is_numeric($_POST['numero_dire'])){
                 echo '<script>
                     this.document.getElementById("campoNumero_dire").style.display = "block";
                 </script>
