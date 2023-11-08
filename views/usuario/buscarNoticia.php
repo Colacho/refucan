@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
     <?php
-        include('../../componentes/head.php')
+        include('../../componentes/head2.php')
     ?>
     <body>
         <?php
             include('../../componentes/headerUsuario.php');
+            include('../../componentes/navbarUsuario.php');
+        ?>
             
-
+        <?php  
 /*---------------------------Primera consulta para contar cantidad de resultados-------------------------------------------------------------------------------*/                       
-            
+          
             $consulta = "SELECT noticia_id, titulo, cuerpo, foto, noticias.created_at, nombre  FROM noticias
             JOIN usuarios ON noticias.usuarios_usuario_id = usuarios.usuario_id
             WHERE noticias.activo = 1
@@ -37,9 +39,13 @@
             $resultadoLimitado = mysqli_query($Sconexion, $consulta2);
 /*---------------------------Fin consultas paginacion-------------------------------------------------------------------------------*/
         ?>
-        <main>
-            <h1>Buscar Noticia</h1>
-            <table class="table">
+    <main>
+        <div class="container mt-5 position-relative">
+          <div class="row">
+            <div class="col">
+            <h2>Buscar Noticias</h2>
+            
+            <table class="table table-dark" id="table">
                 <thead>
                     <tr>
                     <th scope="col">Foto</th>
@@ -47,6 +53,7 @@
                     <th scope="col">Descripcion</th>
                     <th scope="col">Usuario</th>
                     <th scope="col">Fecha</th>
+                    <th scope="col">Editar</th>
                     </tr>
                 </thead>
                 <?php   
@@ -73,7 +80,7 @@
                         <td>
                             <form method="POST" action="editarNoticia.php">
                                 <input style="display: none;" name="noticia_id"  value="<?Php echo $row['noticia_id'] ?>" readonly>
-                                <button type="submit" name="editar">Editar</button>
+                                <button class="btn btn-warning" type="submit" name="editar">Editar</button>
                             </form>
                         </td>
                     </tr>
@@ -84,7 +91,7 @@
                 ?>
             </table>
 <!-- ---------------------------Botonera Paginacion------------------------------------------------------------------------------- -->
-            <div>
+            <div class="section-padding-3">
                 <?php
                     $pagLink= "";
                     if($page>=2){   
@@ -108,7 +115,18 @@
                 ?>
             </div>
 <!-- ---------------------------Fin botonera paginacion------------------------------------------------------------------------------- -->
-<a class="btn btn-light border-dark btn-lg" role="button" href="home.php">Volver</a>
         </main>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="../../js/jquery.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/jquery.sticky.js"></script>
+        <script src="../../js/click-scroll.js"></script>
+        <script src="../../js/custom.js"></script>
+
+        <?php
+            include('../../componentes/footer.php');
+        ?>
+
     </body>
 </html>

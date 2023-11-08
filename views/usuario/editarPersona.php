@@ -1,88 +1,113 @@
 <!DOCTYPE html>
 <html>
-<?php
-        include('../../componentes/head.php')
+    <?php
+        include('../../componentes/head2.php')
     ?>
     <body>
         <?php
             include('../../componentes/headerUsuario.php');
+            include('../../componentes/navbarUsuario.php');
         ?>
         <main>
-            <h1>Editar Persona</h1>
-            <?php
-                
-                $consulta = "SELECT * FROM personas WHERE persona_id = $Spersona_id";
+            <section class="contact-protectora section-padding" id="volver">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-12 mx-auto">
+                                    <?php
+                                        
+                                        $consulta = "SELECT * FROM personas WHERE persona_id = $Spersona_id";
 
-                $resultado = mysqli_query($Sconexion, $consulta);     
-                   
-                $row = mysqli_fetch_assoc($resultado)
-            ?>
-            <form method="POST">
-                <div>
-                    
-                    <div>
-                        <label>Nombre:</label><br>
-                        <input value="<?php echo $row['nombre']?>" name="nombre"> 
-                    </div>
-                    <div class="errorCampo" id="campoNombre" >
-                        Ingrese Nombre
-                    </div>
-                    <div>
-                        <label>Apellido:</label><br>
-                        <input value="<?php echo $row['apellido']?>" name="apellido"> 
-                    </div>
-                    <div class="errorCampo" id="campoApellido" >
-                        Ingrese apellido
-                    </div>
-                    <div>
-                        <label>DNI:</label><br>
-                        <input value="<?php echo $row['dni']?>" name="dni"> 
-                        <div class="errorCampo" id="DNIcargado">
-                            El DNI ya existe
-                        </div>
-                        <div class="errorCampo" id="campoDni">
-                            Ingrese un DNI
-                        </div>
-                    </div>
-                    <div>
-                        <label>Telefono:</label><br>
-                        <input value="<?php echo $row['telefono']?>" name="telefono"> 
-                    </div>
-                    <div class="errorCampo" id="campoTelefono" >
-                            Ingrese un teléfono
-                    </div>
-                    <div>
-                        <label for="provincia">Provincia</label>
-                        <input name="provinciaAnt" value="<?php echo $row['provincia']?>" readonly>
-                        <select id="provincia" name="provincia"></select>
-                        
-                        <label for="municipio">Municipio</label>
-                        <input name="municipioAnt" value="<?php echo $row['municipio']?>" readonly>
-                        <select id="municipio" name="municipio"></select>
-                        <div class="errorCampo" id="campoMunicipio">
-                            Si modifica la provincia seleccione un municipio
-                        </div> 
-                    </div>
-                    <div>
-                        <label>Calle:</label><br>
-                        <input value="<?php echo $row['calle']?>" name="calle"> 
-                    </div>
-                    <div class="errorCampo" id="campoCalle">
-                        Ingrese una calle
-                    </div> 
-                    <div>
-                        <label>Número:</label><br>
-                        <input value="<?php echo $row['numero_dire']?>" name="numero_dire"> 
-                    </div>
-                    <div class="errorCampo" id="campoNumero_dire">
-                        Ingrese un número
-                    </div> 
-                    
-                    <button type="submit" name="guardar" class="formboton">Guardar</button>
-                </div>
-            </form>
-            <a class="btn btn-light border-dark btn-lg" role="button" href="home.php">Volver</a>
-        </main>
+                                        $resultado = mysqli_query($Sconexion, $consulta);     
+                                           
+                                        $row = mysqli_fetch_assoc($resultado)
+                                    ?>
+                                <form method="POST" class="custom-form contact-form bg-white shadow-lg">
+                                    <h2>Editar Persona</h2>
+                                    <div class="row">   
+
+                                        <div>
+                                            <label>Nombre:</label><br>
+                                                <input value="<?php echo $row['nombre']?>" name="nombre" class="form-control"> 
+                                        </div>
+                                            <div class="errorCampo" id="campoNombre" >
+                                                Ingrese Nombre
+                                        </div>    
+
+                                        <div>
+                                            <label>Apellido:</label><br>
+                                            <input value="<?php echo $row['apellido']?>" name="apellido" class="form-control"> 
+                                        </div>
+                                        <div class="errorCampo" id="campoApellido" >
+                                            Ingrese apellido
+                                        </div>
+                                        <div>
+                                            <label>DNI:</label><br>
+                                            <input value="<?php echo $row['dni']?>" name="dni" class="form-control"> 
+                                            <div class="errorCampo" id="DNIcargado">
+                                                El DNI ya existe
+                                            </div>
+                                            <div class="errorCampo" id="campoDni">
+                                                Ingrese un DNI
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label>Telefono:</label><br>
+                                            <input value="<?php echo $row['telefono']?>" name="telefono" class="form-control"> 
+                                        </div>
+                                        <div class="errorCampo" id="campoTelefono" >
+                                                Ingrese un teléfono
+                                        </div>
+
+                                        <div>
+                                            <input name="provinciaAnt" value="<?php echo $row['provincia']?>" readonly>
+                                            <select id="provincia" name="provincia" class="form-select"></select>
+                                            <input name="municipioAnt" value="<?php echo $row['municipio']?>" readonly>
+                                            <select id="municipio" name="municipio" class="form-select"></select>
+                                            <div class="errorCampo" id="campoMunicipio">
+                                                Si modifica la provincia seleccione un municipio
+                                            </div> 
+                                        </div>
+                                        <div>
+                                            <label>Calle:</label><br>
+                                            <input value="<?php echo $row['calle']?>" name="calle" class="form-control"> 
+                                        </div>
+                                        <div class="errorCampo" id="campoCalle">
+                                            Ingrese una calle
+                                        </div> 
+                                        <div>
+                                            <label>Número:</label><br>
+                                            <input value="<?php echo $row['numero_dire']?>" name="numero_dire" class="form-control"> 
+                                        </div>
+                                        <div class="errorCampo" id="campoNumero_dire">
+                                            Ingrese un número
+                                        </div> 
+                                        
+                                        <p></p>
+                                        <div>
+                                            <img src="<?php echo '../../fotos/animales/'.$row['foto'].'' ?>" style="width: 100px">
+                                            <input type="file" name="foto" accept="image/*" class="form-control">
+                                        </div>
+                                        <p></p>
+                                        <div class="col-12">
+                                            <button type="submit" name="guardar" class="form-control">Agregar Animal</button>
+                                        </div>                            
+                                        <p></p>
+                                        <div class="col-12">
+                                            <a class="form-control text-center" href="home.php">Volver</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </main>
+
+                      <!-- JAVASCRIPT FILES -->
+        <script src="../../js/jquery.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/jquery.sticky.js"></script>
+        <script src="../../js/click-scroll.js"></script>
+        <script src="../../js/custom.js"></script>
+        
     </body>
     <!-- Script localidades -->
     <script src="../../src/localidades.js"></script>

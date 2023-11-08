@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html>
     <?php
-        include('../../componentes/head2.php');
+        include('../../componentes/head2.php')
     ?>
-    
-    <!-- <?php
-       include('../../componentes/headerUsuario.php');
-    ?> -->
-
-    <?php
-        include('../../componentes/navBarUsuario.php');
-    ?>
-
     <body>
+        <?php
+            include('../../componentes/headerUsuario.php');
+            include('../../componentes/navbarUsuario.php');
+        ?>
         <main>
             <!-- HOME  -->
-            <section class="hero" id="section_1">
+            <section class="hero" id="volver">
                 <div class="container">
                     <div class="row">
 
@@ -25,7 +20,7 @@
                                 <h1 class="text-white mb-4">Bienvenid/a <u class="text-info"><medium><?php echo $saludo; ?></medium></u></h1>
 
 
-                                <a href="#section_2" class="custom-link bi-arrow-down arrow-icon"></a>
+                                <a href="#section_1" class="custom-link bi-arrow-down arrow-icon"></a>
                             </div>
                         </div>
                     </div>
@@ -85,7 +80,7 @@
             </section>
             <!-- No tendra un id ya que novedades te mandara a buscarNoticia.php-->
 
-            <section class="schedule section-padding" id="section_2">
+            <section class="schedule section-padding" id="section_1">
                 <div class="container">
                     <div class="row">
 
@@ -129,7 +124,7 @@
 
 
             <!-- Nosotros -->
-            <section class="call-to-action section-padding" id="section_3">
+            <section class="call-to-action section-padding" id="section_2">
                 <div class="container">
                     <div class="row align-items-center">
 
@@ -140,7 +135,7 @@
                         </div>
 
                         <div class="col-lg-3 col-12 ms-lg-auto mt-4 mt-lg-0">
-                            <a href="#section_5" class="custom-btn btn">Donate</a>
+                            <a href="#section_3" class="custom-btn btn">Donate</a>
                         </div>
 
                     </div>
@@ -193,7 +188,7 @@
                 </div>
             </section>
 
-            <section class="contact section-padding" id="section_4">
+            <section class="contact section-padding" id="section_3">
                 <div class="container">
                     <div class="row">
 
@@ -223,7 +218,6 @@
                                 </div>
                             </form>
                         </div>
-
                     </div>
                 </div>
             </section>

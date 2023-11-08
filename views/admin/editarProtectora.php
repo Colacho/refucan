@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php
-        include('../../componentes/head.php')
+        include('../../componentes/head2.php')
     ?>
     <body>
         <?php

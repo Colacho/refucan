@@ -1,60 +1,94 @@
 <!DOCTYPE html>
 <html>
     <?php
-        include('../../componentes/head.php')
+        include('../../componentes/head2.php')
     ?>
     <body>
         <?php
             include('../../componentes/headerProtectora.php');
+            include('../../componentes/navBarProtectora.php');
         ?>
         <main>
-            <h1>Carga de Animales</h1>
+        <section class="contact-animal section-padding" id="volver">
+                <div class="container">
+                    <div class="row">
 
-            <form id="formCarga" action="" method="POST" enctype="multipart/form-data">
-               
-                    
-                    <div class="form-group">
-                        <label for="especie">Seleccione especie</label>
-                        <select id="especie" name="especie" class="form-select">
-                            <option value="<?php if (isset($_POST['especie'])) echo $_POST['especie']; else echo " ";?>">
-                            <?php if (isset($_POST['especie'])) echo $_POST['especie']; else echo "Seleccione una opción";?>
-                        </option>
-                            <option value="Canino">Canino</option>
-                            <option value="Felino">Felino</option>
-                            <option value="Equino">Equino</option>
-                            <option value="Bovino">Bovino</option>
-                        </select>
-                    </div>
-                    <div class="errorCampo" id="campoEspecie" >
-                        Seleccione una opción
-                    </div>
+                        <div class="col-lg-8 col-12 mx-auto">      
+                            <form class="custom-form contact-form bg-white shadow-lg" id="formCarga" action="" method="POST" enctype="multipart/form-data">                     
+                                <h2>Carga de Animales</h2>
 
-                    <div class="form-group">
-                        <label for="nombre">Nombre del animal</label>
-                        <input type="text" name="nombre" class="form-control"
-                        value="<?php if (isset($_POST['nombre'])) echo $_POST['nombre'];?>"
-                        >
-                    </div>
-                    <div class="errorCampo" id="campoNombre" >
-                        Complete el campo
-                    </div>
+                                <div class="row">  
 
-                    
-                    <div class="form-group">
-                        <label for="observaciones">observaciones</label>
-                        <input type="text" name="observaciones" id="observaciones" class="form-control"
-                        value="<?php if (isset($_POST['observaciones'])) echo $_POST['observaciones'];?>"
-                        >
-                    </div>
-                
-                    
-                    <div class="col-lg-4 col-md-4 col-12">  
-                        <input type="file" name="foto" id="imagen" class="form-control-file custom-file-input" accept="image/*">
-                    </div>
-                    
-            </form>
-            <a class="btn btn-light border-dark btn-lg" role="button" href="cargar.php">Volver</a>
+                                <div class="form-group">
+                                        <select id="especie" name="especie" class="form-control">
+                                            <?php
+                                                    $especieConsulta = "SELECT nombre FROM especies";
+                                                    $resultadoEspeie = mysqli_query($Sconexion, $especieConsulta);
+                                                    while($rowEspecie = mysqli_fetch_assoc($resultadoEspeie)){
+                                                    echo "
+                                                        <option value=".$rowEspecie["nombre"].">".$rowEspecie["nombre"]."</option>
+                                                    ";
+                                                    }
+                                            ?>
+                                        </select>
+
+                                    <div class="errorCampo" id="campoEspecie" >
+                                        Seleccione una opción
+                                    </div>
+                                </div>
+
+                            <!--    <div>
+                                    <label for="especie">Seleccione especie</label>
+                                    <select id="especie" name="especie" class="form-select">
+                                        <option value="<?php if (isset($_POST['especie'])) echo $_POST['especie']; else echo " ";?>">
+                                        <?php if (isset($_POST['especie'])) echo $_POST['especie']; else echo "Seleccione una opción";?>
+                                    </option>
+                                        <option value="Canino">Canino</option>
+                                        <option value="Felino">Felino</option>
+                                        <option value="Equino">Equino</option>
+                                        <option value="Bovino">Bovino</option>
+                                    </select>
+                                </div>
+                                <div class="errorCampo" id="campoEspecie" >
+                                    Seleccione una opción
+                                </div> -->
+
+                                <div class="col-lg-4 col-md-4 col-12">
+                                    <input type="text" name="nombre" class="form-control" placeholder="Nombre del animal"
+                                    value="<?php if (isset($_POST['nombre'])) echo $_POST['nombre'];?>"
+                                    >
+                                </div>
+                                <div class="errorCampo" id="campoNombre" >
+                                    Complete el campo
+                                </div>
+
+                                
+                                   <div class="col-12">
+                                        <textarea class="form-control" rows="5" id="message" name="message" placeholder="Observaciones"><?php if (isset($_POST['observaciones'])) echo $_POST['observaciones'];?></textarea>
+                                    </div>
+                            
+                                
+                                <div class="col-lg-4 col-md-4 col-12">  
+                                    <input type="file" name="foto" id="imagen" class="form-control-file custom-file-input" accept="image/*">
+                                </div>
+                                <p></p>
+                                <div class="col-12">
+                                        <button type="submit" name="guardar" class="form-control">Agregar Animal</button>
+                                    </div>
+                                    <p></p>
+                                    <div class="col-12">
+                                        <a class="form-control text-center" href="home.php">Volver</a>
+                                </div>
+                            </div>
+                        </form>
         </main>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="../../js/jquery.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/jquery.sticky.js"></script>
+        <script src="../../js/click-scroll.js"></script>
+        <script src="../../js/custom.js"></script>
 
         <?php
             include('../../componentes/footer.php');
@@ -122,7 +156,7 @@
         
        echo '
             <script>
-                window.location.replace("cargar.php");
+                window.location.replace("home.php");
             </script>
        '; 
        mysqli_close($Sconexion);

@@ -24,7 +24,7 @@
                     <ul class="navbar-nav ms-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_1">Home</a>
+                            <a class="nav-link click-scroll" href="home.php#section_1">Home</a>
                         </li>
 
                         <li class="nav-item">
@@ -36,18 +36,19 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_3">Novedades</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_4">Nosotros</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_5">Contacto</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link click-scroll" href="editarVeterinaria.php">Editar</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="home.php#section_1">Novedades</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="home.php#section_2">Nosotros</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="home.php#section_3">Contacto</a>
                         </li>
 
                         <li class="nav-item">

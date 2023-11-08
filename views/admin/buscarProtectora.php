@@ -18,9 +18,10 @@
                         <legend>Seleccione Criterio de busqueda</legend>
                         <div>
                             <input type="text" name="nombre" placeholder="Nombre" />
-                        </div>
+                        
                         <button class="btn btn-success mb-2" type="submit" name="buscar">Buscar</button>
                         <a class="btn btn-danger mb-2" href="home.php">Volver</a>
+                    </div>
                     </fieldset>
                 </form>
                 <?php
@@ -108,7 +109,7 @@
                         }     
                     ?>
                 </table>
-                <div>
+                <div class="section-padding-3">
                     <?php
                         $pagLink= "";
                         if($page>=2){   

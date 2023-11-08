@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html>
     <?php
-        include('../../componentes/head.php')
+        include('../../componentes/head2.php')
     ?>
     <body>
         <?php
             include('../../componentes/headerUsuario.php');
+            include('../../componentes/navbarUsuario.php');
         ?>
-        <main>
-            <h1>Buscar Animal</h1>
-            <form method="POST">
-                <fieldset class="formBusqueda">
-                    <legend>Seleccione Criterio de busqueda</legend>
+    <main>
+        <div class="container mt-5 position-relative">
+          <div class="row">
+            <div class="col">
+              <form method="POST">
+                      <fieldset class="formBusqueda">
+                          <legend>Seleccione Criterio de busqueda</legend>
                     <div>
                         <input type="text" name="nombreAnimal" placeholder="Nombre Animal" />
+                        <button class="btn btn-success mb-2" type="submit" name="buscar">Buscar</button>
+                        <a class="btn btn-danger mb-2" href="home.php">Volver</a>
                     </div>
-                    <div class="botones">
-                        <button class="btn btn-dark btn-lg" type="submit" name="buscar">Buscar</button>
-                    </div>  
                 </fieldset>
             </form>
     <?php
@@ -66,13 +68,13 @@
 
 
     ?>
-    <table class="table">
+    <table class="table table-dark" id="table">
         <thead>
             <tr>
                 <th scope="col">Foto</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Especie</th>
-                <th scope="col">Ver/Editar</th>  
+                <th scope="col">Editar</th>  
             </tr>
         </thead>
     <?php   
@@ -94,7 +96,7 @@
                 <td>
                     <form method="POST" action="editarAnimal.php">
                         <input style="display: none;" name="animal_id"  value="<?Php echo $row['animal_id'] ?>" readonly>
-                        <button type="submit" name="editar">Ver/Editar</button>
+                        <button class="btn btn-warning" type="submit" name="editar">Editar</button>
                     </form>
                 </td>
             </tr>
@@ -108,7 +110,7 @@
 
             
 <!-- ---------------------------Botonera paginacion------------------------------------------------------------------------------- -->
-            <div>
+            <div class="section-padding-3">
                 <?php
                     $pagLink= "";
                     if($page>=2){   
@@ -131,8 +133,17 @@
 
                 ?>
             </div>
-            <a class="btn btn-light border-dark btn-lg" role="button" href="buscar.php">Volver</a>
+        </div>
+    </div>
         </main>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="../../js/jquery.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/jquery.sticky.js"></script>
+        <script src="../../js/click-scroll.js"></script>
+        <script src="../../js/custom.js"></script> 
+        
         <?php
             include('../../componentes/footer.php');
         ?>

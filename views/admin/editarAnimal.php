@@ -23,6 +23,7 @@
                                 $json = json_decode($row['clinica']);
                             
                             ?>
+                            
                             <form method="POST"  class="custom-form contact-form bg-white shadow-lg" enctype="multipart/form-data">
                                 <h2>Editar Animal</h2>
                                 <div class="row">
@@ -122,9 +123,14 @@
                                             </div>
 
                                         </div>
-                                        <button type="submit" name="guardar" class="form-control">Guardar</button>
-                                        <a class="btn btn-light border-dark btn-lg" role="button" href="buscarAnimal.php">Volver</a>
-                                    
+                                        <p></p>
+                                        <div class="col-12">
+                                            <button type="submit" name="guardar" class="form-control">Agregar Animal</button>
+                                        </div>                            
+                                        <p></p>
+                                        <div class="col-12">
+                                            <a class="form-control text-center" href="home.php">Volver</a>
+                                        </div>
                                 </div>
                             </form>
                         </div>

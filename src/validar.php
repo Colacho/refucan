@@ -75,7 +75,7 @@ if($resultadoCantidad->num_rows == 0){
                 echo '
                     <script>
                         alert("Usuario o contraseña incorrecta");
-                        window.location.replace("../views/login.php");
+                        window.location.replace("../views/index.php");
                     </script>
                     '; 
             }
@@ -84,7 +84,7 @@ if($resultadoCantidad->num_rows == 0){
         echo '
         <script>
             alert("Usuario inexistente");
-            window.location.replace("../views/login.php");
+            window.location.replace("../views/index.php");
         </script>
         ';
     }

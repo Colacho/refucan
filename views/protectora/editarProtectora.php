@@ -1,86 +1,109 @@
 <!DOCTYPE html>
 <html>
-<?php
-        include('../../componentes/head.php')
+    <?php
+        include('../../componentes/head2.php')
     ?>
     <body>
         <?php
             include('../../componentes/headerProtectora.php');
+            include('../../componentes/navBarProtectora.php');
         ?>
-        <main>
-            <h1>Editar Protectora</h1>
-            <?php
-                
-                $consulta = "SELECT * FROM protectora WHERE protectora_id = $Sinstitucion_id";
-                $resultado = mysqli_query($Sconexion, $consulta);     
-                
-                $row = mysqli_fetch_assoc($resultado)
-            ?>
-            <form method="POST" enctype="multipart/form-data">
-                <div>
-                    
-                    <div>
-                        <label>Nombre:</label><br>
-                        <input value="<?php echo $row['nombre']?>" name="nombre"> 
-                    </div>
-                    <div class="errorCampo" id="campoNombre">
-                            Ingrese un nombre
-                    </div>
-                    <div>
-                        <label for="provincia">Provincia</label>
-                        <input name="provinciaAnt" value="<?php echo $row['provincia']?>" readonly>
-                        <select id="provincia" name="provincia"></select>
-                        
-                        <label for="municipio">Municipio</label>
-                        <input name="municipioAnt" value="<?php echo $row['municipio']?>" readonly>
-                        <select id="municipio" name="municipio"></select>
-                        <div class="errorCampo" id="campoMunicipio">
-                            Si modifica la provincia debe seleccionar un municipio
-                        </div> 
-                    </div>
 
-                    <div>
-                        <label>Calle:</label><br>
-                        <input value="<?php echo $row['calle']?>" name="calle"> 
-                    </div>
-                    <div class="errorCampo" id="campoCalle">
-                            Ingrese una calle
-                    </div>
-                    <div>
-                        <label>Número:</label><br>
-                        <input value="<?php echo $row['numero_dire']?>" name="numero_dire"> 
-                    </div>
-                    <div class="errorCampo" id="campoNumero_dire">
-                            Ingrese un numero de direccion
-                    </div>
-                    <div>
-                        <label>Foto:</label><br>
-                        <img src="<?php echo '../../fotos/protectora/'.$row['foto'].'' ?>">
-                        <input type="file" name="foto" value="<?Php echo $row['foto'] ?>" class="form-control-file" accept="image/*">
-                    </div>
-                    
-                    <div>
-                        <label>Responsable:</label><br> 
+
+        <main>
+            <section class="contact-protectora section-padding" id="volver">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-12 mx-auto">
                         <?php
-                            $consultaDni = "SELECT dni FROM personas WHERE persona_id = '".$row['id_persona']."'";
-                            $resultadoDni = mysqli_query($Sconexion, $consultaDni); 
-                            $rowDni = mysqli_fetch_assoc($resultadoDni)
+                            
+                            $consulta = "SELECT * FROM protectora WHERE protectora_id = $Sinstitucion_id";
+                            $resultado = mysqli_query($Sconexion, $consulta);     
+                            
+                            $row = mysqli_fetch_assoc($resultado)
                         ?>
-                        <input value="<?php echo $rowDni['dni']?>" name="dni"> 
-                        <div class="errorCampo" id="campoDni">
-                            Ingrese un DNI
-                        </div>
-                        <div class="errorCampo" id="DNIcargado">
-                            El DNI no está cargado
-                        </div>
-                    </div>
-                    
-                    <button type="submit" name="guardar" class="formboton">Guardar</button>
-                </div>
-            </form>
-            <a class="btn btn-light border-dark btn-lg" role="button" href="buscar.php">Volver</a>
+                            <form method="POST" class="custom-form contact-form bg-white shadow-lg" enctype="multipart/form-data">
+                                <h2>Editar Protectora</h2>
+                                <div class="row">
+                                    <input style="display: none;" name="protectora_id"  value="<?Php echo $row['protectora_id'] ?>" readonly>
+                                    <div>
+                                        <label>Nombre:</label><br>
+                                        <input value="<?php echo $row['nombre']?>" name="nombre" class="form-control"> 
+                                    </div>
+                                    <div class="errorCampo" id="campoNombre">
+                                            Ingrese un nombre
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="provincia">Provincia</label>
+                                        <input name="provinciaAnt" value="<?php echo $row['provincia']?>" class="form-control" readonly>
+                                        <select id="provincia" name="provincia" class="form-select"></select>
+                                    </div>
+                                    <p></p>
+                                    <div class="form-group">    
+                                        <label for="municipio">Municipio</label>
+                                        <input name="municipioAnt" value="<?php echo $row['municipio']?>" class="form-control" readonly>
+                                        <select id="municipio" name="municipio" class="form-select"></select>
+                                        <div class="errorCampo" id="campoMunicipio">
+                                            Si modifica la provincia debe seleccionar un municipio
+                                        </div> 
+                                    </div>
+                                    <div>
+                                        <label for="telefono">Telefono</label>
+                                        <input name="telefono" value="<?php echo $row['telefono']?>" class="form-control">
+                                    </div>
+
+
+                                    <div>
+                                        <label>Calle:</label><br>
+                                        <input value="<?php echo $row['calle']?>" name="calle" class="form-control"> 
+                                    </div>
+                                    <div class="errorCampo" id="campoCalle">
+                                            Ingrese una calle
+                                    </div>
+                                    <div>
+                                        <label>Número:</label><br>
+                                        <input value="<?php echo $row['numero_dire']?>" name="numero_dire" class="form-control"> 
+                                    </div>
+                                    <div class="errorCampo" id="campoNumero_dire">
+                                            Ingrese un numero de direccion
+                                    </div>
+                                    <div>
+                                        <label>Foto:</label><br>
+                                        <img src="<?php echo '../../fotos/protectora/'.$row['foto'].'' ?>">
+                                        <input type="file" name="foto" value="<?Php echo $row['foto'] ?>" class="form-control-file" accept="image/*" >
+                                    </div>
+                                    
+                                    <div>
+                                        <label>Responsable:</label><br> 
+                                        <?php
+                                            $consultaDni = "SELECT dni FROM personas WHERE persona_id = '".$row['id_persona']."'";
+                                            $resultadoDni = mysqli_query($Sconexion, $consultaDni); 
+                                            $rowDni = mysqli_fetch_assoc($resultadoDni)
+                                        ?>
+                                        <input value="<?php echo $rowDni['dni']?>" name="dni" class="form-control"> 
+                                        <div class="errorCampo" id="campoDni">
+                                            Ingrese un DNI
+                                        </div>
+                                        <div class="errorCampo" id="DNIcargado">
+                                            El DNI no está cargado
+                                        </div>
+                                    </div>
+                                    <button type="submit" name="guardar" class="form-control">Guardar</button>
+                                    <p></p>
+                                    <a class="btn btn-light border-dark btn-lg" role="button" href="home.php">Volver</a>
+                                </div>
+                            </form>
         </main>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="../../js/jquery.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/jquery.sticky.js"></script>
+        <script src="../../js/click-scroll.js"></script>
+        <script src="../../js/custom.js"></script>
+
     </body>
+
      <!-- Script localidades -->
     <script src="../../src/localidades.js"></script>
     <?php

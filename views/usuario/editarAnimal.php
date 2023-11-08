@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
-<?php
-        include('../../componentes/head.php')
+    <?php
+        include('../../componentes/head2.php')
     ?>
     <body>
         <?php
             include('../../componentes/headerUsuario.php');
+            include('../../componentes/navbarUsuario.php');
         ?>
-        <main >
-            <h1>Editar Persona</h1>
+        <main>
+            <section class="contact-protectora section-padding" id="volver">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-12 mx-auto">
             <!-- Trae los datos a partir del id -->
             <?php
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -22,54 +26,63 @@
                 $json = json_decode($row['clinica']);
                 
             ?>
-            <form method="POST" enctype="multipart/form-data">
-                
+                <form method="POST"  class="custom-form contact-form bg-white shadow-lg" enctype="multipart/form-data">
+                    <h1>Editar Persona</h1>
+                    <div class="row">
                     <input style="display: none;" name="animal_id"  value="<?Php echo $row['animal_id'] ?>" readonly>
 
                     <div>
                         <label>Nombre:</label><br>
-                        <input value="<?php echo $row['nombre']?>" name="nombre"> 
+                        <input value="<?php echo $row['nombre']?>" name="nombre" class="form-control"> 
                     </div>
                     <div class="errorCampo" id="campoNombre" >
                         Complete el campo
                     </div>
+
                     <div class="form-group">
                         <label for="especie">Seleccione especie</label>
                         <select id="especie" name="especie" class="form-select">
-                            <option value="<?php echo $row['especie']?>" selected><?php echo $row['especie']?></option>
-                            <option value="Canino">Canino</option>
-                            <option value="Felino">Felino</option>
-                            <option value="Equino">Equino</option>
-                            <option value="Bovino">Bovino</option>
+                            <?php
+                                $especieConsulta = "SELECT nombre FROM especies";
+                                $resultadoEspeie = mysqli_query($Sconexion, $especieConsulta);
+                                while($rowEspecie = mysqli_fetch_assoc($resultadoEspeie)){
+                                    if ($rowEspecie["nombre"] == $row['especie']) {
+                                        echo "<option value=".$rowEspecie["nombre"]." selected>".$rowEspecie["nombre"]."</option>";
+                                    }else {
+                                        echo "<option value=".$rowEspecie["nombre"].">".$rowEspecie["nombre"]."</option>";
+                                    }
+                                }
+                            ?>
                         </select>
                     </div>
-                    <div>
-                    <?php
-                        foreach($json as $key=>$value) {
-                            echo '
-                                <div class="form-group">
-                                    <label>'.$key.'</label>
-                                    <input id="'.$key.'" class="form-control" type="date" value="'.$value.'" name="'.$key.'" />
-                                </div>
-                            ';
-                        }
-                    ?>
-                    </div>
 
-                <div>
-                    <img src="<?php echo '../../fotos/animales/'.$row['foto'].'' ?>" style="width: 100px">
-                    <input type="file" name="foto" accept="image/*">
-                </div>
-                
-                <button type="submit" name="guardar" class="formboton">Guardar</button>
-            </form>
-            <a class="btn btn-light border-dark btn-lg" role="button" href="buscarAnimal.php">Volver</a>
-        </main>
-    </body>
+                    <div>
+                        <img src="<?php echo '../../fotos/animales/'.$row['foto'].'' ?>" style="width: 100px">
+                        <input type="file" name="foto" class="form-control" accept="image/*">
+                    </div>
+                    
+                    <p></p>
+                        <div class="col-12">
+                            <button type="submit" name="guardar" class="form-control">Agregar Animal</button>
+                        </div>                            
+                        <p></p>
+                        <div class="col-12">
+                            <a class="form-control text-center" href="home.php">Volver</a>
+                        </div>
+                    </div>
+                </form>
+            </main>
+        </body>
+    
+    <!-- JAVASCRIPT FILES -->
+        <script src="../../js/jquery.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/jquery.sticky.js"></script>
+        <script src="../../js/click-scroll.js"></script>
+        <script src="../../js/custom.js"></script>
    
     <?php
         include('../../componentes/footer.php');
-        
     ?>
 </html>
 

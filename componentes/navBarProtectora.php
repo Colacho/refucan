@@ -17,37 +17,45 @@
                 
                     <button type="submit" name="logout" class="nav-link custom-btn btn d-lg-none">Log Out</button>
                 </form>
-                
-
 
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_1">Home</a>
+                            <a class="nav-link" href="home.php#volver">Home</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_2">Funciones</a>
+                            <a class="nav-link" href="cargarAnimal.php">Cargar</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Buscar
+                          </a>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="buscarAnimal.php">Animales</a></li>
+                            <li><a class="dropdown-item" href="buscarProtectora.php">Protectoras</a></li>
+                            <li><a class="dropdown-item" href="buscarVeterinaria.php">Veterinarias</a></li>
+                            <li><a class="dropdown-item" href="buscarProfesional.php">Profesional</a></li>
+                          </ul>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="editarProtectora.php">Editar</a>
+                        </li>
+                        
+
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="home.php#section_1">Novedades</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="buscar.php">Buscar</a>
+                            <a class="nav-link click-scroll" href="home.php#section_2">Nosotros</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_3">Novedades</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_4">Nosotros</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_5">Contacto</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="editarProtectora.php">Editar</a>
+                            <a class="nav-link click-scroll" href="home.php#section_3">Contacto</a>
                         </li>
 
                         <li class="nav-item">
@@ -55,10 +63,8 @@
                             <form action="../../src/logout.php" method="POST">
                                 <button type="submit" name="logout" class="nav-link custom-btn btn d-none d-lg-block">Log Out</button>
                             </form>
-                            
                         </li>
                     </ul>
-                <div>
-                        
+                </div>   
             </div>
         </nav>
