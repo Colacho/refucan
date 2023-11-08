@@ -12,7 +12,7 @@
         <div class="container mt-5 position-relative">
           <div class="row">
             <div class="col">
-                <h1>Buscar Protectoras</h1>
+                <h2>Buscar Protectoras</h2>
                 <form method="POST">
                     <fieldset class="formBusqueda">
                         <legend>Seleccione Criterio de busqueda</legend>

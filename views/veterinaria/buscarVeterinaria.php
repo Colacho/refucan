@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html>
     <?php
-        include('../../componentes/head.php')
+        include('../../componentes/head2.php')
     ?>
     <body>
         <?php
             include('../../componentes/headerVeterinaria.php');
+            include('../../componentes/navBarVeterinaria.php');
         ?>
         <main>
-            <h1>Buscar Veterinaria</h1>
+            <div class="container mt-5 position-relative">
+              <div class="row">
+                <div class="col">
             <form method="POST">
+                <h2>Buscar Veterinaria</h2>
                 <fieldset class="formBusqueda">
                     <legend>Seleccione Criterio de busqueda</legend>
                     <div>
                         <input type="text" name="nombre" placeholder="Nombre" />
                     </div>
                     <div class="botones">
-                        <button class="btn btn-dark btn-lg" type="submit" name="buscar">Buscar</button>
+                        <button class="btn btn-success m-2" type="submit" name="buscar">Buscar</button>
+                        <a class="btn btn-danger m-2" role="button" href="buscar.php">Volver</a>
                     </div>  
                 </fieldset>
             </form>
@@ -38,7 +43,7 @@
 
                 /*---------------------------Segunda consulta para la paginacion-------------------------------------------------------------------------------*/
                 $cantResultados = @mysqli_num_rows($resultado);
-                $registrosXpagina = 2; /* Cantidad de registros por cada pagina */
+                $registrosXpagina = 5; /* Cantidad de registros por cada pagina */
                 if (!isset ($_GET['page']) ) {  
                 $page = 1;  
                 } else {  
@@ -55,79 +60,82 @@
                 $resultadoLimitado = mysqli_query($Sconexion, $consulta2);
 
                 /*---------------------------Fin consultas paginacion-------------------------------------------------------------------------------*/
-            ?>
-
-            <table class="table">
-                <thead>
-                    <tr>
-                    <th scope="col">Foto</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Provincia</th>
-                    <th scope="col">Municipio</th>
-                    <th scope="col">Calle</th>
-                    <th scope="col">Numero</th>
-                    <th scope="col">Telefono</th>
-                    </tr>
-                </thead>
-                <?php   
-                    while($row = mysqli_fetch_assoc($resultadoLimitado)) {          
                 ?>
-                <tbody>
-                    <tr>
-                        <td>
-                            <img style="width: 50px;" src="<?php echo '../../fotos/veterinaria/'.$row['foto'].'' ?>">
-                        </td>
-                        <td>
-                            <?php echo $row['nombre']?>
-                        </td>
-                        <td>
-                            <?php echo $row['provincia']?>
-                        </td>
-                        <td>
-                            <?php echo $row['municipio']?>
-                        </td>
-                        <td>
-                            <?php echo $row['calle']?>
-                        </td>
-                        <td>
-                            <?php echo $row['numero_dire']?>
-                        </td>
-                        <td>
-                            <?php echo $row['telefono']?>
-                        </td>
 
-                    </tr>
-                </tbody>
-                <?php                
-                    }     
-                ?>
-            </table>
-<!-- ---------------------------Botonera paginacion------------------------------------------------------------------------------- -->
-            <div>
-                <?php
-                    $pagLink= "";
-                    if($page>=2){   
-                        echo '<a class="btn btn-secondary btn-sm btn-dark" role="button" href="buscarPersona.php?page='.($page-1).'">  Prev </a>';   
-                    }       
-                        
-                    for ($i=1; $i<=$cantidadPaginas; $i++) {   
-                        if ($i == $page) {   
-                        $pagLink .= '<a class="btn btn-secondary btn-sm btn-dark active" role="button" href="buscarPersona.php?page='.$i.'"> '.$i.' </a>';   
-                    }               
-                    else  {   
-                    $pagLink .= '<a class="btn btn-secondary btn-sm btn-dark" role="button" href="buscarPersona.php?page='.$i.'"> '.$i.' </a>';     
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                        <th scope="col">Foto</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Provincia</th>
+                        <th scope="col">Municipio</th>
+                        <th scope="col">Calle</th>
+                        <th scope="col">Numero</th>
+                        <th scope="col">Telefono</th>
+                        </tr>
+                    </thead>
+                    <?php   
+                        while($row = mysqli_fetch_assoc($resultadoLimitado)) {          
+                    ?>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <img style="width: 50px;" src="<?php echo '../../fotos/veterinaria/'.$row['foto'].'' ?>">
+                            </td>
+                            <td>
+                                <?php echo $row['nombre']?>
+                            </td>
+                            <td>
+                                <?php echo $row['provincia']?>
+                            </td>
+                            <td>
+                                <?php echo $row['municipio']?>
+                            </td>
+                            <td>
+                                <?php echo $row['calle']?>
+                            </td>
+                            <td>
+                                <?php echo $row['numero_dire']?>
+                            </td>
+                            <td>
+                                <?php echo $row['telefono']?>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                    <?php                
+                        }     
+                    ?>
+                </table>
+    <!-- ---------------------------Botonera paginacion------------------------------------------------------------------------------- -->
+                <div>
+                    <?php
+                        $pagLink= "";
+                        if($page>=2){   
+                            echo '<a class="btn btn-secondary btn-sm btn-dark" role="button" href="buscarPersona.php?page='.($page-1).'">  Prev </a>';   
+                        }       
+                            
+                        for ($i=1; $i<=$cantidadPaginas; $i++) {   
+                            if ($i == $page) {   
+                            $pagLink .= '<a class="btn btn-secondary btn-sm btn-dark active" role="button" href="buscarPersona.php?page='.$i.'"> '.$i.' </a>';   
+                        }               
+                        else  {   
+                        $pagLink .= '<a class="btn btn-secondary btn-sm btn-dark" role="button" href="buscarPersona.php?page='.$i.'"> '.$i.' </a>';     
+                        }   
+                    };     
+                        echo $pagLink;   
+            
+                    if($page<$cantidadPaginas){   
+                        echo '<a class="btn btn-secondary btn-sm btn-dark" role="button" href="buscarPersona.php?page='.($page+1).'">  Next </a>';   
                     }   
-                };     
-                    echo $pagLink;   
-        
-                if($page<$cantidadPaginas){   
-                    echo '<a class="btn btn-secondary btn-sm btn-dark" role="button" href="buscarPersona.php?page='.($page+1).'">  Next </a>';   
-                }   
 
-                ?>
+                    ?>
+                </div>
             </div>
+        </div>
+    </div>
 <!-- ---------------------------Fin botonera paginacion------------------------------------------------------------------------------- -->
-<a class="btn btn-light border-dark btn-lg" role="button" href="buscar.php">Volver</a>
+
         </main>
         <?php
             include('../../componentes/footer.php');

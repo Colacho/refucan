@@ -16,6 +16,7 @@
           <div class="row">
             <div class="col">
               <form method="POST">
+                <h2>Buscar Animal</h2>
                       <fieldset class="formBusqueda">
                           <legend>Seleccione Criterio de busqueda</legend>
                           <div>

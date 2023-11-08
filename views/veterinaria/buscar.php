@@ -6,6 +6,7 @@
     <body>
         <?php
             include('../../componentes/headerVeterinaria.php');
+            include('../../componentes/navBarVeterinaria.php');
         ?>
         <main>
             <h1>Seleccione que desea buscar</h1>
@@ -25,4 +26,10 @@
             include('../../componentes/footer.php');
         ?>
     </body>
+    <!-- JAVASCRIPT FILES -->
+    <script src="../../js/jquery.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/jquery.sticky.js"></script>
+        <script src="../../js/click-scroll.js"></script>
+        <script src="../../js/custom.js"></script>
 </html>

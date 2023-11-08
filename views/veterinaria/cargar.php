@@ -3,7 +3,8 @@
 <html>
 
     <?php
-        include('../../componentes/head.php')
+        include('../../componentes/head2.php');
+        include('../../componentes/navBarVeterinaria.php');
     ?>
    
     <body class="containergeneral">
@@ -16,14 +17,8 @@
             <div class="botones">         
                 <a class="btn btn-dark btn-lg" role="button" href="cargarAnimal.php">Animales</a>
                 <a class="btn btn-dark btn-lg" role="button" href="cargarPersona.php">Personas</a>  
-            <?php
-                if($Scargo_id == 2) {
-                    echo '
-                        <a class="btn btn-dark btn-lg" role="button" href="cargarUsuario.php">Usuarios</a>    
-                        <a class="btn btn-dark btn-lg" role="button" href="cargarProfesional.php">Profesional</a>    
-                    ';
-                }
-            ?>
+                <a class="btn btn-dark btn-lg" role="button" href="cargarUsuario.php">Usuarios</a>  
+            
                 <a class="btn btn-light border-dark btn-lg" role="button" href="home.php">Volver</a>    
             </div>
         </main>

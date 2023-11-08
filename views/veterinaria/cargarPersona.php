@@ -6,6 +6,7 @@
     <body>
 <?php
     include('../../componentes/headerVeterinaria.php');
+    include('../../componentes/navBarVeterinaria.php');
     
 ?>
 <nav class="navbar navbar-expand-lg">

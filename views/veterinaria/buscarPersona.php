@@ -5,20 +5,17 @@
         include('../../componentes/head2.php');
     ?>
 
+<body>
     <?php
         include('../../componentes/headerVeterinaria.php');
-    ?>
-
-    <?php
         include('../../componentes/navBarVeterinaria.php');
     ?>
-
-    <body>
         <main>
             <div class="container mt-5 position-relative">
               <div class="row">
                 <div class="col">
                   <form method="POST">
+                    <h2>Buscar Persona</h2>
                           <fieldset class="formBusqueda">
                               <legend>Seleccione Criterio de busqueda</legend>
                               <div>

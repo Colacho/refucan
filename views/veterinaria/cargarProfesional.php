@@ -6,46 +6,54 @@
     <body>
         <?php
             include('../../componentes/headerVeterinaria.php');
+            include('../../componentes/navBarVeterinaria.php');
         ?>
         <main>
-            <h1>Carga de Profesionales</h1>
-            <form id="formulario" method="POST" class="my-form">
-                <div class="containerInputs">
-                    <div class="form-group">
-                        <label for="persona_id">Documento</label>
-                        <input type="text" name="persona_id" class="form-control"
-                        value="<?php if (isset($_POST['persona_id'])) echo $_POST['persona_id'];?>"
-                        >
-                    </div>
-                    <div class="errorCampo" id="campoDni" >
-                        Ingrese un documento
-                    </div>
-                    <div class="errorCampo" id="DNIcargado">
-                        El DNI no está cargado
-                    </div>
-                    <div class="errorCampo" id="DNIrepetido">
-                        El DNI corresponde a otro usuario
-                    </div>
+            <section class="contact-protectora section-padding" id="volver">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <form id="formulario" method="POST" class="custom-form contact-form bg-white shadow-lg">
+                                <h1>Carga de Profesionales</h1>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label for="persona_id">Documento</label>
+                                        <input type="text" name="persona_id" class="form-control"
+                                        value="<?php if (isset($_POST['persona_id'])) echo $_POST['persona_id'];?>"
+                                        >
+                                    </div>
+                                    <div class="errorCampo" id="campoDni" class="form-control">
+                                        Ingrese un documento
+                                    </div>
+                                    <div class="errorCampo" id="DNIcargado" >
+                                        El DNI no está cargado
+                                    </div>
+                                    <div class="errorCampo" id="DNIrepetido">
+                                        El DNI corresponde a otro usuario
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="matricula">Matricula</label>
+                                        <input type="text" name="matricula" id="matricula" class="form-control"
+                                        value="<?php if (isset($_POST['matricula'])) echo $_POST['matricula'];?>"
+                                        >
+                                    </div>
+                                    <div class="errorCampo" id="campoMatricula" >
+                                        Ingrese Matricula
+                                    </div>
+                                    <div class="errorCampo" id="matriculaCargada" >
+                                        Esa matricula ya fue cargada
+                                    </div>
                     
-                    <div class="form-group">
-                        <label for="matricula">Matricula</label>
-                        <input type="text" name="matricula" id="matricula" class="form-control"
-                        value="<?php if (isset($_POST['matricula'])) echo $_POST['matricula'];?>"
-                        >
-                    </div>
-                    <div class="errorCampo" id="campoMatricula" >
-                        Ingrese Matricula
-                    </div>
-                    <div class="errorCampo" id="matriculaCargada" >
-                        Esa matricula ya fue cargada
-                    </div>
-    
-                    <div>
-                        <button type="submit" name="cargarProfesional" class="formboton">Agregar Profesional</button>
+                                        <button type="submit" name="cargarProfesional" class="form-control">Agregar Profesional</button>
+                                        <a class="btn btn-light border-dark btn-lg" role="button" href="cargar.php">Volver</a>
+                                    
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </form>
-            <a class="btn btn-light border-dark btn-lg" role="button" href="cargar.php">Volver</a>
+            </section>
         </main>
     </body>
         <?php

@@ -6,92 +6,119 @@
     <body>
         <?php
             include('../../componentes/headerVeterinaria.php');
+            include('../../componentes/navBarVeterinaria.php');
         ?>
         <main>
-            <h1>Editar Persona</h1>
+            <section class="contact-protectora section-padding" id="volver">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-12 mx-auto">
             <!-- Trae los datos a partir del id -->
-            <?php
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                   
-                    
-                    $consulta = "SELECT * FROM personas WHERE persona_id = '".$_POST['persona_id']."'";
-
-                    $resultado = mysqli_query($Sconexion, $consulta);     
-                }
-                $row = mysqli_fetch_assoc($resultado)
-            ?>
-            <form method="POST">
-                <div>
-                    <input style="display: none;" name="persona_id"  value="<?Php echo $row['persona_id'] ?>" readonly>
-                    <div>
-                        <label>Nombre:</label><br>
-                        <input value="<?php echo $row['nombre']?>" name="nombre"> 
-                    </div>
-                    <div class="errorCampo" id="campoNombre" >
-                        Ingrese Nombre
-                    </div>
-                    <div>
-                        <label>Apellido:</label><br>
-                        <input value="<?php echo $row['apellido']?>" name="apellido"> 
-                    </div>
-                    <div class="errorCampo" id="campoApellido" >
-                        Ingrese apellido
-                    </div>
-                    <div>
-                        <label>DNI:</label><br>
-                        <input value="<?php echo $row['dni']?>" name="dni"> 
-                        <div class="errorCampo" id="DNIcargado">
-                            El DNI ya existe
+                            <?php
+                                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                    
+                                    
+                                    $consulta = "SELECT * FROM personas WHERE persona_id = '".$_POST['persona_id']."'";
+                                    
+                                    $resultado = mysqli_query($Sconexion, $consulta);     
+                                }
+                                $row = mysqli_fetch_assoc($resultado)
+                                ?>
+                            <form method="POST" class="custom-form contact-form bg-white shadow-lg">
+                                <h2>Editar Persona</h2>
+                                <div class="row">
+                                    <input style="display: none;" name="persona_id"  value="<?Php echo $row['persona_id'] ?>" readonly>
+                                    <div>
+                                        <label>Nombre:</label><br>
+                                        <input value="<?php echo $row['nombre']?>" name="nombre" class="form-control"> 
+                                    </div>
+                                    <div class="errorCampo" id="campoNombre" >
+                                        Ingrese Nombre
+                                    </div>
+                                    <div class="errorCampo" id="errordetipo" >
+                                    Tipo de dato incorrecto
+                                    </div>
+                                    <div>
+                                        <label>Apellido:</label><br>
+                                        <input value="<?php echo $row['apellido']?>" name="apellido" class="form-control"> 
+                                    </div>
+                                    <div class="errorCampo" id="campoApellido" >
+                                        Ingrese apellido
+                                    </div>
+                                    <div class="errorCampo" id="errordetipo" >
+                                    Tipo de dato incorrecto
+                                    </div>
+                                    <div>
+                                        <label>DNI:</label><br>
+                                        <input value="<?php echo $row['dni']?>" name="dni" class="form-control"> 
+                                        <div class="errorCampo" id="DNIcargado">
+                                            El DNI ya existe
+                                        </div>
+                                        <div class="errorCampo" id="campoDni">
+                                            Ingrese un DNI
+                                        </div>
+                                        <div class="errorCampo" id="errordetipo" >
+                                            Tipo de dato incorrecto
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label>Telefono:</label><br>
+                                        <input value="<?php echo $row['telefono']?>" name="telefono" class="form-control"> 
+                                    </div>
+                                    <div class="errorCampo" id="campoTelefono" >
+                                            Ingrese un teléfono
+                                    </div>
+                                    <div class="errorCampo" id="errordetipo" >
+                                    Tipo de dato incorrecto
+                                    </div>
+                                    <div>
+                                        <label for="provincia">Provincia</label>
+                                        <input name="provinciaAnt" value="<?php echo $row['provincia']?>" readonly>
+                                        <select id="provincia" name="provincia" class="form-select"></select>
+                                        
+                                        <label for="municipio">Municipio</label>
+                                        <input name="municipioAnt" value="<?php echo $row['municipio']?>" readonly>
+                                        <select id="municipio" name="municipio" class="form-select"></select>
+                                        <div class="errorCampo" id="campoMunicipio">
+                                            Si modifica la provincia seleccione un municipio
+                                        </div> 
+                                    </div>
+                                    <div>
+                                        <label>Calle:</label><br>
+                                        <input value="<?php echo $row['calle']?>" name="calle" class="form-control"> 
+                                    </div>
+                                    <div class="errorCampo" id="campoCalle">
+                                        Ingrese una calle
+                                    </div> 
+                                    <div class="errorCampo" id="errordetipo" >
+                                    Tipo de dato incorrecto
+                                    </div>
+                                    <div>
+                                        <label>Número:</label><br>
+                                        <input value="<?php echo $row['numero_dire']?>" name="numero_dire" class="form-control"> 
+                                    </div>
+                                    <div class="errorCampo" id="campoNumero_dire">
+                                        Ingrese un número
+                                    </div> 
+                                    <div class="errorCampo" id="errordetipo" >
+                                    Tipo de dato incorrecto
+                                    </div>
+                                    <div>
+                                        <label for="activo">Activo:</label>
+                                        <select id="activo" name="activo" class="form-select">
+                                            <option value="<?php echo $row['activo']?>"><?php echo $row['activo'] == 1 ? "Si" : "No"?></option>
+                                            <option value="<?php echo $row['activo'] == 1 ? 0 : 1?>"><?php echo $row['activo'] == 1 ? "No" : "Si"?></option>	
+                                        </select> 
+                                        </label>
+                                    </div>
+                                    <button type="submit" name="guardar" class="form-control">Guardar</button>
+                                    <a class="btn btn-light border-dark btn-lg" role="button" href="home.php">Volver</a>
+                                </div>
+                            </form>
                         </div>
-                        <div class="errorCampo" id="campoDni">
-                            Ingrese un DNI
-                        </div>
                     </div>
-                    <div>
-                        <label>Telefono:</label><br>
-                        <input value="<?php echo $row['telefono']?>" name="telefono"> 
-                    </div>
-                    <div class="errorCampo" id="campoTelefono" >
-                            Ingrese un teléfono
-                    </div>
-                    <div>
-                        <label for="provincia">Provincia</label>
-                        <input name="provinciaAnt" value="<?php echo $row['provincia']?>" readonly>
-                        <select id="provincia" name="provincia"></select>
-                        
-                        <label for="municipio">Municipio</label>
-                        <input name="municipioAnt" value="<?php echo $row['municipio']?>" readonly>
-                        <select id="municipio" name="municipio"></select>
-                        <div class="errorCampo" id="campoMunicipio">
-                            Si modifica la provincia seleccione un municipio
-                        </div> 
-                    </div>
-                    <div>
-                        <label>Calle:</label><br>
-                        <input value="<?php echo $row['calle']?>" name="calle"> 
-                    </div>
-                    <div class="errorCampo" id="campoCalle">
-                        Ingrese una calle
-                    </div> 
-                    <div>
-                        <label>Número:</label><br>
-                        <input value="<?php echo $row['numero_dire']?>" name="numero_dire"> 
-                    </div>
-                    <div class="errorCampo" id="campoNumero_dire">
-                        Ingrese un número
-                    </div> 
-                    <div>
-						<label for="activo">Activo:</label>
-						<select id="activo" name="activo">
-							<option value="<?php echo $row['activo']?>"><?php echo $row['activo'] == 1 ? "Si" : "No"?></option>
-							<option value="<?php echo $row['activo'] == 1 ? 0 : 1?>"><?php echo $row['activo'] == 1 ? "No" : "Si"?></option>	
-						</select> 
-						</label>
-					</div>
-                    <button type="submit" name="guardar" class="formboton">Guardar</button>
                 </div>
-            </form>
-            <a class="btn btn-light border-dark btn-lg" role="button" href="home.php">Volver</a>
+            </section>
         </main>
     </body>
     <!-- Script localidades -->
@@ -126,12 +153,13 @@
                 ';
                 return false;
             }
+             
             if(empty($_POST["apellido"])){
-             echo '<script>
-                 this.document.getElementById("campoApellido").style.display = "block";
-             </script>
-             ';
-             return false;
+                echo '<script>
+                    this.document.getElementById("campoApellido").style.display = "block";
+                </script>
+                ';
+                return false;
              } else if(is_numeric($_POST['apellido'])){
                 echo '<script>
                     this.document.getElementById("campoApellido").style.display = "block";
