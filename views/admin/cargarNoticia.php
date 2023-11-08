@@ -135,7 +135,7 @@
             
             
             if($_FILES['foto']['name'] == "") {
-                $foto = "noticiaDefault.png";
+                $foto = "noticiaDefault.jpg";
             } else {
                 $foto = $Snombre.$Susuario_id.$_FILES['foto']['name'];
                 $tmpNombre = $_FILES['foto']['tmp_name'];

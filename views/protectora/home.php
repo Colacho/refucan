@@ -23,8 +23,6 @@
                             <div class="hero-text">
 
                                 <h1 class="text-white mb-4">Bienvenida <u class="text-info"><medium><?php echo $saludo; ?></medium></u></h1>
-
-
                                 <a href="#section_2" class="custom-link bi-arrow-down arrow-icon"></a>
                             </div>
                         </div>
@@ -130,67 +128,35 @@
                         <div class="col-lg-12 col-12">
                             <h2 class="mb-5 text-center">Nuevas <u class="text-info">Noticias</u></h2>
 
+                            <?php
+                                $consultaNoticias = "SELECT * FROM noticias ORDER BY created_at DESC LIMIT 3";
+                                $resultadoNoticias = mysqli_query($Sconexion, $consultaNoticias);
 
-                            <div class="tab-content mt-5" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="nav-DayOne" role="tabpanel" aria-labelledby="nav-DayOne-tab">
-                                    <div class="row border-bottom pb-5 mb-5">
-                                        <div class="col-lg-4 col-12">
-                                            <img src="../../images/rescate.jpg" class="schedule-image img-fluid" alt="">
+                                while($row = mysqli_fetch_assoc($resultadoNoticias)) {
+                                    echo '
+                                    <div class="tab-content mt-5" id="nav-tabContent">
+                                    <div class="tab-pane fade show active" id="nav-DayOne" role="tabpanel" aria-labelledby="nav-DayOne-tab">
+                                        <div class="row border-bottom pb-5 mb-5">
+                                            <div class="col-lg-4 col-12">
+                                                <img src="../../fotos/noticias/'.$row['foto'].'" class="schedule-image img-fluid" alt="">
+                                            </div>
+    
+                                            <div class="col-lg-8 col-12 mt-3 mt-lg-0">
+                                                
+                                                <h4 class="mb-2">'.$row['titulo'].'</h4>
+    
+                                                <p>'.$row['cuerpo'].'</p>
+                    
+                                                <span class="mx-3 mx-lg-5">
+                                                    <i class="bi-clock me-2"></i>
+                                                    '.$row['created_at'].'                                         
+                                                </span>
+                                            </div>
                                         </div>
-
-                                        <div class="col-lg-8 col-12 mt-3 mt-lg-0">
-                                            
-                                            <h4 class="mb-2">Balvanera: rescataron a 23 perros que estaban hacinados en un criadero ilegal</h4>
-
-                                            <p>La investigación se inició por la denuncia de vecinos de la zona; la propietaria, que se dedicaba a la comercialización de los cachorros, fue imputada por maltrato animal</p>
-                
-                                            <span class="mx-3 mx-lg-5">
-                                                <i class="bi-clock me-2"></i>
-                                                19 de agosto de 2023  01:44 PM                                         
-                                            </span>
-                                        </div>
-                                    </div>
-
-                            <div class="tab-content mt-5" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="nav-DayOne" role="tabpanel" aria-labelledby="nav-DayOne-tab">
-                                    <div class="row border-bottom pb-5 mb-5">
-                                        <div class="col-lg-4 col-12">
-                                            <img src="../../images/rescate.jpg" class="schedule-image img-fluid" alt="">
-                                        </div>
-
-                                        <div class="col-lg-8 col-12 mt-3 mt-lg-0">
-                                            
-                                            <h4 class="mb-2">Balvanera: rescataron a 23 perros que estaban hacinados en un criadero ilegal</h4>
-
-                                            <p>La investigación se inició por la denuncia de vecinos de la zona; la propietaria, que se dedicaba a la comercialización de los cachorros, fue imputada por maltrato animal</p>
-                
-                                            <span class="mx-3 mx-lg-5">
-                                                <i class="bi-clock me-2"></i>
-                                                19 de agosto de 2023  01:44 PM                                         
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                <div class="tab-content mt-5" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="nav-DayOne" role="tabpanel" aria-labelledby="nav-DayOne-tab">
-                                    <div class="row border-bottom pb-5 mb-5">
-                                        <div class="col-lg-4 col-12">
-                                            <img src="../../images/rescate.jpg" class="schedule-image img-fluid" alt="">
-                                        </div>
-
-                                        <div class="col-lg-8 col-12 mt-3 mt-lg-0">
-                                            
-                                            <h4 class="mb-2">Balvanera: rescataron a 23 perros que estaban hacinados en un criadero ilegal</h4>
-
-                                            <p>La investigación se inició por la denuncia de vecinos de la zona; la propietaria, que se dedicaba a la comercialización de los cachorros, fue imputada por maltrato animal</p>
-                
-                                            <span class="mx-3 mx-lg-5">
-                                                <i class="bi-clock me-2"></i>
-                                                19 de agosto de 2023  01:44 PM                                         
-                                            </span>
-                                        </div>
-                                    </div>
-                            </div>
+                                    ';
+                                }
+                            ?>
+                            
                         </div>
 
                     </div>

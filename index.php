@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
    <?php
-    include('./componentes/head.php');
+    include('componentes/head.php');
    ?>
     <body class="containergeneral">
         
         <header>
             <div>
                 <a href="home.php">
-                    <img class="logo" src="../images/logo.png"/>
+                    <img class="logo" src="../images/logo.jpg"/>
                 </a>
             </div>
             <div>
-                <h1>Registro de mascotas</h1>
+                <h1>REFUCAN</h1>
                 
             </div>
         </header>   
@@ -22,7 +22,7 @@
             <br>
             <div class="central">
                 <div>
-                    <img class="logocentral" src="../images/logo.png",>
+                    <img class="logocentral" src="../images/logo.jpg",>
                 </div>
                 <br>
                 <div >
@@ -34,7 +34,7 @@
                             </div>
                             <br>
                             <div class="formlogin">
-                                <label for="password">Contraseña</label>
+                                <label for="password">Password</label>
                                 <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                             </div>
                             <br>
@@ -50,8 +50,5 @@
             <br>
             <br>
         </main>
-        <?php
-            include('./componentes/footer.php');
-        ?>
     </body>
 </html>

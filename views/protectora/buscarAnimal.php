@@ -36,8 +36,8 @@
                   
         $consulta = "SELECT animal_id, nombre, especie, foto
         FROM animal 
-        WHERE animal.activo = 1
-        AND institucion = $Sinstitución_id
+        WHERE activo = 1
+        AND institucion = '{$Sinstitucion_id}'
         AND animal.nombre LIKE '%{$nombreAnimal}%'
         ";
         $resultado = mysqli_query($Sconexion, $consulta);
@@ -55,8 +55,8 @@
 
         $consulta2 = "SELECT animal_id, nombre, especie, foto
         FROM animal 
-        WHERE animal.activo = 1
-        AND institucion = $Sinstitución_id 
+        WHERE activo = 1
+        AND institucion = '{$Sinstitucion_id}' 
         AND animal.nombre LIKE '%{$nombreAnimal}%'
         
         LIMIT ".$primerResultadoPagina.",".$registrosXpagina."
@@ -91,12 +91,6 @@
                 </td>
                 <td>
                     <?php echo $row['especie']?>
-                </td>
-                <td>
-                    <?php echo $row['telefono']?>
-                </td>
-                <td>
-                    <?php echo $row['nombre']?>
                 </td>
                 
                 <td>
