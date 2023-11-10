@@ -73,21 +73,6 @@
                                         <input type="file" name="foto" value="<?Php echo $row['foto'] ?>" class="form-control-file" accept="image/*" >
                                     </div>
                                     
-                                    <div>
-                                        <label>Responsable:</label><br> 
-                                        <?php
-                                            $consultaDni = "SELECT dni FROM personas WHERE persona_id = '".$row['id_persona']."'";
-                                            $resultadoDni = mysqli_query($Sconexion, $consultaDni); 
-                                            $rowDni = mysqli_fetch_assoc($resultadoDni)
-                                        ?>
-                                        <input value="<?php echo $rowDni['dni']?>" name="dni" class="form-control"> 
-                                        <div class="errorCampo" id="campoDni">
-                                            Ingrese un DNI
-                                        </div>
-                                        <div class="errorCampo" id="DNIcargado">
-                                            El DNI no está cargado
-                                        </div>
-                                    </div>
                                     <button type="submit" name="guardar" class="form-control">Guardar</button>
                                     <p></p>
                                     <a class="btn btn-light border-dark btn-lg" role="button" href="home.php">Volver</a>
@@ -163,35 +148,7 @@
                 ';
                 return false;
             }
-            if(empty($_POST["dni"])){
-                echo '<script>
-                        this.document.getElementById("campoDni").style.display = "block";
-                    </script>
-                ';
-                return false;
-            } else if(!is_numeric($_POST['dni'])){
-                echo '<script>
-                    this.document.getElementById("campoDni").style.display = "block";
-                </script>
-                ';
-                return false;
-            }
-            if (!empty($_POST["dni"])){
-                $consultaDni = "SELECT persona_id, dni FROM personas WHERE dni = '".$_POST['dni']."'";
-                $resultadoDni = mysqli_query($conexion, $consultaDni) or die('Error de consulta DNI');
-                $rowDni = mysqli_fetch_assoc($resultadoDni);
-                if(mysqli_num_rows($resultadoDni) > 0) {
-                    $dni = $rowDni['persona_id'];
-                    
-                } else {
-                    echo '<script>
-                        this.document.getElementById("DNIcargado").style.display = "block";
-                    </script>
-                    '; 
-                    return false;
-                }
-            }
-
+            
             if(($_POST["provincia"] == "provincia")){
                 
                 return true;
@@ -238,11 +195,8 @@
             WHERE protectora_id = '$Sinstitucion_id';
             ";
             
-            $actualizaUsuario = "UPDATE usuarios SET id_persona = '$idPersona' WHERE institucion = '".$_POST['protectora_id']."';
-            ";
-
             $resultado = mysqli_query($Sconexion, $consulta) or die('Error de consulta Guarda');
-            $resultado = mysqli_query($Sconexion, $actualizaUsuario) or die('Error de consulta Guarda');
+            
 
             echo '
             <script>

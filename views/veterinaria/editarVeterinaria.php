@@ -32,11 +32,11 @@
 
                                     <div>
                                         <label for="provincia">Provincia</label>
-                                        <input name="provinciaAnt" value="<?php echo $row['provincia']?>" readonly>
+                                        <input name="provinciaAnt" value="<?php echo $row['provincia']?>" class="form-control" readonly>
                                         <select id="provincia" name="provincia" class="form-select"></select>
                                         
                                         <label for="municipio">Municipio</label>
-                                        <input name="municipioAnt" value="<?php echo $row['municipio']?>" readonly>
+                                        <input name="municipioAnt" value="<?php echo $row['municipio']?>" class="form-control" readonly>
                                         <select id="municipio" name="municipio" class="form-select"></select>
                                         <div class="errorCampo" id="campoMunicipio">
                                             Si modifica la provincia debe seleccionar un municipio
@@ -57,7 +57,7 @@
                                     </div>
                                     <div>
                                         <label>Foto:</label><br>
-                                        <img src="<?php echo '../fotos/veterinaria/'.$row['foto'].'' ?>">
+                                        <img src="<?php echo '../../fotos/veterinaria/'.$row['foto'].'' ?>" style="width: 200px">
                                         <input type="file" name="foto" value="<?Php echo $row['foto'] ?>" class="form-control-file" accept="image/*">
                                     </div>
                                     
@@ -72,7 +72,7 @@
         </main>
     </body>
      <!-- Script localidades -->
-    <script src="../src/localidades.js"></script>
+    <script src="../../src/localidades.js"></script>
     <?php
             include('../../componentes/footer.php');
         ?>
@@ -176,7 +176,7 @@
         if($pasa) {
             
             $consulta = "UPDATE veterinaria SET 
-            nombre = '".$_POST['npmbre']."',
+            nombre = '".$_POST['nombre']."',
             provincia = '$provinciaAnt',
             municipio = '$municipioAnt',
             calle = '".$_POST['calle']."',
@@ -185,12 +185,9 @@
             foto = '$foto'
             WHERE veterinaria_id = '$Sinstitucion_id';
             ";
-
-            $actualizaUsuario = "UPDATE usuarios SET id_persona = '$idPersona' WHERE institucion = '$Sinstitucion_id';
-            ";
             
             $resultado = mysqli_query($Sconexion, $consulta) or die('Error de consulta Guarda');
-            $resultado = mysqli_query($Sconexion, $actualizaUsuario) or die('Error de consulta Guarda');
+            
 
             echo '
             <script>

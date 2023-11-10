@@ -229,7 +229,7 @@
             WHERE veterinaria_id = '".$_POST['veterinaria_id']."';
             ";
 
-            $actualizaUsuario = "UPDATE usuarios SET id_persona = '$idPersona' WHERE institucion = '".$_POST['veterinaria_id']."';
+            $actualizaUsuario = "UPDATE usuarios SET id_persona = '$idPersona' WHERE cargo_id = 2 AND institucion = '".$_POST['veterinaria_id']."';
             ";
             
             $resultado = mysqli_query($Sconexion, $consulta) or die('Error de consulta Guarda');
