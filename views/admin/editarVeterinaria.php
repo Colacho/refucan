@@ -228,8 +228,12 @@
             foto = '$foto'
             WHERE veterinaria_id = '".$_POST['veterinaria_id']."';
             ";
+
+            $actualizaUsuario = "UPDATE usuarios SET id_persona = '$idPersona' WHERE institucion = '".$_POST['veterinaria_id']."';
+            ";
             
             $resultado = mysqli_query($Sconexion, $consulta) or die('Error de consulta Guarda');
+            $resultado = mysqli_query($Sconexion, $actualizaUsuario) or die('Error de consulta Guarda');
 
             echo '
             <script>

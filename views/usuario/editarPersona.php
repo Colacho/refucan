@@ -81,15 +81,10 @@
                                         <div class="errorCampo" id="campoNumero_dire">
                                             Ingrese un número
                                         </div> 
-                                        
-                                        <p></p>
-                                        <div>
-                                            <img src="<?php echo '../../fotos/animales/'.$row['foto'].'' ?>" style="width: 100px">
-                                            <input type="file" name="foto" accept="image/*" class="form-control">
-                                        </div>
+                                           
                                         <p></p>
                                         <div class="col-12">
-                                            <button type="submit" name="guardar" class="form-control">Agregar Animal</button>
+                                            <button type="submit" name="guardar" class="form-control">Guardar Cambios</button>
                                         </div>                            
                                         <p></p>
                                         <div class="col-12">
@@ -257,11 +252,11 @@
             provincia = '$provinciaAnt',
             municipio = '$municipioAnt',
             calle = '".$_POST['calle']."',
-            numero_dire = '".$_POST['numero_dire']."',
+            numero_dire = '".$_POST['numero_dire']."'
             WHERE persona_id = '$Spersona_id';
             ";
             
-            $resultado = mysqli_query($Sconexion, $consulta) or die('Error de consulta');
+            $resultado = mysqli_query($Sconexion, $consulta) or die(mysqli_error($Sconexion));
 
             echo '
             <script>
